@@ -7,14 +7,17 @@ Welcome to UCR EE144 Intro to Robotics!
 ===============================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :hidden:
+
+    logistics
+    lab0
+    lab1
 
 
+News
+====
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+- 09/27/2019: Welcome!
+- 09/27/2019: Please sign up `Piazza <https://piazza.com/ucr/fall2019/eeme144>`__.
+- 09/27/2019: `Lab0 <lab0.html>`__ is up.
