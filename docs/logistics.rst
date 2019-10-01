@@ -8,13 +8,13 @@ Welcome
 - Email: hteng007@ucr.edu
 - Office Hour: Fri 11am-12pm at WCH 109
 
-Please feel free to contact me if you have any questions/concerns.
+Please **feel free** to contact me if you have any questions/concerns. There is no stupid questions.
 
 
 Communications
 --------------
 
-Please consider reaching out to me in the following preferred order.
+Please consider reaching out to me in the following preferred order, regarding technical issues.
 
 1. **Office Hour**. Please wisely use the time at office hour, where
    I can give detailed explainations. 

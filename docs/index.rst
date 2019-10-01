@@ -21,3 +21,4 @@ News
 - 09/27/2019: Welcome!
 - 09/27/2019: Please sign up `Piazza <https://piazza.com/ucr/fall2019/eeme144>`__.
 - 09/27/2019: `Lab0 <lab0.html>`__ is up.
+- 10/01/2019: `Lab1 <lab1.html>`__ is up.
