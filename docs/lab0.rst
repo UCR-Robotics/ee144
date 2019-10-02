@@ -72,7 +72,7 @@ Virtual Machine
   It's free!
 - If you have a Mac laptop, please start trial of
   `VMware Fusion <https://www.vmware.com/products/fusion.html>`_ first.
-  Then please **``send me an email``** with your UCR `engineering account 
+  Then please **send me an email** with your UCR `engineering account 
   <https://systems.engr.ucr.edu/>`_.
   I will work with engineering staff and send you a licence later on. 
 
