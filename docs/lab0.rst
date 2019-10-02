@@ -70,10 +70,11 @@ Virtual Machine
 - If you have a Windows laptop, please go for
   `VMware Workstation Player <https://www.vmware.com/products/workstation-player.html>`_.
   It's free!
-- If you have a Mac laptop, please ``send me an email`` with your UCR `engineering account 
+- If you have a Mac laptop, please start trial of
+  `VMware Fusion <https://www.vmware.com/products/fusion.html>`_ first.
+  Then please **``send me an email``** with your UCR `engineering account 
   <https://systems.engr.ucr.edu/>`_.
-  I will work with engineering staff and send you a licence of
-  `VMware Fusion <https://www.vmware.com/products/fusion.html>`_.
+  I will work with engineering staff and send you a licence later on. 
 
 
 Install Linux
@@ -125,7 +126,7 @@ Main steps are
    .. code:: bash
 
       sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-
+      
 - Update package index
 
    .. code:: bash

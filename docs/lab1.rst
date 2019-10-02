@@ -47,6 +47,7 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
       cd ~/catkin_ws
       catkin_make
       echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+      source ~/catkin_ws/devel/setup.bash
 
 - Have a look at ``catkin_ws`` directory and see what happens.
 
@@ -76,8 +77,10 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
       
       cd
       roscd ee144f19
+
       cd ~/catkin_ws
       roscd ee144f19
+      
       cd ~/Documents
       roscd ee144f19
 
@@ -108,7 +111,7 @@ Set up Gazebo
   .. code:: xml
 
      <launch>
-       <arg name="world_file" default="$(find gazebo_worlds)/worlds/empty.world"/>
+       <arg name="world_file" default="worlds/empty.world"/>
 
        <arg name="urdf" default="$(find turtlebot_description)/robots/kobuki_hexagons_astra.urdf.xacro" />
        <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf)" />
@@ -120,7 +123,15 @@ Set up Gazebo
 
        <!-- Gazebo model spawner -->
        <node name="spawn_turtlebot_model" pkg="gazebo_ros" type="spawn_model"
-             args="$(optenv ROBOT_INITIAL_POSE) -unpause -urdf -param robot_description -model turtlebot"/>
+             args="$(optenv ROBOT_INITIAL_POSE) -unpause -urdf -param robot_description -model mobile_base"/>
+
+       <!-- Velocity muxer -->
+       <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+       <node pkg="nodelet" type="nodelet" name="cmd_vel_mux"
+             args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
+         <param name="yaml_cfg_file" value="$(find turtlebot_bringup)/param/mux.yaml"/>
+         <remap from="cmd_vel_mux/output" to="mobile_base/commands/velocity"/>
+       </node>
 
      </launch>
 
@@ -128,11 +139,14 @@ Set up Gazebo
 Run Turtlebot in Gazebo
 -----------------------
 
-- First, let's install some dependencies for Turtlebot.
+- First, let's upgrade existing packages and install some dependencies for Turtlebot. 
 
    .. code:: bash
       
-      sudo apt install ros-kinetic-turtlebot
+      sudo apt-get update
+      sudo apt-get upgrade
+      sudo apt-get install ros-kinetic-turtlebot ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-interactions ros-kinetic-turtlebot-simulator
+      sudo apt-get install ros-kinetic-kobuki-ftdi ros-kinetic-ar-track-alvar-msgs
 
 - Launch Gazebo simulator and spawn a new robot.
   It may take a while at the first time you open Gazebo, 
@@ -154,6 +168,14 @@ Run Turtlebot in Gazebo
   and make the robot collide with obstacles. See what happens :)
 
 
+.. note::
+
+   If you are experiencing graphic issues with Gazebo, please try the following command.
+   Then close all terminals and try again.
+
+   .. code:: bash
+      
+      echo "export SVGA_VGPU10=0" >> ~/.profile
 
 
 
