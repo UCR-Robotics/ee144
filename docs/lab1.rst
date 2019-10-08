@@ -6,7 +6,7 @@ Overview
 
 In this lab, we are going to learn ROS basics and try to make a TurtleBot robot
 move in Gazebo simulation. 
-I hope this could be a good start and motivation for working on robots.
+I hope this could be a good start of working on robots.
 
 Please take your time and think about the following questions while working on lab materials.
 They are helpful for your study, and may be asked during the demo.
