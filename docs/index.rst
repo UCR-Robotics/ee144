@@ -14,6 +14,8 @@ Welcome to UCR EE144 Intro to Robotics!
     lab0
     lab1
     lab2
+    linux
+    reference
 
 
 News
@@ -25,3 +27,6 @@ News
 - 09/27/2019: `Lab0 <lab0.html>`_ is up.
 - 10/01/2019: `Lab1 <lab1.html>`_ is up.
 - 10/08/2019: `Lab2 <lab2.html>`_ is up.
+- 10/08/2019: `Reference Materials <reference.html>`_ has been posted for your information. 
+- 10/08/2019: `Linux Tutorials <linux.html>`_ has been posted for your information.
+
