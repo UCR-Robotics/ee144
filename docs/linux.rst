@@ -9,7 +9,7 @@ Tab Key Auto-completion
 - The most commonly used one is the ``Tab`` key. 
   This is the fundamental auto-completion feature in all kinds of Linux terminals.
   If you cannot auto-complete the command you are currently typing, 
-  this means your command is wrong and Linux cannot recognize it.
+  **this means your command is wrong** and Linux cannot recognize it.
   Try entering the following command in your terminal and press ``Tab`` key on your keyboard.
 
   .. code:: bash
@@ -72,6 +72,10 @@ Terminal and Shell
 
 Terminal and File Manager
 -------------------------
+
+Still, there are `many types of file managers 
+<https://www.ubuntupit.com/linux-file-manager-reviewed-for-linux-users/>`_ available in Linux. 
+Ubuntu 16 has ``nautilus`` as the default file manager. 
 
 We can go back and forth between terminal and file manager at any working directory.
 Coming soon.

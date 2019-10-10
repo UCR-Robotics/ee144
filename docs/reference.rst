@@ -1,6 +1,17 @@
 Reference Materials
 ===================
 
+ROS Conventions
+---------------
+
+- `REP 103 Standard Units of Measure and Coordinate Conventions 
+  <https://www.ros.org/reps/rep-0103.html>`_ (please read, most important one!)
+
+- `REP 105 Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`_
+
+- `REP 144 ROS Package Naming <https://www.ros.org/reps/rep-0144.html>`_
+
+
 Atom Editor
 -----------
 
@@ -12,23 +23,23 @@ Tab key detection, and so on.
 
 - To install Atom, first add the official repository to the package list.
 
-.. code:: bash
+  .. code:: bash
 
-    wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+      wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+      sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
     
 - Then update your apt package list and install Atom.
 
-.. code:: bash
+  .. code:: bash
     
-    sudo apt-get update
-    sudo apt-get install atom
+      sudo apt-get update
+      sudo apt-get install atom
 
 - After installation, you can open Atom by just typing atom in your terminal.
 
-.. code:: bash
+  .. code:: bash
     
-    atom
+      atom
 
 - You can right click the Atom icon on taskbar and choose "Lock to Launcher",
   such that you can run it by just click the icon on taskbar next time.

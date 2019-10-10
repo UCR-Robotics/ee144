@@ -5,24 +5,37 @@ Overview
 --------
 
 In this lab, we are going to write a script to make TurtleBot follow a square trajectory.
+You are supposed to use an "open-loop" control approach. 
 The side length of the square is set to be 4m. 
 Specifically, the robot starts from its origin, moves forward 4 meters, then turns 90 degrees,
 moves forward 4 meters, turns again, and so on, until goes back to its origin. 
-(It's up to you to make a left turn or right turn. Hint: One of them is easier.)
-You are supposed to use an "open-loop" control approach. 
+(It's up to you to make a left turn or right turn. Hint: one of them is easier.)
 
-Bonus points (10%) will be given if you can plot the trajecotry of your robot with matplotlib.
+Submission
+----------
 
-Each of you need to submit a lab report individually, 
-describing your approach and explain your code. 
-You should also include your (commented) code in your submission folder. 
-The report should be submitted via iLearn, 
-and is due at the beginning of next corresponding lab session. 
-Late submission penalty (15%) applies. 
+- Submission type: individual submission via iLearn
 
-Preview: We will learn how to implement close-loop control strategy by using ROS callback functions
-in upcoming labs, or play with open manipulators in Gazebo,
-depending on the progress of lecture.
+- Demo: not required
+
+- Due time: at the beginning of next lab session
+
+- Files to submit: **(please do not zip, just upload two files)**
+
+  #. A lab report in pdf format
+  #. open_loop.py (with proper comments)
+  
+- Grading rubric:
+
+  + \+ 50%  Clearly describe your approach and explain your code in lab report.
+  + \+ 40%  Your script can drive the robot move along the square trajectory, 
+    go back to the origin, **and stop**.
+  + \+ 10%  When stop at the origin, the error between the robot and the origin is less than 1.0 meter. 
+  + \+ 10%  Bonus points will be given if you can plot the trajectory of your robot with matplotlib.
+  + \- 10%  Any missing part in the code or the report where you didn't show a good understanding.
+  + \- 15%  Late submission penalty. 
+
+Preview: We will learn how to implement close-loop control next time.
 
 
 Intro to Turtlebot
@@ -41,20 +54,21 @@ velocities for the robot.
 To describe the position and orientation of the robot, 
 we attach a robot coordinate frame :math:`R` to it. 
 The origin of this coordinate frame is centered between its powered wheels. 
-The :math:`X` axis of this frame is pointing forward (along the direction of the linear velocity ``v``),
-the :math:`Y` axis is pointing to the left, and
-the :math:`Z` axis is pointing up.
+The X axis of this frame is pointing forward (along the direction of the linear velocity ``v``),
+the Y axis is pointing to the left, and
+the Z axis is pointing up.
 
 To track the position and orientation of the robot, 
 we generally define a world reference frame :math:`W`, 
 in the same plane in which the robot moves. 
 With this frame assignment, 
-the robot’s position is constrained to the :math:`X` − :math:`Y` plane of frame :math:`W`. 
+the robot’s position is constrained to the X − Y plane of frame :math:`W`. 
 Moreover, any rotation between the robot and the world frames can be expressed 
 as a rotation about Z axis. 
 Therefore, the position of the robot with respect to the world reference frame will have the form:
 
 .. math::
+
     P_W = 
     \begin{bmatrix}
     x    \\
@@ -66,6 +80,7 @@ while the rotation matrix expressing the orientation of the robot frame
 with respect to :math:`W` will be of the from:
 
 .. math::
+
     R_{WR} = 
     \begin{bmatrix}
     cos(\phi) & -sin(\phi) & 0  \\
@@ -105,9 +120,9 @@ You can modify any part of the provided code in your final submission.
 
     class Turtlebot():
         def __init__(self):
-            rospy.init_node('turtlebot_move')
+            rospy.init_node("turtlebot_move")
             rospy.loginfo("Press CTRL + C to terminate")
-            self.vel_pub = rospy.Publisher('cmd_vel_mux/input/navi', Twist, queue_size=10)
+            self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
             self.rate = rospy.Rate(10)
             self.run()
         
@@ -218,7 +233,7 @@ Sample Code Explanations
 
   .. code:: python
 
-    rospy.init_node(’turtlebot_move’)
+    rospy.init_node("turtlebot_move")
 
 - ``rospy.loginfo(str)`` performs triple-duty: 
   the messages get printed to screen, 
@@ -241,7 +256,7 @@ Sample Code Explanations
 
   .. code:: python
 
-    self.vel_pub = rospy.Publisher(’cmd_vel_mux/input/navi’, Twist, queue_size=10)
+    self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
 
 - TurtleBot will stop if we don’t keep telling it to move. 
   ``rospy`` provides a ``rospy.Rate`` class which allows your loops 
