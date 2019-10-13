@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to UCR EE144 Intro to Robotics!
-===============================================
+=======================================
 
 .. toctree::
     :maxdepth: 2
@@ -29,4 +29,5 @@ News
 - 10/08/2019: `Lab2 <lab2.html>`_ is up.
 - 10/08/2019: `Reference Materials <reference.html>`_ has been posted for your information. 
 - 10/08/2019: `Linux Tutorials <linux.html>`_ has been posted for your information.
+- 10/09/2019: `Lab2 <lab2.html>`_ has been updated with grading rubric.
 

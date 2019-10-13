@@ -33,7 +33,7 @@ Submission
   + \+ 10%  When stop at the origin, the error between the robot and the origin is less than 1.0 meter. 
   + \+ 10%  Bonus points will be given if you can plot the trajectory of your robot with matplotlib.
   + \- 10%  Any missing part in the code or the report where you didn't show a good understanding.
-  + \- 15%  Late submission penalty. 
+  + \- 15%  Penalty applies for each late day. 
 
 Preview: We will learn how to implement close-loop control next time.
 
@@ -69,24 +69,24 @@ Therefore, the position of the robot with respect to the world reference frame w
 
 .. math::
 
-    P_W = 
-    \begin{bmatrix}
-    x    \\
-    y    \\
-    0     
-    \end{bmatrix}
+  P_W = 
+  \begin{bmatrix}
+  x    \\
+  y    \\
+  0     
+  \end{bmatrix}
 
 while the rotation matrix expressing the orientation of the robot frame 
 with respect to :math:`W` will be of the from:
 
 .. math::
 
-    R_{WR} = 
-    \begin{bmatrix}
-    cos(\phi) & -sin(\phi) & 0  \\
-    sin(\phi) & cos(\phi) & 0   \\
-    0 & 0 & 1     
-    \end{bmatrix}
+  R_{WR} = 
+  \begin{bmatrix}
+  cos(\phi) & -sin(\phi) & 0  \\
+  sin(\phi) & cos(\phi) & 0   \\
+  0 & 0 & 1     
+  \end{bmatrix}
 
 
 Sample Code
@@ -174,12 +174,12 @@ You can modify any part of the provided code in your final submission.
 
 .. note::
 
-    Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
-    before sending any commands to it.
+  Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
+  before sending any commands to it.
 
-    .. code:: bash
+  .. code:: bash
 
-      roslaunch ee144f19 gazebo.launch
+    roslaunch ee144f19 gazebo.launch
 
 
 Sample Code Explanations
@@ -228,7 +228,7 @@ Sample Code Explanations
   As part of the ``init_node()`` call, 
   you will pass in the default name of your node. 
   When you run your code, this is the name that your node will appear as online 
-  unless it’s overridden by remapping arguments. 
+  unless it’s overridden by remapping or other arguments. 
   In this case, your node will take on the name ``turtlebot_move``.
 
   .. code:: python
@@ -251,7 +251,7 @@ Sample Code Explanations
   using the ``rospy.Publisher`` class. 
   The required arguments to create a ``rospy.Publisher`` are 
   the topic name ``cmd_vel_mux/input/navi``, 
-  the Message class ``Twist``, 
+  the message class ``Twist``, 
   and the queue size ``10``.
 
   .. code:: python
@@ -281,7 +281,7 @@ They are helpful for your coding and future labs.
 ROS Nodes
 ~~~~~~~~~
 
-- `UnderstandingROS Nodes <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_.
+- `Understanding ROS Nodes <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_.
 
 - `Initialization and Shotdown <http://wiki.ros.org/rospy/Overview/Initialization%20and%20Shutdown>`_.
 

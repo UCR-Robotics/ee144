@@ -14,13 +14,13 @@ Tab Key Auto-completion
 
   .. code:: bash
 
-      roscd ee144
+    roscd ee144
 
 - You will see that it becomes
 
   .. code:: bash
 
-      roscd ee144f19
+    roscd ee144f19
 
 - This means that Linux can identify an **unique** directory (or filename, argument, etc.) 
   by just seeing the first five characters. 
@@ -29,7 +29,7 @@ Tab Key Auto-completion
 
   .. code:: bash
 
-      roscd e
+    roscd e
 
 - Nothing happens, right? Because in this case, Linux cannot **uniquely** identify 
   which command you want to enter, and hence cannot help to complete it.
@@ -46,7 +46,7 @@ Terminal and Shell
 
   .. code:: bash
 
-      pstree | grep bash
+    pstree | grep bash
 
 - This will show you current running programs (processes actually) related to the keyword ``bash``.
   You can see that bash is running on top of something called ``gnome-terminal``, 
@@ -66,19 +66,66 @@ Terminal and Shell
 
   .. code:: bash
 
-      cd ~/catkin_ws/devel
-      ls
+    cd ~/catkin_ws/devel
+    ls
 
 
 Terminal and File Manager
 -------------------------
 
-Still, there are `many types of file managers 
+Similarly, there are `many types of file managers 
 <https://www.ubuntupit.com/linux-file-manager-reviewed-for-linux-users/>`_ available in Linux. 
 Ubuntu 16 has ``nautilus`` as the default file manager. 
 
 We can go back and forth between terminal and file manager at any working directory.
-Coming soon.
+
+- Suppose that you are now at your home directory. 
+  (``cd`` without any argument will take you to your home directory under your account.)
+
+  .. code:: bash
+
+    cd
+
+- You can open file manager from terminal by command
+
+  .. code:: bash
+
+    nautilus .
+
+- where ``nautilus`` is the name of the program you are trying to run, 
+  and ``.`` is the argument passing into ``nautilus`` that represents current directory.
+
+- You can also open file manager at any other working directory. 
+  For example, go to ``ee144f19`` package and open file manager from this directory.
+
+  .. code:: bash
+
+    roscd ee144f19
+    nautilus .
+
+- On the other hand, at any level of file manager, you can open a new termimal by just 
+  a right click and select "Open in Terminal".
+
+- Note that if a program is currently running in Terminal, 
+  you will lose the ability to interact with it by typing new commands.
+  (You can tell this by seeing if you have ``username@hostname:~$`` prompted in your terminal,
+  where ``~`` can be other working directory.)
+  If you want to reuse the same termimal for typing new commands, you can do
+
+  .. code:: bash
+
+    roscd ee144f19
+    nautilus . &
+
+- where ``&`` can combine two commands. In this case, no new command is given, 
+  and hence it takes you back to your terminal, and have the previous command run in backend.
+
+- You can also use this trick when you open ``gedit`` editor or other graphic tools like ``rqt_graph``.
+
+  .. code:: bash
+
+    roscd ee144f19/launch
+    gedit gazebo.launch &
 
 
 Shortcuts
@@ -86,10 +133,23 @@ Shortcuts
 
 - To open a new terminal, press key combination ``Ctrl + Alt + T``, where T stands for Terminal.
 
+- To copy and paste a file, you typically use ``Ctrl + C`` and ``Ctrl + V`` anywhere else. 
+  In terminals, the corresponding commands are ``Ctrl + Shift + C`` and ``Ctrl + Shift + V``.
+
+- To terminate a program in terminal, press key combination ``Ctrl + C``.
+
 - To show hidden files in your file manager, press key combination ``Ctrl + H``, where H stands for Hidden.
 
 - To show hidden files in terminal, use command ``ls -a``, where "a" stands for "all".
-  This command will list all files including hidden ones.
+  This command will list all files including hidden ones. 
+  (In Linux, files start with '.', or files only have suffixes, are hidden files.)
+
+- In terminal, you can use up ``↑`` and down ``↓`` arrow keys to go through your command history.
+
+- ``.`` is your current working directory, ``..`` is your parent working directory,
+  and ``~`` is your default home directory under your account.
+  For example, ``cd ..`` can take you back to your parent directory, 
+  and ``cd .`` will keep you staying at current directory (nothing changed).
 
 
 Environment Variables
@@ -101,4 +161,4 @@ This is a bit advanced concept.
 
   .. code:: bash
 
-      env | grep ROS
+    env | grep ROS

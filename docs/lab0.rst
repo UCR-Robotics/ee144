@@ -88,17 +88,12 @@ Once you have your VMware installed, let's create a new VM and install Ubuntu 16
 - In VMware, create a new VM.
 
   + Typical configuration
-
   + Choose the disc image you download
-
   + Enter some information about this VM
-
   + Again, enter name
-
   + Please allocate at least 30GB (preferred 50GB)
-
   + Store virtual disk as a single file
-
+  + Customize Hardware: Please allocate more memory and CPU processors for better performance
   + Finish
 
 - Great. Now you have a Linux (virtual) computer. Take your time and play with it!
@@ -117,47 +112,47 @@ Main steps are
 
 - Setup sources.list
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 - Setup your keys
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+    sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
       
 - Update package index
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo apt-get update
+    sudo apt-get update
 
 - Install ROS desktop full
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo apt-get install ros-kinetic-desktop-full
+    sudo apt-get install ros-kinetic-desktop-full
 
 - Initialize rosdep
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo rosdep init
-      rosdep update
+    sudo rosdep init
+    rosdep update
 
 - Environment setup
 
-   .. code:: bash
+  .. code:: bash
 
-      echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-      source ~/.bashrc
+    echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+    source ~/.bashrc
 
 - Install more dependencies
 
-   .. code:: bash
+  .. code:: bash
 
-      sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
+    sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
 
 
 Learn from ROS Tutorials

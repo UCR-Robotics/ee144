@@ -89,9 +89,9 @@ No copying of any form is allowed between each other.
 
 .. warning::
 
-    All code submissions will be automatically checked for plagiarism in the system.
-    If you borrowed some trivial modules/classes from the Internet,
-    please mention this both in your code (by comments) and report/ReadMe file.
-    Any violation of academic integrity will result in 0 score in lab assignment,
-    and will be reported to the university.
+  All code submissions will be automatically checked for plagiarism in the system.
+  If you borrowed some trivial modules/classes from the Internet,
+  please mention this both in your code (by comments) and report/ReadMe file.
+  Any violation of academic integrity will result in 0 score in lab assignment,
+  and will be reported to the university.
 
