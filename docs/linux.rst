@@ -140,9 +140,9 @@ Shortcuts
 
 - To show hidden files in your file manager, press key combination ``Ctrl + H``, where H stands for Hidden.
 
-- To show hidden files in terminal, use command ``ls -a``, where "a" stands for "all".
+- To show hidden files in terminal, use command ``ls -a``, where ``a`` stands for ``all``.
   This command will list all files including hidden ones. 
-  (In Linux, files start with '.', or files only have suffixes, are hidden files.)
+  (In Linux, files start with ``.``, or files only have suffixes, are hidden files.)
 
 - In terminal, you can use up ``↑`` and down ``↓`` arrow keys to go through your command history.
 
@@ -150,6 +150,11 @@ Shortcuts
   and ``~`` is your default home directory under your account.
   For example, ``cd ..`` can take you back to your parent directory, 
   and ``cd .`` will keep you staying at current directory (nothing changed).
+
+- To zoom in and zoom out in termimal, 
+  use key combination ``Ctrl + Shift + "+"`` and ``Ctrl + "-"``, respectively.
+
+- To reset your robot to its initial pose in Gazebo, use key combination "Ctrl + R", where R stands for reset.
 
 
 Environment Variables
