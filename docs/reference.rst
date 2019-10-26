@@ -116,9 +116,45 @@ Tab key detection, and so on.
   since you have to indent each line of the block by the same whitespace,
   in order to indicate a block of code in Python.
 
-- To use Atom for your project, just go to the nenubar, select "file",
-  then select "open folder", and then open your ROS workspace or ROS package.
+- To use Atom for your project, just go to the nenubar, select "File",
+  then select "Open Folder" or "Add Project Folder", and then open your ROS workspace or ROS package.
   With this, you can have a tree directory on the left side, and do not need
   to switch back and forth in terminal or file manager.
+
+
+USB WiFi Adapter
+----------------
+
+In order to have bi-directional communications between your laptop and the robot, 
+we use a USB WiFi apapter binding your VM to a pysical MAC address, 
+rather than sharing the network of your host computer.
+
+- Within your Ubuntu VM, please download this `RTL8812BU Linux driver 
+  <https://drive.google.com/file/d/1Y1TuPYKM2XlCx8Uf0aAa20ycgpi7Vr58/view?usp=sharing>`_ 
+  for your WiFi adapter.
+
+- By default, it will be stored at ``~/Downloads``.
+
+- Right click the compressed file you just download, and select "Extract Here".
+
+- Then open a new terminal, install the driver by the following commands.
+
+  .. code:: bash
+
+    cd ~/Downloads
+    cd RTL88x2BU_... [press Tab key to complete]
+    chmod +x install.sh
+    sudo ./install.sh
+
+- Restart your computer by one more command.
+
+  .. code:: bash
+
+    sudo reboot
+
+- Plug in your adapter. 
+  If you can see the flickering blue light on your adapter, 
+  then you are good.
+
 
 

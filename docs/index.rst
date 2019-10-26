@@ -35,4 +35,5 @@ News
 - 10/14/2019: A template for lab report has been posted on iLearn.
 - 10/15/2019: `Lab3 <lab3.html>`_ is up.
 - 10/22/2019: `Lab4 <lab4.html>`_ is up.
+- 10/25/2019: Update `Reference Materials <reference.html>`_ with instructions on installing linux driver of USB WiFi adapter
 
