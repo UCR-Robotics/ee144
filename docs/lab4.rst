@@ -133,7 +133,7 @@ Please read carefully the provided code, and understand its functionality.
             print(end_effector_position)
 
             # test case for inverse kinematics
-            end_effector = position(0.018, 0.004, 0.222)
+            end_effector = position(0.0194, 0.0043, 0.2230)
             joints_angle = self.inverse_kinematics(end_effector)
             print(joints_angle)
 
@@ -157,7 +157,7 @@ Please read carefully the provided code, and understand its functionality.
             # hints: access to the x position of end effector by end_effector.x
             # add your code here to complete inverse kinematics
             
-            return jointangle(theta1, theta2, theta3, theta4)
+            return jointangle(theta1, theta2, theta3, pi/3)
 
 
         def move(self, joints):
@@ -212,6 +212,12 @@ Please read carefully the provided code, and understand its functionality.
 - You can see the pose of **link**, and angle of **joint** in Gazebo, 
   by selecting the object and check the property on the left sidebar.
 
+- **Check your result:** If your scripts are correct, 
+  given ``jointangle(pi/6, -pi/3, pi/6, pi/3)`` as the argument of your forward kinematics function, 
+  you should be able to get ``position(0.0194, 0.0043, 0.2230)`` as the return value, 
+  and given ``position(0.0194, 0.0043, 0.2230)`` as the argument of your inverse kinematics function,
+  you should be able to get ``jointangle(pi/6, -pi/3, pi/6, pi/3)`` as the return value.  
+
 - Have fun!
 
 
@@ -232,6 +238,11 @@ Specification
 -------------
 
 The dimension of the open manipulator is the following.
+Note that when you select link5 (gripper) in Gazebo simulation, 
+you will actually get the position of joint4, rather than the center of link5.
+Therefore, you can take the point of joint4 as the end effector in your mathematical calculation.
+Also, this means that theta4 will not be used in your forward and inverse kinematics scripts,
+but only be used for visualization purpose.
 
 .. image:: pics/manipulator.jpg
 
