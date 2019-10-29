@@ -16,6 +16,7 @@ Welcome to UCR EE144 Intro to Robotics!
     lab2
     lab3
     lab4
+    lab5
     linux
     reference
 
@@ -36,4 +37,4 @@ News
 - 10/15/2019: `Lab3 <lab3.html>`_ is up.
 - 10/22/2019: `Lab4 <lab4.html>`_ is up.
 - 10/25/2019: Update `Reference Materials <reference.html>`_ with instructions on installing linux driver of USB WiFi adapter
-
+- 10/29/2019: `Lab5 <lab5.html>`_ is up.
