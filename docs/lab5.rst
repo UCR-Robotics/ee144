@@ -17,21 +17,21 @@ as the code working in simulation does not necessary work on real robot very wel
 Submission
 ----------
 
-- Submission: team submission via iLearn, due at the beginning of next lab
+#. Submission: team submission via iLearn, due by the end of the day of next lab
 
-- Demo: required, due by the end of next lab
+#. Demo: required, due by the end of next lab
 
-- Files to submit: **(please do not zip, just upload all files)**
+#. Files to submit: **(please do not zip, just upload all files)**
 
-  #. lab5_report_01.pdf (replace 01 with your team number, **use number from 01-18**)
-  #. lab5_closed_loop.py
+   - lab5_report_01.pdf (replace 01 with your team number, **use number from 01-18**)
+   - lab5_closed_loop.py
   
-- Grading rubric:
+#. Grading rubric:
 
-  + \+ 50%  Clearly describe your approach and explain your code in lab report.
-  + \+ 30%  Be able to make the robot move.
-  + \+ 20%  Apply closed-loop control on the robot and demo to TA.
-  + \- 15%  Penalty applies for each late day. 
+   - \+ 50%  Clearly describe your approach and explain your code in lab report.
+   - \+ 30%  Be able to make the robot move.
+   - \+ 20%  Apply closed-loop control on the robot and demo to TA.
+   - \- 15%  Penalty applies for each late day. 
 
 Preview: We will work on waypoint navigation (motion planning) next time.
 
@@ -65,39 +65,65 @@ Lab Rules
    and charge the robot if you do not have it running.
 
 
-Connect to Robot
-----------------
+Network Setup
+-------------
 
-- Go to the settings of your VM, in ``Network Adapter`` section, 
-  uncheck ``Connect at power on``, and select ``NAT`` as the network connection.
-
-- Go to the ``USB Controller`` section of the settings, 
-  select ``USB 3.0`` as the USB compatibility.
+- If you are using native Linux OS or dual boot with Linux OS, 
+  you can skip this section. 
+  (As long as you can connect to the robot with your network card,
+  then you don't need the USB WiFi Adapter.)
 
 - Open your Ubuntu VM, `follow the instructions here <reference.html#usb-wifi-adapter>`_
   and install Linux driver for USB WiFi Adapter.
 
-- Plug in (USB 3.0 port if applicable) the USB WiFi adapter on your host computer,
-  then pass (this USB device) into your VM.
+- Shutdown your VM. 
+  Go to the settings of your VM, in ``Network Adapter`` section, 
+  uncheck ``Connect at power on``, 
+  and select ``NAT`` as the network connection.
 
-- Connect to ``roboticslab`` WiFi network. Please ask TA for credentials.
+- Go to the ``USB Controller`` section of the settings, 
+  select ``USB 3.0`` as the USB compatibility.
+
+- Plug in (USB 3.0 port if applicable) the USB WiFi adapter on your host computer,
+  then pass (this USB device) into your VM. 
+  (You can find options on the menubar to pass removable devices into VM.)
+
+
+Remote login
+------------
+
+- Connect to ``roboticslab`` WiFi network. 
+  Please ask TA for credentials.
   Check if your Internet connection is good.
+
+- The IP address of your Ubuntu VM is dynamically allocated, 
+  while the IP address of your robot (NUC computer) is static.
 
 - Connect power bank to the NUC onboard computer on your robot, 
   then turn on the robot and NUC computer.
 
-- The IP address of your Ubuntu VM is dynamically allocated, 
-  while the IP address of your robot (NUC computer) is static. 
-  For example, the IP address of robot01 is ``10.40.2.21``, 
-  and the IP address of robot02 is ``10.40.2.22``, and so on.
-  The username on NUC computer is ``ee144-nuc01`` for robot01, and so on.
-
 - To remote login to the NUC computer on your robot, 
-  open a new terminal and try (make sure you are in roboticslab network)
+  open a new terminal and run
 
   .. code:: bash
 
     ssh username@NUC_IP
+
+- Replace the above ``username`` and ``NUC_IP`` with the actual one.
+  For example, the IP address of robot 01 is ``10.40.2.21``, 
+  and the IP address of robot 02 is ``10.40.2.22``, and so on.
+  The username on NUC computer is ``ee144-nuc01`` for robot 01, and so on.
+
+- For example, for robot 01 we can use
+
+  .. code:: bash
+
+    ssh ee144-nuc01@10.40.2.21
+
+- Please ask TA for the password of this account.
+
+- You can see the new username and hostname on your terminal if you succeed.
+  It should be like ``ee144-nuc01@ee144-nuc01``.
 
 - If you want to use graphic tools later on, then use
 
@@ -105,22 +131,17 @@ Connect to Robot
 
     ssh -X username@NUC_IP   (must be capitalized X)
 
-- For example, for robot01 we can use
-
-  .. code:: bash
-
-    ssh -X ee144-nuc01@10.40.2.21
-
-- Please ask TA for the password of this account.
-
-- You can see the new username and hostname on your terminal if you succeed.
-  It should be like ``ee144-nuc01@ee144nuc01``.
-
 - To disconnect, just run
 
   .. code:: bash
 
     exit
+
+- To shutdown your remote computer, run
+
+  .. code:: bash
+
+    sudo shutdown now
 
 
 Copy Files
@@ -134,12 +155,11 @@ Copy Files
 
     scp /path/to/file/name.py username@NUC_IP:/path/to/destination
 
-- To copy files from robot to your VM, run from the terminal on NUC
-  (you need to figure out the username and IP address of your VM first)
+- To copy files from robot to your VM, just switch the above two arguments
 
   .. code:: bash
 
-    scp /path/to/file/name.py VM_username@VM_IP:/path/to/destination
+    scp username@NUC_IP:/path/to/file/name.py /path/to/destination 
 
 - Another option is using FileZilla. For Windows and MacOS laptops, you can 
   `download FileZilla here <https://filezilla-project.org/download.php?show_all=1>`_.
@@ -155,7 +175,7 @@ Bringup TurtleBot
 -----------------
 
 - Turn on the robot and NUC computer, make sure the wiring on robot is good.
-  Open a new terminal in VM, remote login into your robot, and run
+  Open a new terminal in your VM, **remote login into your robot**, and run
 
   .. code:: bash
     
