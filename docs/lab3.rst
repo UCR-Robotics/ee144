@@ -25,30 +25,30 @@ An example of feedback control algorithm is the following.
 Submission
 ----------
 
-- Submission type: individual submission via iLearn
+#. Submission type: individual submission via iLearn
 
-- Demo: not required
+#. Demo: not required
 
-- Due time: at the beginning of next lab session
+#. Due time: at the beginning of next lab session
 
-- Files to submit: **(please do not zip, just upload all files)**
+#. Files to submit: **(please do not zip, just upload all files)**
 
-  #. lab3_report_firstname.pdf (please use template and attach python code in the end)
-  #. closed_loop_square_p_ctrl.py
-  #. closed_loop_square_pd_ctrl.py
-  #. closed_loop_circle.py  (if applicable)
+   - lab3_report_firstname.pdf (please use template and attach python code in the end)
+   - closed_loop_square_p_ctrl.py
+   - closed_loop_square_pd_ctrl.py
+   - closed_loop_circle.py  (if applicable)
   
-- Grading rubric:
+#. Grading rubric:
 
-  + \+ 20%  Clearly describe your approach and explain your code in lab report.
-  + \+ 20%  Your script can drive the robot move along the square trajectory.
-  + \+ 20%  Implement P controller and discuss the results of different values of ``Kp``.
-  + \+ 20%  Implement PD controller and discuss the results of different values of ``Kp`` and ``Kd``.
-  + \+ 20%  Plot the trajectory of your robot with ``matplotlib`` in Python.
-  + \+ 10%  Bonus points will be given if you can write another script ``closed_loop_circle.py`` 
-    (with any kind of controller) to drive the robot move along a circle of 3m radius, 
-    plot the trajectory and report the results.
-  + \- 15%  Penalty applies for each late day. 
+   + \+ 20%  Clearly describe your approach and explain your code in lab report.
+   + \+ 20%  Your script can drive the robot move along the square trajectory.
+   + \+ 20%  Implement P controller and discuss the results of different values of ``Kp``.
+   + \+ 20%  Implement PD controller and discuss the results of different values of ``Kp`` and ``Kd``.
+   + \+ 20%  Plot the trajectory of your robot with ``matplotlib`` in Python.
+   + \+ 10%  Bonus points will be given if you can write another script ``closed_loop_circle.py`` 
+     (with any kind of controller) to drive the robot move along a circle of 3m radius, 
+     plot the trajectory and report the results.
+   + \- 15%  Penalty applies for each late day. 
 
 Preview: We will work on open manipulators in Gazebo next time, 
 to help you better understand forward kinematics and inverse kinematics.

@@ -15,24 +15,24 @@ Please refer to your lecture slides for more information about detailed approach
 Submission
 ----------
 
-- Submission type: individual submission via iLearn
+#. Submission type: individual submission via iLearn
 
-- Demo: not required
+#. Demo: not required
 
-- Due time: at the beginning of next lab session
+#. Due time: at the beginning of next lab session
 
-- Files to submit: **(please do not zip, just upload all files)**
+#. Files to submit: **(please do not zip, just upload all files)**
 
-  #. lab4_report_firstname.pdf (please use template and attach python code in the end)
-  #. open_manipulator.py
+   - lab4_report_firstname.pdf (please use template and attach python code in the end)
+   - open_manipulator.py
   
-- Grading rubric:
+#. Grading rubric:
 
-  + \+ 50%  Clearly describe your approach and explain your code in lab report.
-  + \+ 30%  Implement forward kinematics and pass the test case.
-  + \+ 20%  Implement inverse kinematics and pass the test case.
-  + \+ 10%  Bonus points will be given if your algorithm can handle special cases (unreachable, multiple solutions).
-  + \- 15%  Penalty applies for each late day. 
+   + \+ 50%  Clearly describe your approach and explain your code in lab report.
+   + \+ 30%  Implement forward kinematics and pass the test case.
+   + \+ 20%  Implement inverse kinematics and pass the test case.
+   + \+ 10%  Bonus points will be given if your algorithm can handle special cases (unreachable, multiple solutions).
+   + \- 15%  Penalty applies for each late day. 
 
 Preview: We will work on real robots in teams next time.
 

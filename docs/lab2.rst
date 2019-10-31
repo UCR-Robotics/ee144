@@ -14,26 +14,26 @@ moves forward 4 meters, turns again, and so on, until goes back to its origin.
 Submission
 ----------
 
-- Submission type: individual submission via iLearn
+#. Submission type: individual submission via iLearn
 
-- Demo: not required
+#. Demo: not required
 
-- Due time: at the beginning of next lab session
+#. Due time: at the beginning of next lab session
 
-- Files to submit: **(please do not zip, just upload two files)**
+#. Files to submit: **(please do not zip, just upload two files)**
 
-  #. A lab report in pdf format
-  #. open_loop.py (with proper comments)
-  
-- Grading rubric:
+   - A lab report in pdf format
+   - open_loop.py (with proper comments)
 
-  + \+ 50%  Clearly describe your approach and explain your code in lab report.
-  + \+ 40%  Your script can drive the robot move along the square trajectory, 
-    go back to the origin, **and stop**.
-  + \+ 10%  When stop at the origin, the error between the robot and the origin is less than 1.0 meter. 
-  + \+ 10%  Bonus points will be given if you can plot the trajectory of your robot with matplotlib.
-  + \- 10%  Any missing part in the code or the report where you didn't show a good understanding.
-  + \- 15%  Penalty applies for each late day. 
+#. Grading rubric:
+
+   + \+ 50%  Clearly describe your approach and explain your code in lab report.
+   + \+ 40%  Your script can drive the robot move along the square trajectory, 
+     go back to the origin, **and stop**.
+   + \+ 10%  When stop at the origin, the error between the robot and the origin is less than 1.0 meter. 
+   + \+ 10%  Bonus points will be given if you can plot the trajectory of your robot with matplotlib.
+   + \- 10%  Any missing part in the code or the report where you didn't show a good understanding.
+   + \- 15%  Penalty applies for each late day. 
 
 Preview: We will learn how to implement close-loop control next time.
 

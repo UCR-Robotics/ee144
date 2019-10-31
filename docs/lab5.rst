@@ -17,13 +17,13 @@ as the code working in simulation does not necessary work on real robot very wel
 Submission
 ----------
 
-#. Submission: team submission via iLearn, due by the end of the day of next lab
+#. Submission: group submission (from one of you) via iLearn, due by the end of the day of next lab
 
 #. Demo: required, due by the end of next lab
 
 #. Files to submit: **(please do not zip, just upload all files)**
 
-   - lab5_report_01.pdf (replace 01 with your team number, **use number from 01-18**)
+   - lab5_report_01.pdf (replace 01 with your team number, **use number 01-18**)
    - lab5_closed_loop.py
   
 #. Grading rubric:
@@ -185,6 +185,8 @@ Bringup TurtleBot
 
 - Copy your code to robot and try to make it run in a rectangle. 
   **Then demo to TA**.
+
+- Note: When you bring up the robot, the odometry will be reset (initialized to origin).
 
 
 Example
