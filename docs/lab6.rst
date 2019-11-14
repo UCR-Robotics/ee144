@@ -34,14 +34,13 @@ Submission
   
 #. Grading rubric:
 
-   - \+ 30%  Clearly describe your approach and explain your code in lab report.
-   - \+ 30%  Visit (not strictly for turning) all given waypoints.
-   - \+ 10%  Complete the function that can make your robot move to any point on the ground.
+   - \+ 50%  Clearly describe your approach and explain your code in lab report.
+   - \+ 20%  Roughly visit all given waypoints.
    - \+ 10%  Accelerate at the beginning (first waypoint) and decelerate in the end (last waypoint). 
    - \+ 10%  Meet maximum velocity < 0.4m/s and maximum acceleration < 0.2m/(s^2).
    - \+ 10%  The overall trajectory is smooth (no sharp turn or stop, velocity is about constant).
-   - \+ 10%  Bonus points will be given if your robot can maintain constant velocity
-     throughtout the entire path (except for start and end, including all turns).
+   - \+ 10%  Bonus points will be given if you can maintain constant velocity or have
+     polynomial time scaling for each trajectory segment.
    - \- 15%  Penalty applies for each late day. 
 
 
@@ -235,4 +234,39 @@ Code Snippets
 
     rostopic echo /odom 
 
+
+Polynomial Time Scling
+----------------------
+
+- If you would like to work on polynomial time scaling,
+  please read the following hints.
+
+- The 3rd order polynomial planning is good enough
+  in order to meet the acceleration constraint.
+
+- You can calculate the coefficients of function :math:`x(t)`
+  from an inverse matrix. 
+  Please see lecture slides for more information
+  on the matrix form of these constraints.
+
+- The result of your coefficients should be some expression
+  in terms of ``T``, where ``T`` is the total traveling time 
+  picked by you for the current segment. If you select ``T`` 
+  and plug it in, then the coefficients will be just numbers.
+
+- At each segment, the resulting :math:`x(t)` will give you
+  the position you should be at each time step,
+  and :math:`\dot{x}(t)` will give you the velocity.
+  These are functions in terms of current time (step) ``t``.
+  
+- You also need to solve the coefficients for y direction case,
+  since we work on 2D plane. 
+  Then you will have two sets of coefficients for each segment.
+
+- For each segment between waypoints, 
+  you need to be consistent with your velocity constraints.
+  For example, the velocity of the start point in current segment
+  should be equal to the velocity of the end point in previous segment.
+  For the first and last point, you may want to set the velocity
+  to be 0.
 
