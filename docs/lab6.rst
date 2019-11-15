@@ -37,7 +37,7 @@ Submission
    - \+ 50%  Clearly describe your approach and explain your code in lab report.
    - \+ 20%  Roughly visit all given waypoints.
    - \+ 10%  Accelerate at the beginning (first waypoint) and decelerate in the end (last waypoint). 
-   - \+ 10%  Meet maximum velocity < 0.4m/s and maximum acceleration < 0.2m/(s^2).
+   - \+ 10%  Meet maximum velocity < 0.5m/s and maximum acceleration < 1.0m/(s^2).
    - \+ 10%  The overall trajectory is smooth (no sharp turn or stop, velocity is about constant).
    - \+ 10%  Bonus points will be given if you can maintain constant velocity or have
      polynomial time scaling for each trajectory segment.
