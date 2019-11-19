@@ -1,30 +1,21 @@
-Lab 8: Navigation Stack
-=======================
+Lab 8: Perception
+=================
 
 Overview
 --------
 
-In this lab, we will work on the laser-based SLAM algorithm provided by 
-`ROS Navigation Stack <http://wiki.ros.org/navigation>`_. 
-
-You will get familiar with the core concepts/modules as shown in the picture below.
-
-.. image:: pic/nav_stack.png
+In this lab, we will introduce how to do perception on TurtleBot robot with laser scanner and depth camera.
+The robot is equipped with RPLidar A2 and Obbrec Astra Pro camera.
 
 Please take a screenshot for each question below and answer in your lab report.
 
-#. What is the difference (and/or relation) between ``map``, ``odom``, ``footprint``, ``base``
+#. What is the difference (and/or relation) between ``map``, ``odom``, ``base``
    and ``sensors`` coordinate frames? Please give explaination to each of them.
-#. What is the difference between ``global planning`` and ``local planning``?
-#. what is ``Localization`` problem? 
-   Please explain how the particle filter algorithm works. (e.g., initialization, update, etc.)
-#. What should be the data format for laser scanner and depth camera? What is the difference?
+#. What is the data format for laser scanner? What are the pros and cons of laser scanner?
+#. What is the data format for depth camera? What are the pros and cons of depth camera?
 
-You may refer to your lecture slides for more details. 
-However, I will cover all of them in lab sessions.
 
-Preview: Congratulations. This is your last lab assignment. 
-Next time we will work on the final capstone project.
+Preview: We will work on ROS navigation stack next time.
 
 
 Submission
@@ -47,163 +38,228 @@ Submission
    - \- 15%  Penalty applies for each late day. 
 
 
-Setup
------
+Sensors Setup
+-------------
 
-- Open a new terminal and go to your ``ee144f19`` package. 
-  We need to set up some parameters for navigation stack.
-
-  .. code:: bash
-
-    roscd ee144f19
-    mkdir config
-    cd config
-    touch base_local_planner_params.yaml
-    gedit base_local_planner_params.yaml
-
-- Please copy and paste the parameters for local planner, then save and close it.
-
-  .. code:: html
-  
-    TrajectoryPlannerROS:
-        max_vel_x: 0.45
-        min_vel_x: 0.1
-        max_vel_theta: 1.0
-        min_in_place_vel_theta: 0.4
-
-        acc_lim_theta: 3.2
-        acc_lim_x: 2.5
-        acc_lim_y: 2.5
-
-        holonomic_robot: false
-
-- Create a new file for common parameters in costmap.
+- Open a new terminal and remote login to your robot with ``-X`` flag.
 
   .. code:: bash
 
-    touch costmap_common_params.yaml
-    gedit costmap_common_params.yaml
+    ssh -X ee144-nuc01@10.40.2.21
 
-- Please copy and paste the following parameters, then save and close it.
+- We need to create a ROS workspace and install ROS packages.
+  **If the workspace or package already exist, please skip the corresponding steps.**
+  The following steps should be executed on your robot.
 
-  .. code:: html
-    
-    obstacle_range: 2.0
-    raytrace_range: 3.0
-    footprint: [[0.2, 0.2], [0.2, -0.2], [-0.2, 0.2], [-0.2, -0.2]]
-    #robot_radius: 0.20 #ir_of_robot
-    inflation_radiuscans: 0.50
-
-    observation_sources: laser_scan_sensor #point_cloud_sensor
-    laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
-    #point_cloud_sensor: {sensor_frame: camera, data_type: PointCloud, topic: /camera/depth/points, marking: true, clearing: true}
-
-- Create a new file for local costmap parameters.
+- Create a ROS workspace.
 
   .. code:: bash
 
-    touch local_costmap_params.yaml
-    gedit local_costmap_params.yaml
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws
+    catkin_make
+    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+    source ~/catkin_ws/devel/setup.bash
 
-- Please copy and paste the following parameters, then save and close it.
-
-  .. code:: html
-
-    local_costmap:
-        global_frame: odom
-        robot_base_frame: base_link
-        update_frequency: 5.0
-        publish_frequency: 2.0
-        static_map: false
-        rolling_window: true
-        width: 4.0
-        height: 4.0
-        resolution: 0.05
-
-- Create a new file for global costmap parameters.
+- Install ROS pacakge and dependencies for rplidar.
 
   .. code:: bash
 
-    touch global_costmap_params.yaml
-    gedit global_costmap_params.yaml
+    cd ~/catkin_ws/src
+    git clone https://github.com/UCR-Robotics/rplidar_ros
+    cd ~/catkin_ws
+    catkin_make
+    rosrun rplidar_ros create_udev_rules.sh
 
-- Please copy and paste the following parameters, then save and close it.
-
-  .. code:: html
-
-    global_costmap:
-        global_frame: /map
-        robot_base_frame: base_link
-        update_frequency: 5.0
-        static_map: true
-
-- Let's then switch to the launch file.
+- Then please **replug the USB cable** for rplidar. 
+  If you check USB rules by the following command, 
+  you may see something like kobuki is mapped to ttyUSB0 and rplidar is mapped to ttyUSB1.
 
   .. code:: bash
 
-    cd ../launch
-    touch move_base.launch
+    ls -l /dev | grep ttyUSB
 
-- Then copy and paste the following.
+- Install ROS package and dependencies for Astra Pro camera.
+
+    sudo apt install ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-camera ros-$ROS_DISTRO-libuvc-ros
+    cd ~/catkin_ws/src
+    git clone https://github.com/UCR-Robotics/ros_astra_camera
+    cd ros_astra_camera
+    ./scripts/create_udev_rules
+    cd ~/catkin_ws
+    catkin_make
+
+
+ROS Network Setup
+-----------------
+
+- On your VM, setup environment variables in your ``.bashrc``.
+  Please replace ``.21`` IP with the actual one on your robot,
+  and replace ``.119`` IP with the actual one on your VM.
+
+  .. code:: bash
+
+    cd
+    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> .bashrc
+    echo "export ROS_IP=10.40.2.119" >> .bashrc
+
+- Please make sure there is one and only one line of code related 
+  to ``ROS_MASTER_URI`` and ``ROS_IP``, respectively, appended 
+  to your ``.bashrc`` file. Otherwise you will get errors. 
+  You may open ``.bashrc`` file by ``gedit`` and double check this.
+
+
+- Now open a new terminal and remote login to your robot with ``-X`` flag.
+  You need this ``-X`` flag since you may need to open ``gedit``.
+
+  .. code:: bash
+
+    ssh -X ee144-nuc01@10.40.2.21
+
+- Repeat the same steps on your robot. However, this time ROS_IP
+  should be the IP address of your robot, which is the same as ROS_MASTER.
+
+  .. code:: bash
+
+    cd
+    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> .bashrc
+    echo "export ROS_IP=10.40.2.21" >> .bashrc
+
+- Please also make sure there is no repeated setup code in your ``.bashrc``.
+
+- Then close all the terminals.
+
+- With the above steps, we have basically set up an ROS environemnt
+  directing all nodes on my local computer to the remote ROS master 
+  on the robot.
+
+- You may check the environemnt variables in your terminal by either of 
+  the following commands.
+
+  .. code:: bash
+
+    echo $ROS_MASTER_URI
+    echo $ROS_IP
+
+  .. code:: bash
+
+    env | grep ROS
+
+
+Launch robot and sensors
+------------------------
+
+- Let's add a couple launch files to your local computer and robot.
+
+- On your VM, add a launch file for rviz.
+
+  .. code:: bash
+
+    roscd ee144f19/launch
+    touch rviz.launch
+    gedit rviz.launch
+
+- Copy and paste the following code, save and close it.
 
   .. code:: html
 
     <launch>
 
-    <master auto="start"/>
-    <!-- Run the map server --> 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find ee144f19)/map/wch109.pgm 0.05"/>
+    <node name="rviz" pkg="rviz" type="rviz"/>
 
-    <!-- Run AMCL --> 
-    <include file="$(find amcl)/examples/amcl_diff.launch" />
-    <!-- include file="$(find amcl)/examples/amcl_omni.launch" /-->
+    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" /-->
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-        <rosparam file="$(find ee144f19)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
-        <rosparam file="$(find ee144f19)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find ee144f19)/config/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find ee144f19)/config/global_costmap_params.yaml" command="load" /> 
-        <rosparam file="$(find ee144f19)/config/base_local_planner_params.yaml" command="load" />
-        <remap from="cmd_vel" to="cmd_vel_mux/input/teleop" />
-    </node>
+    </launch>
+
+- Add another launch file for robot sensors. 
+  (We do not need this on VM actually. Will copy to robot later on.)
+
+  .. code:: bash
+
+    roscd ee144f19/launch
+    touch turtlebot_bringup_sensors.launch
+    gedit turtlebot_bringup_sensors.launch
+
+- Copy and paste the following code, save and close it.
+
+  .. code:: html
+
+    <launch>
+
+    <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
+
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+    <include file="$(find astra_camera)/launch/astrapro.launch" />
+
+    <node pkg="tf" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 base_footprint base_link 100" />
+
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.2 0 0 0 base_link laser 100" />
+
+    <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0 0 0.3 0 0 0 base_link camera_link 100" />
 
     </launch> 
 
-- Copy your package to the robot and compile it.
+- Copy your ``ee144f19`` package to your robot.
 
   .. code:: bash
 
     roscd ee144f19/..
     scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
-    ssh ee144-nuc01@10.40.2.21
-    cd ~/catkin_ws
-    catkin_make
 
-
-
-Remote Login
-------------
-
-- Please download the teamviewer host package, copy it to your robot and install.
+- Remote login to your robot with ``-X`` flag and compile the package you just copied.
 
   .. code:: bash
 
-    cd ~/Download
-    wget https://download.teamviewer.com/download/linux/teamviewer-host_amd64.deb
-    scp ./teamvierew-host_amd64.deb ee144-nuc01@10.40.2.21:~/Download
-    ssh ee144-nuc01@10.40.2.21
-    cd ~/Download
-    sudo dpkg -i teamvierew-host_amd64.deb
+    ssh -X ee144-nuc01@10.40.2.21
+    cd ~/catkin_ws
+    catkin_make
 
-- Please download teamview client software on your own laptop, and then remote login to your robot
-  by the corresponding IP address.
+- Finally, launch sensors on your robot. 
+  (This should be done on your robot, after SSH.)
+
+  .. code:: bash
+
+    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+
+- You can open a new terminal on your local computer and run ``rviz`` 
+  to see your robot and sensor data displayed.
+  It works now because your local ROS is connected to the remote ROS on your robot.
+
+  .. code:: bash
+
+    roslaunch ee144f19 rviz.launch
+
+- You can also open a new terminal on your local computer to 
+  teleop your robot and take it around. 
+  It will send commands to the remote computer on your robot.
+
+  .. code:: bash
+
+    roslaunch turtlebot_teleop keyboard_teleop.launch
+
+.. note::
+  
+  If you have seen this error on your terminal, 
+  it means that you didn't set up your environment variables properly.
+  Please go back and check your ROS_IP and ROS_MASTER_URI 
+  on both your local computer and the robot.
+
+  .. code:: bash
+
+    Couldn't find an AF_INET address for [ee144-nuc01]
 
 
-ssh-keygen -t rsa -b 4096
+More on RViz
+------------
 
-ssh-copy-id remote_username@server_ip_address
+- RViz is a useful tool for visualization built on top of ROS. 
 
+- You can add robot model to rviz, as well as laser scan and point cloud data.
+  Play with it and you can find more interesting things!
 
-rm .ssh/known_hosts
-ssh username@hostname -oHostKeyAlgorithms='ssh-rsa'
+- After your customization, you can save your rviz config file to ``ee144f19/rviz``
+  folder. Then you can change the rviz launch file to use this configuration every time.
+  Specifically, you can comment out the first line and uncomment the second line
+  in the rviz launch file.
 
