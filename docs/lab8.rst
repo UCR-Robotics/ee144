@@ -69,6 +69,9 @@ Sensors Setup
     git clone https://github.com/UCR-Robotics/rplidar_ros
     cd ~/catkin_ws
     catkin_make
+
+  .. code:: bash
+
     rosrun rplidar_ros create_udev_rules.sh
 
 - Then please **replug the USB cable** for rplidar. 
@@ -80,14 +83,33 @@ Sensors Setup
     ls -l /dev | grep ttyUSB
 
 - Install ROS package and dependencies for Astra Pro camera.
+  If you have 
 
+  .. code:: bash
+
+    sudo apt-get update
     sudo apt install ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-camera ros-$ROS_DISTRO-libuvc-ros
+
+  .. code:: bash
+
     cd ~/catkin_ws/src
     git clone https://github.com/UCR-Robotics/ros_astra_camera
     cd ros_astra_camera
     ./scripts/create_udev_rules
     cd ~/catkin_ws
     catkin_make
+
+
+.. note::
+
+  If you experience issues connecting to the keyserver (an example error shown below), 
+
+  .. code:: bash
+
+    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
+
+  you can go to `ROS installation webpage <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_
+  and try step ``1.3 Set up your keys`` again.
 
 
 ROS Network Setup
@@ -222,6 +244,16 @@ Launch robot and sensors
 
     roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
+.. note::
+  
+  Sometimes ROS cannot find the new copied package. 
+  If you cannot auto-complete the above command, 
+  you can ask ROS to search new packages again in existing workspace.
+
+  .. code:: bash
+
+    rospack profile
+
 - You can open a new terminal on your local computer and run ``rviz`` 
   to see your robot and sensor data displayed.
   It works now because your local ROS is connected to the remote ROS on your robot.
@@ -254,12 +286,24 @@ More on RViz
 ------------
 
 - RViz is a useful tool for visualization built on top of ROS. 
-
-- You can add robot model to rviz, as well as laser scan and point cloud data.
   Play with it and you can find more interesting things!
 
+- You can add robot model to rviz, as well as laser scan and point cloud data.
+  For example, select ``Add`` on the bottom left corner of the window. 
+  Then you can pick data type ``LaserScan`` or ``PointCloud2``. 
+  Alternatively, you can switch to ``By Topic`` tab, and select ``/camera/depth/points/PointCloud2``
+  or ``/scan/LaserScan``.
+
+- You can also add RGB camera by ``/camera/rgb/image_raw/Image``.
+
+- Since you don't have the map available right now, you may want to change
+  the ``Fixed Frame`` in ``Global Option`` to be ``odom``.
+
 - After your customization, you can save your rviz config file to ``ee144f19/rviz``
-  folder. Then you can change the rviz launch file to use this configuration every time.
+  folder. Maximize the RViz window, then you can see ``file`` on the manubar.
+  Select ``Save Config As`` and save it to ``ee144f19/rviz`` with the name ``nav.rviz`` .
+  
+- Then you can change the rviz launch file to use this configuration every time.
   Specifically, you can comment out the first line and uncomment the second line
   in the rviz launch file.
 
