@@ -19,6 +19,7 @@ Welcome to UCR EE144 Intro to Robotics!
     lab5
     lab6
     lab7
+    lab8
     linux
     reference
 
@@ -42,3 +43,4 @@ News
 - 10/29/2019: `Lab5 <lab5.html>`_ is up.
 - 10/05/2019: `Lab6 <lab6.html>`_ is up.
 - 10/12/2019: `Lab7 <lab7.html>`_ is up.
+- 10/19/2019: `Lab8 <lab8.html>`_ is up.
