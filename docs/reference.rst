@@ -75,6 +75,15 @@ Command line tools for debugging.
 - `rqt_graph <http://wiki.ros.org/rqt_graph>`_
 
 
+Navigation Stack
+----------------
+
+- `Main Page <http://wiki.ros.org/navigation>`_
+
+- `Navigation Stack Tutorials <http://wiki.ros.org/navigation/Tutorials>`_
+
+- `Robot Setup <http://wiki.ros.org/navigation/Tutorials/RobotSetup>`_
+
 
 Atom Editor
 -----------

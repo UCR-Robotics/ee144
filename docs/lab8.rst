@@ -83,7 +83,6 @@ Sensors Setup
     ls -l /dev | grep ttyUSB
 
 - Install ROS package and dependencies for Astra Pro camera.
-  If you have 
 
   .. code:: bash
 
@@ -99,6 +98,7 @@ Sensors Setup
     cd ~/catkin_ws
     catkin_make
 
+- Then please **replug the USB cable** for Astra camera.
 
 .. note::
 
@@ -127,9 +127,8 @@ ROS Network Setup
 
 - Please make sure there is one and only one line of code related 
   to ``ROS_MASTER_URI`` and ``ROS_IP``, respectively, appended 
-  to your ``.bashrc`` file. Otherwise you will get errors. 
+  to your ``.bashrc`` file and the IPs are correct. Otherwise you will get errors. 
   You may open ``.bashrc`` file by ``gedit`` and double check this.
-
 
 - Now open a new terminal and remote login to your robot with ``-X`` flag.
   You need this ``-X`` flag since you may need to open ``gedit``.
@@ -149,7 +148,7 @@ ROS Network Setup
 
 - Please also make sure there is no repeated setup code in your ``.bashrc``.
 
-- Then close all the terminals.
+- Then **close all the terminals**.
 
 - With the above steps, we have basically set up an ROS environemnt
   directing all nodes on my local computer to the remote ROS master 
@@ -167,6 +166,18 @@ ROS Network Setup
 
     env | grep ROS
 
+.. note::
+
+  If you do not want to work with robot in this way later on
+  (e.g., just run Gazebo locally), you need to delete or comment out the last
+  two lines of code of ROS_MASTER_URI and ROS_IP in your ``.bashrc``,
+  because keeping these two lines means that you are trying to connect
+  to a ROS master on the robot. 
+  When you work offline/locally, you do not have the connection to robot.
+
+  Please also remember to close all terminals and try it again with new terminals, 
+  since ``.bashrc`` will only be executed for once when you open a new terminal.
+
 
 Launch robot and sensors
 ------------------------
@@ -183,13 +194,13 @@ Launch robot and sensors
 
 - Copy and paste the following code, save and close it.
 
-  .. code:: html
+  .. code:: xml
 
     <launch>
 
-    <node name="rviz" pkg="rviz" type="rviz"/>
+      <node name="rviz" pkg="rviz" type="rviz"/>
 
-    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" /-->
+      <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" /-->
 
     </launch>
 
@@ -204,21 +215,21 @@ Launch robot and sensors
 
 - Copy and paste the following code, save and close it.
 
-  .. code:: html
+  .. code:: xml
 
     <launch>
 
-    <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
+      <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
 
-    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+      <include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
-    <include file="$(find astra_camera)/launch/astrapro.launch" />
+      <include file="$(find astra_camera)/launch/astrapro.launch" />
 
-    <node pkg="tf" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 base_footprint base_link 100" />
+      <node pkg="tf" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 base_footprint base_link 100" />
 
-    <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.2 0 0 0 base_link laser 100" />
+      <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.2 0 0 0 base_link laser 100" />
 
-    <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0 0 0.3 0 0 0 base_link camera_link 100" />
+      <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0 0 0.3 0 0 0 base_link camera_link 100" />
 
     </launch> 
 
@@ -237,7 +248,7 @@ Launch robot and sensors
     cd ~/catkin_ws
     catkin_make
 
-- Finally, launch sensors on your robot. 
+- Finally, launch robot base and sensors on your robot. 
   (This should be done on your robot, after SSH.)
 
   .. code:: bash
@@ -248,7 +259,8 @@ Launch robot and sensors
   
   Sometimes ROS cannot find the new copied package. 
   If you cannot auto-complete the above command, 
-  you can ask ROS to search new packages again in existing workspace.
+  you can ask ROS to search new packages again in existing workspace
+  by the following command.
 
   .. code:: bash
 
@@ -281,6 +293,9 @@ Launch robot and sensors
 
     Couldn't find an AF_INET address for [ee144-nuc01]
 
+  The ROS_MASTER_URI on both machines should be the same, all pointing towards your robot.
+  The ROS_IP should be different. It should be the actual IP address of the machine.
+
 
 More on RViz
 ------------
@@ -288,16 +303,21 @@ More on RViz
 - RViz is a useful tool for visualization built on top of ROS. 
   Play with it and you can find more interesting things!
 
-- You can add robot model to rviz, as well as laser scan and point cloud data.
-  For example, select ``Add`` on the bottom left corner of the window. 
-  Then you can pick data type ``LaserScan`` or ``PointCloud2``. 
-  Alternatively, you can switch to ``By Topic`` tab, and select ``/camera/depth/points/PointCloud2``
-  or ``/scan/LaserScan``.
-
-- You can also add RGB camera by ``/camera/rgb/image_raw/Image``.
-
-- Since you don't have the map available right now, you may want to change
+- Since you don't have the map available right now, you may want to first change
   the ``Fixed Frame`` in ``Global Option`` to be ``odom``.
+
+- You can add laser scan and point cloud data to RViz.
+  For example, select ``Add`` on the bottom left corner of the window. 
+  You can pick data type ``LaserScan`` or ``PointCloud2``.
+  Then on the left side bar, you need to manually choose the topic you want to display
+  for LaserScan or PointCloud2.
+
+- Alternatively, you can click ``Add`` and switch to ``By Topic`` tab, 
+  and select ``/camera/depth/points/PointCloud2`` or ``/scan/LaserScan``.
+
+- You can view the real time images of RGB camera by add the topic ``/camera/rgb/image_raw/Image``.
+
+- You can also add a robot model to rviz, to show where your robot is.  
 
 - After your customization, you can save your rviz config file to ``ee144f19/rviz``
   folder. Maximize the RViz window, then you can see ``file`` on the manubar.
@@ -305,5 +325,25 @@ More on RViz
   
 - Then you can change the rviz launch file to use this configuration every time.
   Specifically, you can comment out the first line and uncomment the second line
-  in the rviz launch file.
+  in the rviz launch file. The launch file is ``ee144f19/launch/rviz.launch``
 
+  .. code:: xml
+
+    <launch>
+
+      <!--node name="rviz" pkg="rviz" type="rviz"/-->
+
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" />
+
+    </launch>
+
+
+.. note:: 
+
+  When multiple ROS nodes from different machines connecting to the same ROS master
+  on one of the machines, you may experience issues with time stamps of the messages sent between each other.
+  In this case, you have to make sure that all the clocks on these machines are synchronized.
+  
+  If not, the behavior would be like, a message sent from machine A to machine B with a time stamp
+  11:00am. However, machine B is five minutes late compared with machine A, i.e. 10:55am when machine A sent the message. 
+  Then the message will display on machine B's RViz 5 minutes later.
