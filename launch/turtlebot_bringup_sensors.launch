@@ -1,0 +1,15 @@
+<launch>
+
+  <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
+
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+  <include file="$(find astra_camera)/launch/astrapro.launch" />
+
+  <node pkg="tf" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 base_footprint base_link 100" />
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.2 0 0 0 base_link laser 100" />
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0 0 0.3 0 0 0 base_link camera_link 100" />
+
+</launch> 

@@ -50,6 +50,8 @@ we can obtain the desired linear ``v`` and rotational ``ω``
 velocities for the robot.
 
 .. image:: pics/frame.PNG
+  :width: 60%
+  :align: center
 
 To describe the position and orientation of the robot, 
 we attach a robot coordinate frame :math:`R` to it. 
@@ -111,37 +113,8 @@ You can modify any part of the provided code in your final submission.
 
 - Please copy and paste the following code, then save and close it.
 
-  .. code:: python
-
-    #!/usr/bin/env python
-
-    import rospy
-    from geometry_msgs.msg import Twist
-
-    class Turtlebot():
-        def __init__(self):
-            rospy.init_node("turtlebot_move")
-            rospy.loginfo("Press CTRL + C to terminate")
-            self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
-            self.rate = rospy.Rate(10)
-            self.run()
-        
-
-        def run(self):
-            vel = Twist()
-            vel.linear.x = 0.5
-            vel.angular.z = 0
-            while not rospy.is_shutdown(): 
-                self.vel_pub.publish(vel)
-                self.rate.sleep()
-
-
-    if __name__ == '__main__':
-        try:
-            whatever = Turtlebot()
-        except rospy.ROSInterruptException:
-            rospy.loginfo("Action terminated.")
-
+  .. literalinclude:: ../scripts/open_loop.py
+    :language: python
 
 - Back to the terminal, you can run it in two ways. 
   One is to feed this script as input to the python program in Linux,

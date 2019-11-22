@@ -1,0 +1,7 @@
+<launch>
+
+  <node name="rviz" pkg="rviz" type="rviz"/>
+
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" /-->
+
+</launch>

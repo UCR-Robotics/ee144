@@ -99,10 +99,14 @@ Code Snippets
   If applying to the testing area in our lab, the grid size should be 0.5m.
 
   .. image:: pics/map.jpg
+    :width: 60%
+    :align: center
   
 - The final result should be similar to the following.
 
   .. image:: pics/result.jpg
+    :width: 60%
+    :align: center
 
 - Remember that you can test your code in Gazebo first and then apply to real robot.
 
@@ -113,4 +117,6 @@ A* Pseudocode
 - You may refer to the pseudocode shown below.
 
 .. image:: pics/pseudocode.jpg
+  :width: 80%
+  :align: center
 

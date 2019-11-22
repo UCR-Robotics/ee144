@@ -138,19 +138,13 @@ In order to have bi-directional communications between your laptop and the robot
 we use a USB WiFi apapter binding your VM to a pysical MAC address, 
 rather than sharing the network of your host computer.
 
-- Within your Ubuntu VM, please download this `RTL8812BU Linux driver 
-  <https://drive.google.com/file/d/1Y1TuPYKM2XlCx8Uf0aAa20ycgpi7Vr58/view?usp=sharing>`_ 
-  for your WiFi adapter.
-
-- By default, it will be stored at ``~/Downloads``.
-
-- Right click the compressed file you just download, and select "Extract Here".
-
-- Then open a new terminal, install the driver by the following commands.
+- Open a new terminal, download the driver and install it by the following commands.
 
   .. code:: bash
 
     cd ~/Downloads
+    wget https://github.com/UCR-Robotics/ee144/raw/wifi-adapter-driver/RTL88x2BU_WiFi_linux_v5.3.1.zip
+    unzip RTL88x2BU_WiFi_linux_v5.3.1.zip
     cd RTL88x2BU_... [press Tab key to complete]
     chmod +x install.sh
     sudo ./install.sh

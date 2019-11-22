@@ -95,3 +95,40 @@ No copying of any form is allowed between each other.
   Any violation of academic integrity will result in 0 score in lab assignment,
   and will be reported to the university.
 
+Lab Safety
+----------
+
+#. Safety is always the top priority.
+
+   - No food or beverage allowed in the lab.
+   - Report any suspicious cables, wires, etc.
+
+#. Organize your station before you leave.
+
+   - **Cut off all power supply (both robot base and NUC)**.
+   - Organize wires, cables, etc.
+
+#. Do not leave your personal information on the robot.
+
+   - Create your own folder when you work, and delete code when you leave.
+   - The robot is shared by two lab sections.
+
+#. Do NOT make any changes to the wiring on the robot.
+
+#. Please find your station according to your team number. 
+
+   - In Tuesday lab, your station/robot number is your team number.
+   - In Thursday lab, your station/robot number is your team number minus 10.
+
+#. Please save the battery (recharging takes time), 
+   and charge the robot if you do not have it running.
+
+#. Please place your robot in the following way to prevent it 
+   from accidentally dropping down to the ground.
+
+.. image:: pics/safety.jpg
+    :width: 60%
+    :align: center
+
+
+

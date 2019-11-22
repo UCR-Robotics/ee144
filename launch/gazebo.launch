@@ -1,0 +1,24 @@
+<launch>
+  <arg name="world_file" default="worlds/empty.world"/>
+
+  <arg name="urdf" default="$(find turtlebot_description)/robots/kobuki_hexagons_astra.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf)" />
+
+  <!-- include two nodes gazebo (server) and gazebo_gui (client) -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+  </include>
+
+  <!-- Gazebo model spawner -->
+  <node name="spawn_turtlebot_model" pkg="gazebo_ros" type="spawn_model"
+        args="$(optenv ROBOT_INITIAL_POSE) -unpause -urdf -param robot_description -model mobile_base"/>
+
+  <!-- Velocity muxer -->
+  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="cmd_vel_mux"
+        args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
+    <param name="yaml_cfg_file" value="$(find turtlebot_bringup)/param/mux.yaml"/>
+    <remap from="cmd_vel_mux/output" to="mobile_base/commands/velocity"/>
+  </node>
+
+</launch>

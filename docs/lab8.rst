@@ -82,12 +82,26 @@ Sensors Setup
 
     ls -l /dev | grep ttyUSB
 
-- Install ROS package and dependencies for Astra Pro camera.
+- Install dependencies for Astra Pro camera.
 
   .. code:: bash
 
     sudo apt-get update
     sudo apt install ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-camera ros-$ROS_DISTRO-libuvc-ros
+
+.. note::
+
+  Please make sure you have done the above two steps without any error messages.
+  If you experience issues connecting to the keyserver (an example error shown below), 
+
+  .. code::
+
+    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
+
+  you can go to `ROS installation webpage <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_
+  and run step ``1.3 Set up your keys``, and then try the above two steps again.
+
+- Install the ROS package for Astra Pro camera. 
 
   .. code:: bash
 
@@ -100,17 +114,6 @@ Sensors Setup
 
 - Then please **replug the USB cable** for Astra camera.
 
-.. note::
-
-  If you experience issues connecting to the keyserver (an example error shown below), 
-
-  .. code:: bash
-
-    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
-
-  you can go to `ROS installation webpage <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_
-  and try step ``1.3 Set up your keys`` again.
-
 
 ROS Network Setup
 -----------------
@@ -121,9 +124,9 @@ ROS Network Setup
 
   .. code:: bash
 
-    cd
-    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> .bashrc
-    echo "export ROS_IP=10.40.2.119" >> .bashrc
+    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
+    echo "export ROS_IP=10.40.2.119" >> ~/.bashrc
+    source ~/.bashrc
 
 - Please make sure there is one and only one line of code related 
   to ``ROS_MASTER_URI`` and ``ROS_IP``, respectively, appended 
@@ -142,13 +145,11 @@ ROS Network Setup
 
   .. code:: bash
 
-    cd
-    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> .bashrc
-    echo "export ROS_IP=10.40.2.21" >> .bashrc
+    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
+    echo "export ROS_IP=10.40.2.21" >> ~/.bashrc
+    source ~/.bashrc
 
 - Please also make sure there is no repeated setup code in your ``.bashrc``.
-
-- Then **close all the terminals**.
 
 - With the above steps, we have basically set up an ROS environemnt
   directing all nodes on my local computer to the remote ROS master 
@@ -175,11 +176,12 @@ ROS Network Setup
   to a ROS master on the robot. 
   When you work offline/locally, you do not have the connection to robot.
 
-  Please also remember to close all terminals and try it again with new terminals, 
+  Please also remember to do ``source ~/.bashrc`` to take effect, 
+  or close all terminals and try it again with new terminals, 
   since ``.bashrc`` will only be executed for once when you open a new terminal.
 
 
-Launch robot and sensors
+Launch Robot and Sensors
 ------------------------
 
 - Let's add a couple launch files to your local computer and robot.
@@ -194,15 +196,8 @@ Launch robot and sensors
 
 - Copy and paste the following code, save and close it.
 
-  .. code:: xml
-
-    <launch>
-
-      <node name="rviz" pkg="rviz" type="rviz"/>
-
-      <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" /-->
-
-    </launch>
+  .. literalinclude:: ../launch/rviz.launch
+    :language: xml
 
 - Add another launch file for robot sensors. 
   (We do not need this on VM actually. Will copy to robot later on.)
@@ -215,23 +210,8 @@ Launch robot and sensors
 
 - Copy and paste the following code, save and close it.
 
-  .. code:: xml
-
-    <launch>
-
-      <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
-
-      <include file="$(find rplidar_ros)/launch/rplidar.launch" />
-
-      <include file="$(find astra_camera)/launch/astrapro.launch" />
-
-      <node pkg="tf" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 base_footprint base_link 100" />
-
-      <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.2 0 0 0 base_link laser 100" />
-
-      <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0 0 0.3 0 0 0 base_link camera_link 100" />
-
-    </launch> 
+  .. literalinclude:: ../launch/turtlebot_bringup_sensors.launch
+    :language: xml
 
 - Copy your ``ee144f19`` package to your robot.
 
@@ -289,7 +269,7 @@ Launch robot and sensors
   Please go back and check your ROS_IP and ROS_MASTER_URI 
   on both your local computer and the robot.
 
-  .. code:: bash
+  .. code::
 
     Couldn't find an AF_INET address for [ee144-nuc01]
 
