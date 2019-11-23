@@ -38,8 +38,8 @@ Submission
    - \- 15%  Penalty applies for each late day. 
 
 
-Sensors Setup
--------------
+Sensors Setup on Robot
+----------------------
 
 - Open a new terminal and remote login to your robot with ``-X`` flag.
 
@@ -61,7 +61,7 @@ Sensors Setup
     echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
     source ~/catkin_ws/devel/setup.bash
 
-- Install ROS pacakge and dependencies for rplidar.
+- Install ROS pacakge and set up USB rules for rplidar.
 
   .. code:: bash
 
@@ -101,7 +101,7 @@ Sensors Setup
   you can go to `ROS installation webpage <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_
   and run step ``1.3 Set up your keys``, and then try the above two steps again.
 
-- Install the ROS package for Astra Pro camera. 
+- Install ROS package and set up USB rules for Astra Pro camera. 
 
   .. code:: bash
 
@@ -112,13 +112,21 @@ Sensors Setup
     cd ~/catkin_ws
     catkin_make
 
-- Then please **replug the USB cable** for Astra camera.
+- Then please **replug the USB cable** for Astra Pro camera.
 
 
-ROS Network Setup
------------------
+ROS Network Setup on VM
+-----------------------
 
-- On your VM, setup environment variables in your ``.bashrc``.
+- On your VM, first clean up your ``.bashrc`` by deleting 
+  all lines related to ROS_MASTER_URI and ROS_IP.
+
+  .. code:: bash
+
+    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
+    sed -i '/ROS_IP/d' ~/.bashrc
+
+- Set up environment variables in your ``.bashrc``.
   Please replace ``.21`` IP with the actual one on your robot,
   and replace ``.119`` IP with the actual one on your VM.
 
@@ -126,36 +134,59 @@ ROS Network Setup
 
     echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
     echo "export ROS_IP=10.40.2.119" >> ~/.bashrc
+
+- Make changes take effect immediately by ``source`` the `.bashrc` file.
+  Recall that ``.bashrc`` will be executed only once when you open a new terminal.
+  If we do not ``source`` it now, we are still using old environment variables.
+
+  .. code:: bash
+
     source ~/.bashrc
 
-- Please make sure there is one and only one line of code related 
-  to ``ROS_MASTER_URI`` and ``ROS_IP``, respectively, appended 
-  to your ``.bashrc`` file and the IPs are correct. Otherwise you will get errors. 
-  You may open ``.bashrc`` file by ``gedit`` and double check this.
+- You may open ``.bashrc`` file by ``gedit`` and double check this setup.
+
+
+ROS Network Setup on Robot
+--------------------------
 
 - Now open a new terminal and remote login to your robot with ``-X`` flag.
-  You need this ``-X`` flag since you may need to open ``gedit``.
+  Recall that ``-X`` flag can grant you access to GUI on remote computer (e.g., gedit).
 
   .. code:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
 
-- Repeat the same steps on your robot. However, this time ROS_IP
-  should be the IP address of your robot, which is the same as ROS_MASTER.
+- Clean up your ``.bashrc`` by deleting all lines related to ROS_MASTER_URI and ROS_IP.
+
+  .. code:: bash
+
+    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
+    sed -i '/ROS_IP/d' ~/.bashrc
+
+- Repeat the same setup steps on your robot. 
+  Note that ROS_MASTER_URI on both machines are the same, but ROS_IP are different.
+  This time ROS_IP should be the IP address of your robot. 
+  (On VM, it was the IP address of your VM.)
 
   .. code:: bash
 
     echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
     echo "export ROS_IP=10.40.2.21" >> ~/.bashrc
+
+- Make changes take effect immediately by ``source`` the `.bashrc` file.
+
+  .. code:: bash
+
     source ~/.bashrc
 
-- Please also make sure there is no repeated setup code in your ``.bashrc``.
+- You may open ``.bashrc`` file by ``gedit`` and double check this setup.
 
-- With the above steps, we have basically set up an ROS environemnt
-  directing all nodes on my local computer to the remote ROS master 
-  on the robot.
+- With the above steps, we have basically set up an ROS environment
+  directing all ROS nodes (programs) on my local computer to the remote computer 
+  on the robot. With this, we can run most low-level programs on-board (on the robot),
+  and take visualization back to our local computer.
 
-- You may check the environemnt variables in your terminal by either of 
+- You may check the environment variables in your terminal by either of 
   the following commands.
 
   .. code:: bash
@@ -169,22 +200,41 @@ ROS Network Setup
 
 .. note::
 
-  If you do not want to work with robot in this way later on
-  (e.g., just run Gazebo locally), you need to delete or comment out the last
-  two lines of code of ROS_MASTER_URI and ROS_IP in your ``.bashrc``,
-  because keeping these two lines means that you are trying to connect
+  If you do not work with robot later on, you need to delete or comment out the last
+  two lines of code about ROS_MASTER_URI and ROS_IP in your ``.bashrc``,
+  in order to run Gazebo or other ROS programs locally.
+  Because keeping these two lines means that you are trying to connect
   to a ROS master on the robot. 
   When you work offline/locally, you do not have the connection to robot.
 
-  Please also remember to do ``source ~/.bashrc`` to take effect, 
-  or close all terminals and try it again with new terminals, 
-  since ``.bashrc`` will only be executed for once when you open a new terminal.
+  You can do it by opening ``.bashrc`` in gedit and delete it, or run the following code again. 
+
+  .. code:: bash
+
+    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
+    sed -i '/ROS_IP/d' ~/.bashrc
+
+  Then make changes take effect immediately by ``source`` the `.bashrc` file.
+
+  .. code:: bash
+
+    source ~/.bashrc
+
+.. note::
+
+  If you just want to set up the environment variables for once and on the current terminal only,
+  you can add this environment variable manually by the following command.
+
+  .. code:: bash
+
+    export ROS_MASTER_URI=http://10.40.2.21:11311
+    export ROS_IP=10.40.2.21
 
 
 Launch Robot and Sensors
 ------------------------
 
-- Let's add a couple launch files to your local computer and robot.
+- Let's add two launch files, one on your local computer and one on the robot.
 
 - On your VM, add a launch file for rviz.
 
@@ -246,9 +296,9 @@ Launch Robot and Sensors
 
     rospack profile
 
-- You can open a new terminal on your local computer and run ``rviz`` 
+- You can then open a new terminal on your local computer and run ``rviz`` 
   to see your robot and sensor data displayed.
-  It works now because your local ROS is connected to the remote ROS on your robot.
+  It works now because your local ROS is connected to the remote ROS Master on your robot.
 
   .. code:: bash
 
@@ -264,14 +314,15 @@ Launch Robot and Sensors
 
 .. note::
   
-  If you have seen this error on your terminal, 
-  it means that you didn't set up your environment variables properly.
-  Please go back and check your ROS_IP and ROS_MASTER_URI 
-  on both your local computer and the robot.
+  If you see this error on your terminal, 
 
   .. code::
 
     Couldn't find an AF_INET address for [ee144-nuc01]
+
+  it means that you haven't set up your environment variables properly.
+  Please go back and check your ROS_IP and ROS_MASTER_URI 
+  on both your local computer and the robot.
 
   The ROS_MASTER_URI on both machines should be the same, all pointing towards your robot.
   The ROS_IP should be different. It should be the actual IP address of the machine.
@@ -327,3 +378,28 @@ More on RViz
   If not, the behavior would be like, a message sent from machine A to machine B with a time stamp
   11:00am. However, machine B is five minutes late compared with machine A, i.e. 10:55am when machine A sent the message. 
   Then the message will display on machine B's RViz 5 minutes later.
+
+
+One Last Thing
+--------------
+
+.. note::
+
+  Once you completed this lab, as mentioned before, it is better to delete or comment out the last
+  two lines of code about ROS_MASTER_URI and ROS_IP in your ``.bashrc``.
+
+  You can do it by opening ``.bashrc`` in gedit and delete it or comment it out, 
+  or run the following code again. 
+
+  .. code:: bash
+
+    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
+    sed -i '/ROS_IP/d' ~/.bashrc
+
+  Then make changes take effect immediately by ``source`` the ``.bashrc`` file.
+
+  .. code:: bash
+
+    source ~/.bashrc
+
+

@@ -84,10 +84,10 @@ we need to install the following packages and dependencies.
 - Once you are familiar with this manipulator, close all terminals and go to the following steps.
 
 
-Sample Code
+Starter Code
 ------------
 
-A sample code is given as the starting point for your implementation. 
+A starter code is given as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
 
 - Open a new terminal and go to your ``ee144f19`` package. 
