@@ -159,5 +159,66 @@ rather than sharing the network of your host computer.
   If you can see the flickering blue light on your adapter, 
   then you are good.
 
+.. note::
+
+  Sometimes the system upgrade may disable the linux driver.
+  The solution would be that just install the driver again.
 
 
+Teamviewer Remote Login
+-----------------------
+
+- `Teamviewer <https://www.teamviewer.com/en-us/>`_ is a remote login 
+  (`VNC <https://en.wikipedia.org/wiki/Virtual_Network_Computing>`_) 
+  software that can enable graphical user interface (GUI) remotely.
+  Once setup, you can remote login to your robot with GUI, from any other computer and 
+  and operating system. It looks just like you are working on that computer locally.
+
+- To set up teamviewer on the onboard computer on robot, first connect it to a monitor.
+  This is necessary for installation and change settings in teamviewer later on.
+
+- Open a new terminal, download host-only version of teamviewer and install it.
+
+  .. code:: bash
+
+    cd ~/Downloads
+    wget https://download.teamviewer.com/download/linux/teamviewer-host_amd64.deb
+    sudo dpkg -i teamviewer-host_amd64.deb
+
+.. note::
+
+  If you do not have any graphics enabled on the current computer, you will get
+  error messages in the installation. One error message could be like the following.
+
+  .. code:: bash
+
+    The following packages have unmet dependencies:
+      qt56-teamviewer but it is not installable
+
+  This is not really the missing of dependencies. 
+  The actual reason is that you do not have proper graphics-related service/program/library enabled.
+  The linux system will not launch some graphical programs if it knows that no monitor is connected.
+  The solution could be using a dummy HDMI plug or connecting to a real monitor.
+  The dummy HDMI plug can help with the installation, but cannot help with the settings in teamviewer later on.
+  Therefore, here we can just connect to a real monitor.
+
+- Launch teamviewer and go to the settings. We need to change two parts for future connection from other computers.
+
+  .. code:: bash
+
+    teamviewer
+
+- Go to ``Extras``, and then ``Options``, change ``Incoming LAN connections`` to be ``accept exclusively``.
+  With this, only the connection request from LAN is valid, which can help keep it safe from outside world.
+
+- Go to ``Security`` and set ``Personal password`` the same as your login password.
+
+- Done. Later on you can remote login to this robot (onboard computer) from your Windows/MacOS laptop
+  as long as you and the robot are in the same WiFi network. The partner ID is just the IP address of the robot,
+  since we have already set up static IP for the robot.
+
+.. note::
+
+  When using remote login from other computer, it is better to keep dummy HDMI plug on the robot (host/onboard computer),
+  because it can help simulate a monitor and enable some graphical tools. 
+  Otherwise you may have some issues like fixed low resolution in display and whatnot.
