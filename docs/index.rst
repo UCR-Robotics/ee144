@@ -20,6 +20,7 @@ Welcome to UCR EE144 Intro to Robotics!
     lab6
     lab7
     lab8
+    capstone
     linux
     reference
 
@@ -41,6 +42,7 @@ News
 - 10/22/2019: `Lab4 <lab4.html>`_ is up.
 - 10/25/2019: Update `Reference Materials <reference.html>`_ with instructions on installing linux driver of USB WiFi adapter
 - 10/29/2019: `Lab5 <lab5.html>`_ is up.
-- 10/05/2019: `Lab6 <lab6.html>`_ is up.
-- 10/12/2019: `Lab7 <lab7.html>`_ is up.
-- 10/19/2019: `Lab8 <lab8.html>`_ is up.
+- 11/05/2019: `Lab6 <lab6.html>`_ is up.
+- 11/12/2019: `Lab7 <lab7.html>`_ is up.
+- 11/19/2019: `Lab8 <lab8.html>`_ is up.
+- 11/22/2019: `Capstone Project <capstone.html>` has been released. 
