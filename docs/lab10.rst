@@ -1,5 +1,5 @@
-Lab 9: Navigation Stack
-=======================
+Lab 10: Navigation Stack (Optional)
+===================================
 
 Overview
 --------

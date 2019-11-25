@@ -1,5 +1,5 @@
-Lab X: Capstone Project (Tentative)
-===================================
+Lab X: Capstone Project
+=======================
 
 Overview
 --------
@@ -14,7 +14,7 @@ We will make this a competition between teams. Details are shown as follows.
 Submission
 ----------
 
-#. Submission: group submission via iLearn, due 11:59pm Friday Dec 6, 2019
+#. Submission: group submission via iLearn, due 11:59pm Saturday Dec 7, 2019
 
 #. Demo: required, please also record a video
 
@@ -31,7 +31,7 @@ Submission
    - \+ 20%  Smoothness of the trajectory.
    - \+ 20%  Accuracy of kicking the ball.
    - \+ 20%  Speed (total time to complete the task).
-   - \- 5%  Penalty applies for any collision with obstacles or virtual walls. 
+   - \- 5% Penalty applies for any collision with obstacles or virtual walls. 
    - \+ 1-5% Bonus points for winners in the competition. 
 
 
@@ -89,16 +89,16 @@ Rubric Details
    - 2pts for the 3rd place
 
 
-Map and Rules
--------------
+Field Map
+---------
 
 .. image:: pics/capstone_map.jpg
   :width: 80%
   :align: center
 
-
-- We devide the space into two parts to accomodate more teams at the same time.
-  They are designed to have exactly the same layout.
+- We divide the space into two parts to accommodate more teams at the same time.
+  They are designed to have exactly the same layout. 
+  The grid size is **0.4m**, which is equal to the size of the robot.
 
 - The grey grids are obstacles and walls that the robot should not collide with.
 
@@ -113,8 +113,17 @@ Map and Rules
 
 - The ball is placed on the common edge of orange and red grid, marked by dark green color. 
 
-- The robot should have a reasonable velocity when passing through orange grid into red grid,
-  and stop at the red grid. 
-  Points will be deducted if the robot does not stop and collides with the wall.
 
+Competition Rules
+-----------------
+
+#. Each team can have three trials for the final demo, from which we pick the best one to evaluate 
+   the smoothness, accuracy, and speed.
+
+#. For each trial, the robot will start from one of the six starting grids, plan and follow
+   its smooth trajectory, pass the orange grid to kick the ball, and stop at the red grid (in front of gate).
+
+#. The robot should have a reasonable velocity when passing through orange grid into red grid,
+   in order to kick the ball.
+   Points will be deducted if the robot does not stop and collides with the wall.
 

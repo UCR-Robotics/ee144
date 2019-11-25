@@ -45,4 +45,4 @@ News
 - 11/05/2019: `Lab6 <lab6.html>`_ is up.
 - 11/12/2019: `Lab7 <lab7.html>`_ is up.
 - 11/19/2019: `Lab8 <lab8.html>`_ is up.
-- 11/22/2019: `Capstone Project <capstone.html>` has been released. 
+- 11/22/2019: `Capstone Project <capstone.html>`_ has been released. 
