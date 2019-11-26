@@ -1,0 +1,58 @@
+#
+# Definition of all trackable objects
+# Identifier corresponds to Trackable ID set in Tracking Tools
+#
+rigid_bodies:
+    '1':
+        pose2d: robot01/pose2d
+        child_frame_id: robot01/base_link
+        parent_frame_id: /world
+    '2':
+        pose2d: robot02/pose2d
+        child_frame_id: robot02/base_link
+        parent_frame_id: /world
+    '3':
+        pose2d: robot03/pose2d
+        child_frame_id: robot03/base_link
+        parent_frame_id: /world
+    '4':
+        pose2d: robot04/pose2d
+        child_frame_id: robot04/base_link
+        parent_frame_id: /world
+    '5':
+        pose2d: robot05/pose2d
+        child_frame_id: robot05/base_link
+        parent_frame_id: /world
+    '6':
+        pose2d: robot06/pose2d
+        child_frame_id: robot06/base_link
+        parent_frame_id: /world
+    '7':
+        pose2d: robot07/pose2d
+        child_frame_id: robot07/base_link
+        parent_frame_id: /world
+    '8':
+        pose2d: robot08/pose2d
+        child_frame_id: robot08/base_link
+        parent_frame_id: /world
+    '9':
+        pose2d: robot09/pose2d
+        child_frame_id: robot09/base_link
+        parent_frame_id: /world
+    '10':
+        pose2d: robot10/pose2d
+        child_frame_id: robot10/base_link
+        parent_frame_id: /world
+    '11':
+        pose2d: robot11/pose2d
+        child_frame_id: robot11/base_link
+        parent_frame_id: /world
+    '12':
+        pose2d: robot12/pose2d
+        child_frame_id: robot12/base_link
+        parent_frame_id: /world
+
+optitrack_config:
+        multicast_address: 239.255.42.99
+        command_port: 1510
+        data_port: 1511

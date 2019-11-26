@@ -287,7 +287,7 @@ Launch Robot and Sensors
 
 .. note::
   
-  Sometimes ROS cannot find the new copied package. 
+  Sometimes ROS cannot find the copied new package. 
   If you cannot auto-complete the above command, 
   you can ask ROS to search new packages again in existing workspace
   by the following command.

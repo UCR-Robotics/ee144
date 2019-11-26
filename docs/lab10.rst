@@ -198,15 +198,3 @@ Remote Login
 - Please download teamview client software on your own laptop, and then remote login to your robot
   by the corresponding IP address.
 
-
-ssh-keygen -t rsa -b 4096
-
-ssh-copy-id remote_username@server_ip_address
-
-
-rm .ssh/known_hosts
-ssh username@hostname -oHostKeyAlgorithms='ssh-rsa'
-
- sudo apt-get -f install ./teamviewer-host_amd64.deb
-
-Couldn't find an AF_INET address for [ee144-nuc11]

@@ -22,7 +22,8 @@ Submission
 
    - capstone_report_01.pdf (replace 01 with your team number)
    - capstone.py
-   - capstone.mp4 (**mp4 only, file size < 20MB, please compress**)
+   - capstone.mp4 (**mp4 only, file size < 20MB, please compress**, 
+     e.g., using `HandBrake <https://handbrake.fr/>`_)
   
 #. Grading rubric:
 
@@ -98,7 +99,8 @@ Field Map
 
 - We divide the space into two parts to accommodate more teams at the same time.
   They are designed to have exactly the same layout. 
-  The grid size is **0.4m**, which is equal to the size of the robot.
+  
+- The grid size is **0.5m**, which is a bit larger than the size of the robot.
 
 - The grey grids are obstacles and walls that the robot should not collide with.
 
