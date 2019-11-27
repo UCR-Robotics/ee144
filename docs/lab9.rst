@@ -135,6 +135,36 @@ Changes in the Script
                 rospy.loginfo("odom: x=" + str(self.pose.x) +\
                     ";  y=" + str(self.pose.y) + ";  theta=" + str(yaw))
 
+- If you want to use mocap and odom at the same time. The following is what you need to change.
+
+  .. code:: python
+
+    class Turtlebot():
+        def __init__(self):
+            rospy.init_node("turtlebot_move")
+            rospy.loginfo("Press CTRL + C to terminate")
+
+            self.pose = Pose2D()
+            self.odom_sub = rospy.Subscriber("odom", Odometry, self.odom_callback)
+
+            # add two lines of code here
+            # remember to replace robot number 01 with the actual one you are using
+            self.pose_mocap = Pose2D()
+            self.mocap_sub = rospy.Subscriber("mocap_node/robot01/pose2d", Pose2D, self.mocap_callback)  
+            
+            # some other code here
+
+
+        def odom_callback(self, msg):
+            # some code here
+
+
+        def mocap_callback(self, msg):
+            self.pose_mocap.theta = msg.theta
+            self.pose_mocap.x = msg.x
+            self.pose_mocap.y = msg.y
+
+
 .. note::
 
   You have to be aware of the difference between mocap frame and odom frame, in order to 
