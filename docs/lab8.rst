@@ -402,4 +402,10 @@ One Last Thing
 
     source ~/.bashrc
 
+.. note::
 
+  Actually if you remote login the robot with ``-X`` option, you can run ``rviz`` directly in the 
+  remote login terminal. It will also give you the GUI, but the response is extremely slow. 
+  This is the reason why we want to set up ROS_MASTER_URI and ROS_IP. 
+  With this setup, we can transmit only the data (ROS Topic) between machines, rather than the GUI.
+  This can help a lot to reduce the workload given limited bandwidth.
