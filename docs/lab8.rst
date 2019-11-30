@@ -328,8 +328,8 @@ Launch Robot and Sensors
   The ROS_IP should be different. It should be the actual IP address of the machine.
 
 
-More on RViz
-------------
+Visualization in RViz
+---------------------
 
 - RViz is a useful tool for visualization built on top of ROS. 
   Play with it and you can find more interesting things!
@@ -409,3 +409,72 @@ One Last Thing
   This is the reason why we want to set up ROS_MASTER_URI and ROS_IP. 
   With this setup, we can transmit only the data (ROS Topic) between machines, rather than the GUI.
   This can help a lot to reduce the workload given limited bandwidth.
+
+
+Additional Info on Simulation
+-----------------------------
+
+The following content is not for this lab, but only for your information 
+if you are interested in simulating sensors in Gazebo.
+
+- By default, when you install ROS desktop full, you had Gazebo 7.0.0 installed, 
+  which contains multiple bugs when simulates sensors. 
+  `As indicated in the second answer in this webpage 
+  <https://answers.ros.org/question/259989/ubuntu-1604-xenial-package-for-gazebo-740/>`_, 
+  the solution is just to upgrade Gazebo to the latest version (currently 7.16). 
+  Main steps are the following. 
+
+  .. code:: bash
+
+    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+
+    wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+
+    sudo apt update
+
+    sudo apt upgrade
+
+- Please do not use any other upgraded version other than Gazebo 7.X, 
+  because Ubuntu 16 and ROS Kinetic can only support Gazebo 7, but not Gazebo 8 or above.
+
+- When you have Gazebo running, you can check the version in the menubar ``Help`` and then ``About``.
+
+- You can check if the depth camera is working correctly by the following command.
+
+  .. code:: bash
+
+    rostopic echo /camera/depth/points
+
+- If you can see bunch of numbers (representing point coulds) printed out on your screen, then you are good.
+
+- In addition, for those of you who are willing to simulate Lidar in Gazebo, 
+  there is no graceful solution at this point (or I haven't figured it out). 
+  The current Turtlebot model used in Gazebo simulator only contains the depth camera 
+  (same one as we used on real robot), but does not have the lidar with it. 
+  On the other hand, it is very hard to modify the URDF file to add our lidar to the current model, 
+  since we do not have any low-level information about the lidar we used on real robot. 
+  Typically only the manufacture can modify the model description files in Gazebo.
+
+- In the past, what I did is to convert the depth image data into a fake lidar with limited field of view. 
+  If you would like to follow this plan, you can add the following code snippets to your ``gazebo.launch`` file, 
+  after "velocity muxer".
+
+  .. code:: xml
+
+    <!-- Publish robot state -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="30.0" />
+    </node>
+
+    <!-- Fake laser -->
+    <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"/>
+    <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan"
+          args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet laserscan_nodelet_manager">
+      <param name="scan_height" value="10"/>
+      <param name="output_frame_id" value="/camera_depth_frame"/>
+      <param name="range_min" value="0.45"/>
+      <remap from="image" to="/camera/depth/image_raw"/>
+      <remap from="scan" to="/scan"/>
+    </node>
+
+
