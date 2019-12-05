@@ -74,6 +74,10 @@ Mapping
 - Now you should be able to see the saved map ``wch109.pgm`` and ``wch109.yaml``.
   Then you can close all the terminals.
 
+- You should be able to see something similar to the screenshot below.
+
+  .. image:: pics/rviz_mapping.jpg
+
 
 Navigation Stack Setup
 ----------------------
@@ -194,7 +198,9 @@ Navigation Stack
 
 - `More tutorials here <reference.html#navigation-stack>`_. Have fun! 
 
+- You should be able to see something similar to the screenshot below.
 
+  .. image:: pics/rviz_navigation.jpg
 
 
 
