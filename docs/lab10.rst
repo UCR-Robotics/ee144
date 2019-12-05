@@ -9,7 +9,9 @@ In this lab, we will introduce the laser-based SLAM algorithm provided by
 
 You will get familiar with the core concepts/modules as shown in the picture below.
 
-.. image:: pic/nav_stack.png
+.. image:: pics/nav_stack.png
+    :width: 80%
+    :align: center
 
 Submission is not required, since this lab is designed just for your information.
 
@@ -28,7 +30,7 @@ Mapping
 
 - The first one: ``ssh`` to the robot, and bringup the base and sensors, as what we did in Lab 8.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     roslaunch ee144f19 turtlebot_bringup_sensors.launch
@@ -95,7 +97,7 @@ Navigation Stack Setup
 - Please copy and paste the parameters for local planner, then save and close it.
 
   .. literalinclude:: ../config/base_local_planner_params.yaml
-      :language: xml
+      :language: yaml
 
 - Create a new file for common parameters in costmap.
 
@@ -107,7 +109,7 @@ Navigation Stack Setup
 - Please copy and paste the following parameters, then save and close it.
 
   .. literalinclude:: ../config/costmap_common_params.yaml
-      :language: xml
+      :language: yaml
       
 - Create a new file for local costmap parameters.
 
@@ -119,7 +121,7 @@ Navigation Stack Setup
 - Please copy and paste the following parameters, then save and close it.
 
   .. literalinclude:: ../config/local_costmap_params.yaml
-      :language: xml
+      :language: yaml
 
 - Create a new file for global costmap parameters.
 
@@ -131,7 +133,7 @@ Navigation Stack Setup
 - Please copy and paste the following parameters, then save and close it.
 
   .. literalinclude:: ../config/global_costmap_params.yaml
-      :language: xml
+      :language: yaml
 
 - Let's then switch to the launch file.
 
@@ -173,7 +175,10 @@ Navigation Stack
 
     roslaunch turtlebot_rviz_launchers view_navigation.launch
 
-- You can see a couple of interesting things in rviz. 
+- You can see a couple of interesting things in rviz.
+  If you want, you can make some changes to rviz and see more modules visualized.
+  `There is a 3 mins tutorial video available here 
+  <http://wiki.ros.org/navigation/Tutorials/Using%20rviz%20with%20the%20Navigation%20Stack>`_.
 
   - The occupancy grid map has been augmented by global costmap.
   - The obstacles around robot are augmented by local costmap.
@@ -187,7 +192,7 @@ Navigation Stack
   another arrow somewhere on the ground. 
   You will see the robot move from its currenct position to the goal position autonomously.
 
-- Have fun!
+- `More tutorials here <reference.html#navigation-stack>`_. Have fun! 
 
 
 

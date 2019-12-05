@@ -84,6 +84,11 @@ Navigation Stack
 
 - `Robot Setup <http://wiki.ros.org/navigation/Tutorials/RobotSetup>`_
 
+- `Using RViz with the Navigation Stack 
+  <http://wiki.ros.org/navigation/Tutorials/Using%20rviz%20with%20the%20Navigation%20Stack>`_
+
+- `Navigation Tuning Guide <http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide>`_
+
 
 Atom Editor
 -----------
