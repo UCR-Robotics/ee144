@@ -12,13 +12,13 @@ Tab Key Auto-completion
   **this means your command is wrong** and Linux cannot recognize it.
   Try entering the following command in your terminal and press ``Tab`` key on your keyboard.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144
 
 - You will see that it becomes
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19
 
@@ -27,7 +27,7 @@ Tab Key Auto-completion
 
 - You can try the following command again and press ``Tab`` key once.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd e
 
@@ -44,7 +44,7 @@ Terminal and Shell
 
 - You can see the relationship between terminal and shell by command
 
-  .. code:: bash
+  .. code-block:: bash
 
     pstree | grep bash
 
@@ -64,7 +64,7 @@ Terminal and Shell
   you can see that ROS supports three different kinds of shells: sh, zsh, and bash.
   It has the ``setup`` file available in these three suffixes.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/catkin_ws/devel
     ls
@@ -82,13 +82,13 @@ We can go back and forth between terminal and file manager at any working direct
 - Suppose that you are now at your home directory. 
   (``cd`` without any argument will take you to your home directory under your account.)
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd
 
 - You can open file manager from terminal by command
 
-  .. code:: bash
+  .. code-block:: bash
 
     nautilus .
 
@@ -98,7 +98,7 @@ We can go back and forth between terminal and file manager at any working direct
 - You can also open file manager at any other working directory. 
   For example, go to ``ee144f19`` package and open file manager from this directory.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19
     nautilus .
@@ -112,7 +112,7 @@ We can go back and forth between terminal and file manager at any working direct
   where ``~`` can be other working directory.)
   If you want to reuse the same termimal for typing new commands, you can do
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19
     nautilus . &
@@ -122,7 +122,7 @@ We can go back and forth between terminal and file manager at any working direct
 
 - You can also use this trick when you open ``gedit`` editor or other graphic tools like ``rqt_graph``.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/launch
     gedit gazebo.launch &
@@ -164,6 +164,6 @@ This is a bit advanced concept.
 
 - You can check your ROS-related environment variables by command
 
-  .. code:: bash
+  .. code-block:: bash
 
     env | grep ROS

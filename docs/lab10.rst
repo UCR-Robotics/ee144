@@ -39,20 +39,20 @@ Mapping
   This algorithm will match and update the map from newcoming laser data.
   We need to also add constrains on the size of the map.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     rosrun gmapping slam_gmapping scan:=/scan _xmin:=-5 _xmax:=5 _ymin:=-5 _ymax:=5
 
 - The third one: run keyboard teleop to take the robot move around the room and build up the map.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch turtlebot_teleop keyboard_teleop.launch
 
 - The fourth one: run ``rviz`` locally to see the map building process and adjust teleop commands accordingly. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch ee144f19 rviz.launch
 
@@ -63,7 +63,7 @@ Mapping
 - You can then move the robot around until the map is in good shape.
   Then you can open the fifth terminal and save the map.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     roscd ee144f19
@@ -85,7 +85,7 @@ Navigation Stack Setup
 - Open a new terminal, remote login to the robot, and go to your ``ee144f19`` package. 
   We need to set up some parameters for navigation stack.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     roscd ee144f19
@@ -101,7 +101,7 @@ Navigation Stack Setup
 
 - Create a new file for common parameters in costmap.
 
-  .. code:: bash
+  .. code-block:: bash
 
     touch costmap_common_params.yaml
     gedit costmap_common_params.yaml
@@ -113,7 +113,7 @@ Navigation Stack Setup
       
 - Create a new file for local costmap parameters.
 
-  .. code:: bash
+  .. code-block:: bash
 
     touch local_costmap_params.yaml
     gedit local_costmap_params.yaml
@@ -125,7 +125,7 @@ Navigation Stack Setup
 
 - Create a new file for global costmap parameters.
 
-  .. code:: bash
+  .. code-block:: bash
 
     touch global_costmap_params.yaml
     gedit global_costmap_params.yaml
@@ -137,7 +137,7 @@ Navigation Stack Setup
 
 - Let's then switch to the launch file.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ../launch
     touch move_base.launch
@@ -157,21 +157,21 @@ Navigation Stack
 
 - As usual, bring up robot base and sensors in the first terminal.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
 - Run navigation stack on the second terminal.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
 - Show visualization locally on the VM in the third terminal.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch turtlebot_rviz_launchers view_navigation.launch
 

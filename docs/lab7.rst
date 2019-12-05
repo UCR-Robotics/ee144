@@ -52,7 +52,7 @@ Code Snippets
 - Open a new terminal and go to your ``ee144f19`` package. 
   We will create a new python script.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/scripts
     touch motion_planning.py
@@ -61,7 +61,7 @@ Code Snippets
 - Please copy and paste the code from previous lab, 
   then you may want to add the following modules.
 
-  .. code:: python
+  .. code-block:: python
 
     class Turtlebot():
         def __init__(self):

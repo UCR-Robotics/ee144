@@ -43,7 +43,7 @@ Sensors Setup on Robot
 
 - Open a new terminal and remote login to your robot with ``-X`` flag.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
 
@@ -53,7 +53,7 @@ Sensors Setup on Robot
 
 - Create a ROS workspace.
 
-  .. code:: bash
+  .. code-block:: bash
 
     mkdir -p ~/catkin_ws/src
     cd ~/catkin_ws
@@ -63,14 +63,14 @@ Sensors Setup on Robot
 
 - Install ROS pacakge and set up USB rules for rplidar.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/catkin_ws/src
     git clone https://github.com/UCR-Robotics/rplidar_ros
     cd ~/catkin_ws
     catkin_make
 
-  .. code:: bash
+  .. code-block:: bash
 
     rosrun rplidar_ros create_udev_rules.sh
 
@@ -78,13 +78,13 @@ Sensors Setup on Robot
   If you check USB rules by the following command, 
   you may see something like kobuki is mapped to ttyUSB0 and rplidar is mapped to ttyUSB1.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ls -l /dev | grep ttyUSB
 
 - Install dependencies for Astra Pro camera.
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt-get update
     sudo apt install ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-camera ros-$ROS_DISTRO-libuvc-ros
@@ -94,7 +94,7 @@ Sensors Setup on Robot
   Please make sure you have done the above two steps without any error messages.
   If you experience issues connecting to the keyserver (an example error shown below), 
 
-  .. code::
+  .. code-block::
 
     The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
 
@@ -103,7 +103,7 @@ Sensors Setup on Robot
 
 - Install ROS package and set up USB rules for Astra Pro camera. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/catkin_ws/src
     git clone https://github.com/UCR-Robotics/ros_astra_camera
@@ -121,7 +121,7 @@ ROS Network Setup on VM
 - On your VM, first clean up your ``.bashrc`` by deleting 
   all lines related to ROS_MASTER_URI and ROS_IP.
 
-  .. code:: bash
+  .. code-block:: bash
 
     sed -i '/ROS_MASTER_URI/d' ~/.bashrc
     sed -i '/ROS_IP/d' ~/.bashrc
@@ -130,7 +130,7 @@ ROS Network Setup on VM
   Please replace ``.21`` IP with the actual one on your robot,
   and replace ``.119`` IP with the actual one on your VM.
 
-  .. code:: bash
+  .. code-block:: bash
 
     echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
     echo "export ROS_IP=10.40.2.119" >> ~/.bashrc
@@ -139,7 +139,7 @@ ROS Network Setup on VM
   Recall that ``.bashrc`` will be executed only once when you open a new terminal.
   If we do not ``source`` it now, we are still using old environment variables.
 
-  .. code:: bash
+  .. code-block:: bash
 
     source ~/.bashrc
 
@@ -152,13 +152,13 @@ ROS Network Setup on Robot
 - Now open a new terminal and remote login to your robot with ``-X`` flag.
   Recall that ``-X`` flag can grant you access to GUI on remote computer (e.g., gedit).
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
 
 - Clean up your ``.bashrc`` by deleting all lines related to ROS_MASTER_URI and ROS_IP.
 
-  .. code:: bash
+  .. code-block:: bash
 
     sed -i '/ROS_MASTER_URI/d' ~/.bashrc
     sed -i '/ROS_IP/d' ~/.bashrc
@@ -168,14 +168,14 @@ ROS Network Setup on Robot
   This time ROS_IP should be the IP address of your robot. 
   (On VM, it was the IP address of your VM.)
 
-  .. code:: bash
+  .. code-block:: bash
 
     echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
     echo "export ROS_IP=10.40.2.21" >> ~/.bashrc
 
 - Make changes take effect immediately by ``source`` the `.bashrc` file.
 
-  .. code:: bash
+  .. code-block:: bash
 
     source ~/.bashrc
 
@@ -189,12 +189,12 @@ ROS Network Setup on Robot
 - You may check the environment variables in your terminal by either of 
   the following commands.
 
-  .. code:: bash
+  .. code-block:: bash
 
     echo $ROS_MASTER_URI
     echo $ROS_IP
 
-  .. code:: bash
+  .. code-block:: bash
 
     env | grep ROS
 
@@ -209,14 +209,14 @@ ROS Network Setup on Robot
 
   You can do it by opening ``.bashrc`` in gedit and delete it, or run the following code again. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     sed -i '/ROS_MASTER_URI/d' ~/.bashrc
     sed -i '/ROS_IP/d' ~/.bashrc
 
   Then make changes take effect immediately by ``source`` the `.bashrc` file.
 
-  .. code:: bash
+  .. code-block:: bash
 
     source ~/.bashrc
 
@@ -225,7 +225,7 @@ ROS Network Setup on Robot
   If you just want to set up the environment variables for once and on the current terminal only,
   you can add this environment variable manually by the following command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     export ROS_MASTER_URI=http://10.40.2.21:11311
     export ROS_IP=10.40.2.21
@@ -238,7 +238,7 @@ Launch Robot and Sensors
 
 - On your VM, add a launch file for rviz.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/launch
     touch rviz.launch
@@ -252,7 +252,7 @@ Launch Robot and Sensors
 - Add another launch file for robot sensors. 
   (We do not need this on VM actually. Will copy to robot later on.)
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/launch
     touch turtlebot_bringup_sensors.launch
@@ -265,14 +265,14 @@ Launch Robot and Sensors
 
 - Copy your ``ee144f19`` package to your robot.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/..
     scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
 
 - Remote login to your robot with ``-X`` flag and compile the package you just copied.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     cd ~/catkin_ws
@@ -281,7 +281,7 @@ Launch Robot and Sensors
 - Finally, launch robot base and sensors on your robot. 
   (This should be done on your robot, after SSH.)
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
@@ -292,7 +292,7 @@ Launch Robot and Sensors
   you can ask ROS to search new packages again in existing workspace
   by the following command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     rospack profile
 
@@ -300,7 +300,7 @@ Launch Robot and Sensors
   to see your robot and sensor data displayed.
   It works now because your local ROS is connected to the remote ROS Master on your robot.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch ee144f19 rviz.launch
 
@@ -308,7 +308,7 @@ Launch Robot and Sensors
   teleop your robot and take it around. 
   It will send commands to the remote computer on your robot.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch turtlebot_teleop keyboard_teleop.launch
 
@@ -316,7 +316,7 @@ Launch Robot and Sensors
   
   If you see this error on your terminal, 
 
-  .. code::
+  .. code-block::
 
     Couldn't find an AF_INET address for [ee144-nuc01]
 
@@ -358,7 +358,7 @@ Visualization in RViz
   Specifically, you can comment out the first line and uncomment the second line
   in the rviz launch file. The launch file is ``ee144f19/launch/rviz.launch``
 
-  .. code:: xml
+  .. code-block:: xml
 
     <launch>
 
@@ -391,14 +391,14 @@ One Last Thing
   You can do it by opening ``.bashrc`` in gedit and delete it or comment it out, 
   or run the following code again. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     sed -i '/ROS_MASTER_URI/d' ~/.bashrc
     sed -i '/ROS_IP/d' ~/.bashrc
 
   Then make changes take effect immediately by ``source`` the ``.bashrc`` file.
 
-  .. code:: bash
+  .. code-block:: bash
 
     source ~/.bashrc
 
@@ -424,7 +424,7 @@ if you are interested in simulating sensors in Gazebo.
   the solution is just to upgrade Gazebo to the latest version (currently 7.16). 
   Main steps are the following. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 
@@ -441,7 +441,7 @@ if you are interested in simulating sensors in Gazebo.
 
 - You can check if the depth camera is working correctly by the following command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     rostopic echo /camera/depth/points
 
@@ -459,7 +459,7 @@ if you are interested in simulating sensors in Gazebo.
   If you would like to follow this plan, you can add the following code snippet to your ``gazebo.launch`` file, 
   after "velocity muxer".
 
-  .. code:: xml
+  .. code-block:: xml
 
     <!-- Fake laser -->
     <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"/>

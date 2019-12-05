@@ -103,7 +103,7 @@ You can modify any part of the provided code in your final submission.
 - Open a new terminal and go to your ``ee144f19`` package. 
   We will start from a new python script.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19
     mkdir scripts
@@ -120,7 +120,7 @@ You can modify any part of the provided code in your final submission.
   One is to feed this script as input to the python program in Linux,
   as shown below.
 
-  .. code:: bash
+  .. code-block:: bash
 
     python open_loop.py
 
@@ -128,20 +128,20 @@ You can modify any part of the provided code in your final submission.
   you need to first grant the execution permission to this Python script.
   This step only need to be run once.
 
-  .. code:: bash
+  .. code-block:: bash
 
     chmod +x open_loop.py
 
 - Now you can see that this file turns to be in green color when you ``ls`` the current directory.
   You may try creating a new empty file and see its color. It should be in white.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ls
 
 - Then you can run it by command
 
-  .. code:: bash
+  .. code-block:: bash
 
     ./open_loop.py
 
@@ -150,7 +150,7 @@ You can modify any part of the provided code in your final submission.
   Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
   before sending any commands to it.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch ee144f19 gazebo.launch
 
@@ -177,20 +177,20 @@ Sample Code Explanations
 - The first line makes sure your script is executed as a Python script in Linux.
   You need this line if you want to run it as a regular executable in Linux.
   
-  .. code:: python
+  .. code-block:: python
 
     #!/usr/bin/env python
 
 - You need to import rospy in order to use ROS in Python.
   This is the Python library that contains common resources in ROS.
 
-  .. code:: python
+  .. code-block:: python
 
     import rospy
 
 - This line imports a ``Twist`` class that help us expresses velocity.
 
-  .. code:: python
+  .. code-block:: python
 
     from geometry_msgs.msg import Twist
 
@@ -204,7 +204,7 @@ Sample Code Explanations
   unless it’s overridden by remapping or other arguments. 
   In this case, your node will take on the name ``turtlebot_move``.
 
-  .. code:: python
+  .. code-block:: python
 
     rospy.init_node("turtlebot_move")
 
@@ -216,7 +216,7 @@ Sample Code Explanations
   you can pull up messages using rqt console instead of 
   having to find the console window with your node’s output.
 
-  .. code:: python
+  .. code-block:: python
 
     rospy.loginfo("Press CTRL + C to stop turtlebot")
 
@@ -227,7 +227,7 @@ Sample Code Explanations
   the message class ``Twist``, 
   and the queue size ``10``.
 
-  .. code:: python
+  .. code-block:: python
 
     self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
 
@@ -237,7 +237,7 @@ Sample Code Explanations
   In the below example, the ``Rate`` instance will attempt to keep the loop at 10Hz. 
   With its argument of 10, we should expect to go through the loop 10 times per second.
 
-  .. code:: python
+  .. code-block:: python
 
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():

@@ -50,7 +50,7 @@ Starter Code
 - Open a new terminal and go to your ``ee144f19`` package. 
   We will start from a new python script.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/scripts
     touch waypoint_navigation.py
@@ -92,7 +92,7 @@ Code Snippets
 - If using while loop in your code, please always remember to add ``not rospy.is_shutdown()``.
   This stop condition can prevent you from getting stuck in dead loop. 
 
-  .. code:: python
+  .. code-block:: python
 
     while not rospy.is_shutdown():
         pass
@@ -104,7 +104,7 @@ Code Snippets
   The following code can help you address this problem, 
   where error is the update error in your PID controller.
 
-  .. code:: python
+  .. code-block:: python
 
     self.error = self.set_point - current_value
     if self.error > pi:  # designed for orientation feedback (-pi, pi)
@@ -120,7 +120,7 @@ Code Snippets
   when you terminate the script in the middle. 
   This is useful for debugging.
 
-  .. code:: python
+  .. code-block:: python
 
     try:
         self.run()
@@ -133,13 +133,13 @@ Code Snippets
   one command line of code (instead of running a script). 
   Please wisely use Tab key to avoid typing error.
 
-  .. code:: bash
+  .. code-block:: bash
 
     rostopic pub /mobile_base/commands/reset_odometry std_msgs/Empty "{}"
 
   You may want to check the status of your odometry by command
 
-  .. code:: bash
+  .. code-block:: bash
 
     rostopic echo /odom 
 

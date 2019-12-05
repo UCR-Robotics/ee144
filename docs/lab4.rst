@@ -46,7 +46,7 @@ we need to install the following packages and dependencies.
 
 - Install dependencies from apt-get.
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt-get update
     sudo apt-get install ros-kinetic-ros-controllers ros-kinetic-gazebo-* 
@@ -55,7 +55,7 @@ we need to install the following packages and dependencies.
 
 - Install ROS packages from official GitHub repositories.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/catkin_ws/src/
     git clone https://github.com/ROBOTIS-GIT/DynamixelSDK.git
@@ -69,13 +69,13 @@ we need to install the following packages and dependencies.
 
 - Load OpenManipulator-X on Gazebo simulator and **click on Play ▶ button**.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
 
 - Open two new terminals and play with it by keyboard teleoperation.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
 
@@ -93,7 +93,7 @@ Please read carefully the provided code, and understand its functionality.
 - Open a new terminal and go to your ``ee144f19`` package. 
   We will start from a new python script.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/scripts
     touch open_manipulator.py
@@ -109,11 +109,11 @@ Please read carefully the provided code, and understand its functionality.
 
 - As mentioned in Lab 2, you can run it two ways. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     python open_manipulator.py
 
-  .. code:: bash
+  .. code-block:: bash
 
     chmod +x open_manipulator.py
     ./open_manipulator.py
@@ -135,7 +135,7 @@ Please read carefully the provided code, and understand its functionality.
   You need to launch manipulator in Gazebo before running your script. 
   (No need to launch controller.)
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
 

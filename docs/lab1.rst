@@ -52,7 +52,7 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
 
 - Please open a new terminal, and create a new ROS workspace by the following commands.
 
-  .. code:: bash
+  .. code-block:: bash
 
     mkdir -p ~/catkin_ws/src
     cd ~/catkin_ws
@@ -64,7 +64,7 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
 
 - Then let's create a new ROS package.
 
-  .. code:: bash
+  .. code-block:: bash
       
     cd ~/catkin_ws/src
     catkin_create_pkg ee144f19 std_msgs rospy
@@ -75,7 +75,7 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
   This is to tell ROS that "Hey, we have a new package here. Please register me into your system."
   Go back to our workspace and build packages.
 
-  .. code:: bash
+  .. code-block:: bash
       
     cd ~/catkin_ws
     catkin_make
@@ -84,7 +84,7 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
   Try navigating to different directories first, and then go back to this ROS package by ``roscd`` command.
   See what happens to your command line window.
 
-  .. code:: bash
+  .. code-block:: bash
       
     cd
     roscd ee144f19
@@ -104,13 +104,13 @@ Set up Gazebo
 
 - First go to your ``ee144f19`` package.
 
-  .. code:: bash
+  .. code-block:: bash
       
     roscd ee144f19
 
 - Make a new folder and create a launch file.
 
-  .. code:: bash
+  .. code-block:: bash
       
     mkdir launch
     cd launch
@@ -128,7 +128,7 @@ Run Turtlebot in Gazebo
 
 - First, let's upgrade existing packages and install some dependencies for Turtlebot. 
 
-  .. code:: bash
+  .. code-block:: bash
       
     sudo apt-get update
     sudo apt-get upgrade
@@ -139,13 +139,13 @@ Run Turtlebot in Gazebo
   It may take a while at the first time you open Gazebo, 
   since it needs some time to download the models and maps.
 
-  .. code:: bash
+  .. code-block:: bash
       
     roslaunch ee144f19 gazebo.launch
 
 - Open a new terminal, launch our teleop node.
 
-  .. code:: bash
+  .. code-block:: bash
       
     roslaunch turtlebot_teleop keyboard_teleop.launch
 
@@ -160,7 +160,7 @@ Run Turtlebot in Gazebo
   If you are experiencing graphic issues with Gazebo, please try the following command.
   Then close all terminals and try again.
 
-  .. code:: bash
+  .. code-block:: bash
       
     echo "export SVGA_VGPU10=0" >> ~/.profile
 

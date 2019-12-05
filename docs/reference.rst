@@ -101,21 +101,21 @@ Tab key detection, and so on.
 
 - To install Atom, first add the official repository to the package list.
 
-  .. code:: bash
+  .. code-block:: bash
 
     wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
     
 - Then update your apt package list and install Atom.
 
-  .. code:: bash
+  .. code-block:: bash
     
     sudo apt-get update
     sudo apt-get install atom
 
 - After installation, you can open Atom by just typing atom in your terminal.
 
-  .. code:: bash
+  .. code-block:: bash
     
     atom
 
@@ -145,7 +145,7 @@ rather than sharing the network of your host computer.
 
 - Open a new terminal, download the driver and install it by the following commands.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/Downloads
     wget https://github.com/UCR-Robotics/ee144/raw/wifi-adapter-driver/RTL88x2BU_WiFi_linux_v5.3.1.zip
@@ -156,7 +156,7 @@ rather than sharing the network of your host computer.
 
 - Restart your computer by one more command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo reboot
 
@@ -184,7 +184,7 @@ Teamviewer Remote Login
 
 - Open a new terminal, download host-only version of teamviewer and install it.
 
-  .. code:: bash
+  .. code-block:: bash
 
     cd ~/Downloads
     wget https://download.teamviewer.com/download/linux/teamviewer-host_amd64.deb
@@ -195,7 +195,7 @@ Teamviewer Remote Login
   If you do not have any graphics enabled on the current computer, you will get
   error messages in the installation. One error message could be like the following.
 
-  .. code:: bash
+  .. code-block:: bash
 
     The following packages have unmet dependencies:
       qt56-teamviewer but it is not installable
@@ -209,7 +209,7 @@ Teamviewer Remote Login
 
 - Launch teamviewer and go to the settings. We need to change two parts for future connection from other computers.
 
-  .. code:: bash
+  .. code-block:: bash
 
     teamviewer
 

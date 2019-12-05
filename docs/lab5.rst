@@ -105,7 +105,7 @@ Remote login
 - To remote login to the NUC computer on your robot, 
   open a new terminal and run
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh username@NUC_IP
 
@@ -116,7 +116,7 @@ Remote login
 
 - For example, for robot 01 we can use
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh ee144-nuc01@10.40.2.21
 
@@ -127,19 +127,19 @@ Remote login
 
 - If you want to use graphic tools later on, then use
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X username@NUC_IP   (must be capitalized X)
 
 - To disconnect, just run
 
-  .. code:: bash
+  .. code-block:: bash
 
     exit
 
 - To shutdown your remote computer, run
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo shutdown now
 
@@ -151,13 +151,13 @@ Copy Files
   
 - To copy files from your VM to robot, open a terminal in your VM and run
 
-  .. code:: bash
+  .. code-block:: bash
 
     scp /path/to/file/name.py username@NUC_IP:/path/to/destination
 
 - To copy files from robot to your VM, just switch the above two arguments
 
-  .. code:: bash
+  .. code-block:: bash
 
     scp username@NUC_IP:/path/to/file/name.py /path/to/destination 
 
@@ -166,7 +166,7 @@ Copy Files
 
 - For linux laptop, run the following command to install.
 
-  .. code:: bash
+  .. code-block:: bash
     
     sudo apt install filezilla
 
@@ -177,7 +177,7 @@ Bringup TurtleBot
 - Turn on the robot and NUC computer, make sure the wiring on robot is good.
   Open a new terminal in your VM, **remote login into your robot**, and run
 
-  .. code:: bash
+  .. code-block:: bash
     
     roslaunch turtlebot_bringup minimal.launch --screen
 
@@ -194,7 +194,7 @@ Example
 
 - For example, open a new terminal in your VM and go to your ROS package.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/scripts
     cp closed_loop_square_p_ctrl.py lab5_closed_loop.py 
@@ -205,7 +205,7 @@ Example
 
 - Open a new terminal, and remote login to your robot and create a new folder.
 
-  .. code:: bash
+  .. code-block:: bash
     
     ssh -X ee144-nuc01@10.40.2.21
     [enter password]
@@ -214,14 +214,14 @@ Example
 
 - Go back to previous terminal, copy this script to your robot.
 
-  .. code:: bash
+  .. code-block:: bash
     
     scp ./lab5_closed_loop.py ee144-nuc01@10.40.2.21:~/team01/
 
 - You can use the terminal running remote login session to open file manager
   or gedit editor (works only if you login with ``-X`` option)
 
-  .. code:: bash
+  .. code-block:: bash
     
     nautilus .
 

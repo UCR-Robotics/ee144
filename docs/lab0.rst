@@ -112,45 +112,45 @@ Main steps are
 
 - Setup sources.list
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 - Setup your keys
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
       
 - Update package index
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt-get update
 
 - Install ROS desktop full
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt-get install ros-kinetic-desktop-full
 
 - Initialize rosdep
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo rosdep init
     rosdep update
 
 - Environment setup
 
-  .. code:: bash
+  .. code-block:: bash
 
     echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
 
 - Install more dependencies
 
-  .. code:: bash
+  .. code-block:: bash
 
     sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
 

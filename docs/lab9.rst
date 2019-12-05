@@ -24,7 +24,7 @@ Mocap Setup
 - Open a new terminal and go to your ``ee144f19`` package. 
   We need to add two more files.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/launch
     touch robots.yaml
@@ -38,7 +38,7 @@ Mocap Setup
 
 - Add the launch file for OptiTrack motion capture system.
 
-  .. code:: bash
+  .. code-block:: bash
 
     touch mocap.launch
     gedit mocap.launch
@@ -50,14 +50,14 @@ Mocap Setup
 
 - Copy this package to robot.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/..
     scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
 
 - Now remote login to your robot. Download and install the mocap ROS package.
 
-  .. code:: bash
+  .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
     cd ~/catkin_ws/src
@@ -68,7 +68,7 @@ Mocap Setup
 - All set. Now you can launch motion capture software and see the pose feedback of your robot. 
   You can launch it by the following command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roslaunch ee144f19 mocap.launch
 
@@ -79,14 +79,14 @@ Mocap Setup
   you can ask ROS to search new packages again in existing workspace
   by the following command.
 
-  .. code:: bash
+  .. code-block:: bash
 
     rospack profile
 
 - You can check your robot pose by the command. 
   Please replace ``robot01`` with the actual one.
 
-  .. code:: bash
+  .. code-block:: bash
 
     rostopic echo /mocap_node/robot01/pose2d
 
@@ -103,7 +103,7 @@ Changes in the Script
   Second, add one more callback function to read and store pose2D data.
   You can put the ``mocap_callback`` function after ``odom_callback`` function.
 
-  .. code:: python
+  .. code-block:: python
 
     class Turtlebot():
         def __init__(self):
@@ -137,7 +137,7 @@ Changes in the Script
 
 - If you want to use mocap and odom at the same time. The following is what you need to change.
 
-  .. code:: python
+  .. code-block:: python
 
     class Turtlebot():
         def __init__(self):

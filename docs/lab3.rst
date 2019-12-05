@@ -63,7 +63,7 @@ Please read carefully the provided code, and understand its functionality.
 - Open a new terminal and go to your ``ee144f19`` package. 
   We will start from a new python script.
 
-  .. code:: bash
+  .. code-block:: bash
 
     roscd ee144f19/scripts
     touch closed_loop_square_p_ctrl.py
@@ -76,11 +76,11 @@ Please read carefully the provided code, and understand its functionality.
 
 - As mentioned in Lab 2, you can run it two ways. 
 
-  .. code:: bash
+  .. code-block:: bash
 
     python closed_loop_square_p_ctrl.py
 
-  .. code:: bash
+  .. code-block:: bash
 
     chmod +x closed_loop_square_p_ctrl.py
     ./closed_loop_square_p_ctrl.py
