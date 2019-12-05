@@ -1,60 +1,91 @@
-Lab 10: Navigation Stack (Optional)
-===================================
+Lab 10: Navigation Stack
+========================
 
 Overview
 --------
 
-In this lab, we will work on the laser-based SLAM algorithm provided by 
+In this lab, we will introduce the laser-based SLAM algorithm provided by 
 `ROS Navigation Stack <http://wiki.ros.org/navigation>`_. 
 
 You will get familiar with the core concepts/modules as shown in the picture below.
 
 .. image:: pic/nav_stack.png
 
-Please take a screenshot for each question below and answer in your lab report.
-
-#. What is the difference (and/or relation) between ``map``, ``odom``, ``footprint``, ``base``
-   and ``sensors`` coordinate frames? Please give explaination to each of them.
-#. What is the difference between ``global planning`` and ``local planning``?
-#. what is ``Localization`` problem? 
-   Please explain how the particle filter algorithm works. (e.g., initialization, update, etc.)
-#. What should be the data format for laser scanner and depth camera? What is the difference?
-
-You may refer to your lecture slides for more details. 
-However, I will cover all of them in lab sessions.
-
-Preview: Congratulations. This is your last lab assignment. 
-Next time we will work on the final capstone project.
+Submission is not required, since this lab is designed just for your information.
 
 
-Submission
-----------
+Mapping
+-------
 
-#. Submission: group submission (from one of you) via iLearn, 
-   due by the end of the day of next lab
+- `slam_gmapping <http://wiki.ros.org/gmapping>`_ is a ROS package that
+  can create a 2-D occupancy grid map from laser and pose data collected by a mobile robot.
 
-#. Demo: required, due by the end of next lab
+- Please first make sure you have ``ROS_MASTER_URI`` and ``ROS_IP`` setup correctly on both your VM
+  and the robot.
 
-#. Files to submit: **(please do not zip, just upload all files)**
+- To create a map using ``gmapping``, you need to open five terminals: 
+  three on the robot to run algorithms, and two on VM to send remote control commands and show visualization.
 
-   - lab8_report_01.pdf (replace 01 with your team number, **use number 01-18**)
-  
-#. Grading rubric:
+- The first one: ``ssh`` to the robot, and bringup the base and sensors, as what we did in Lab 8.
 
-   - \+ 50%  Clearly describe your approach and explain necessary steps in lab report.
-   - \+ 30%  Go through the instructions and show demo to me.
-   - \+ 20%  Answer the above conceptual questions in lab report.
-   - \- 15%  Penalty applies for each late day. 
+  .. code:: bash
+
+    ssh -X ee144-nuc01@10.40.2.21
+    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+
+- The second one: run ``slam_gmapping`` node to build up the map. 
+  This algorithm will match and update the map from newcoming laser data.
+  We need to also add constrains on the size of the map.
+
+  .. code:: bash
+
+    ssh -X ee144-nuc01@10.40.2.21
+    rosrun gmapping slam_gmapping scan:=/scan _xmin:=-5 _xmax:=5 _ymin:=-5 _ymax:=5
+
+- The third one: run keyboard teleop to take the robot move around the room and build up the map.
+
+  .. code:: bash
+
+    roslaunch turtlebot_teleop keyboard_teleop.launch
+
+- The fourth one: run ``rviz`` locally to see the map building process and adjust teleop commands accordingly. 
+
+  .. code:: bash
+
+    roslaunch ee144f19 rviz.launch
+
+- You need to add two visualization modules in rviz. One is the map, the other is the robot. 
+  Just click ``Add`` and find ``Map`` and ``RobotModel``. 
+  Then you can see where the robot is on the map.
+
+- You can then move the robot around until the map is in good shape.
+  Then you can open the fifth terminal and save the map.
+
+  .. code:: bash
+
+    ssh -X ee144-nuc01@10.40.2.21
+    roscd ee144f19
+    mkdir map
+    cd map
+    rosrun map_server map_saver -f wch109
+
+- Now you should be able to see the saved map ``wch109.pgm`` and ``wch109.yaml``.
+  Then you can close all the terminals.
 
 
-Setup
------
+Navigation Stack Setup
+----------------------
 
-- Open a new terminal and go to your ``ee144f19`` package. 
+- The following setup tutorials are modified from `ROS Navigation Stack tutorials 
+  <http://wiki.ros.org/navigation/Tutorials/RobotSetup>`_.
+  All the following steps should be on the robot.
+
+- Open a new terminal, remote login to the robot, and go to your ``ee144f19`` package. 
   We need to set up some parameters for navigation stack.
 
   .. code:: bash
 
+    ssh -X ee144-nuc01@10.40.2.21
     roscd ee144f19
     mkdir config
     cd config
@@ -63,19 +94,8 @@ Setup
 
 - Please copy and paste the parameters for local planner, then save and close it.
 
-  .. code:: html
-  
-    TrajectoryPlannerROS:
-        max_vel_x: 0.45
-        min_vel_x: 0.1
-        max_vel_theta: 1.0
-        min_in_place_vel_theta: 0.4
-
-        acc_lim_theta: 3.2
-        acc_lim_x: 2.5
-        acc_lim_y: 2.5
-
-        holonomic_robot: false
+  .. literalinclude:: ../config/base_local_planner_params.yaml
+      :language: xml
 
 - Create a new file for common parameters in costmap.
 
@@ -86,18 +106,9 @@ Setup
 
 - Please copy and paste the following parameters, then save and close it.
 
-  .. code:: html
-    
-    obstacle_range: 2.0
-    raytrace_range: 3.0
-    footprint: [[0.2, 0.2], [0.2, -0.2], [-0.2, 0.2], [-0.2, -0.2]]
-    #robot_radius: 0.20 #ir_of_robot
-    inflation_radiuscans: 0.50
-
-    observation_sources: laser_scan_sensor #point_cloud_sensor
-    laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
-    #point_cloud_sensor: {sensor_frame: camera, data_type: PointCloud, topic: /camera/depth/points, marking: true, clearing: true}
-
+  .. literalinclude:: ../config/costmap_common_params.yaml
+      :language: xml
+      
 - Create a new file for local costmap parameters.
 
   .. code:: bash
@@ -107,18 +118,8 @@ Setup
 
 - Please copy and paste the following parameters, then save and close it.
 
-  .. code:: html
-
-    local_costmap:
-        global_frame: odom
-        robot_base_frame: base_link
-        update_frequency: 5.0
-        publish_frequency: 2.0
-        static_map: false
-        rolling_window: true
-        width: 4.0
-        height: 4.0
-        resolution: 0.05
+  .. literalinclude:: ../config/local_costmap_params.yaml
+      :language: xml
 
 - Create a new file for global costmap parameters.
 
@@ -129,13 +130,8 @@ Setup
 
 - Please copy and paste the following parameters, then save and close it.
 
-  .. code:: html
-
-    global_costmap:
-        global_frame: /map
-        robot_base_frame: base_link
-        update_frequency: 5.0
-        static_map: true
+  .. literalinclude:: ../config/global_costmap_params.yaml
+      :language: xml
 
 - Let's then switch to the launch file.
 
@@ -146,55 +142,56 @@ Setup
 
 - Then copy and paste the following.
 
-  .. code:: html
+  .. literalinclude:: ../launch/move_base.launch
+      :language: xml
 
-    <launch>
 
-    <master auto="start"/>
-    <!-- Run the map server --> 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find ee144f19)/map/wch109.pgm 0.05"/>
+Navigation Stack
+----------------
 
-    <!-- Run AMCL --> 
-    <include file="$(find amcl)/examples/amcl_diff.launch" />
-    <!-- include file="$(find amcl)/examples/amcl_omni.launch" /-->
+- Up to this point, you have everything you need for autonomous navigation demo.
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-        <rosparam file="$(find ee144f19)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
-        <rosparam file="$(find ee144f19)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find ee144f19)/config/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find ee144f19)/config/global_costmap_params.yaml" command="load" /> 
-        <rosparam file="$(find ee144f19)/config/base_local_planner_params.yaml" command="load" />
-        <remap from="cmd_vel" to="cmd_vel_mux/input/teleop" />
-    </node>
+- We need three terminals: two on the robot to run the algorithm, and one on our VM to show the visualization.
 
-    </launch> 
-
-- Copy your package to the robot and compile it.
+- As usual, bring up robot base and sensors in the first terminal.
 
   .. code:: bash
 
-    roscd ee144f19/..
-    scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
-    ssh ee144-nuc01@10.40.2.21
-    cd ~/catkin_ws
-    catkin_make
+    ssh -X ee144-nuc01@10.40.2.21
+    roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
-
-
-Remote Login
-------------
-
-- Please download the teamviewer host package, copy it to your robot and install.
+- Run navigation stack on the second terminal.
 
   .. code:: bash
 
-    cd ~/Download
-    wget https://download.teamviewer.com/download/linux/teamviewer-host_amd64.deb
-    scp ./teamvierew-host_amd64.deb ee144-nuc01@10.40.2.21:~/Download
-    ssh ee144-nuc01@10.40.2.21
-    cd ~/Download
-    sudo dpkg -i teamvierew-host_amd64.deb
+    ssh -X ee144-nuc01@10.40.2.21
+    roslaunch ee144f19 turtlebot_bringup_sensors.launch
 
-- Please download teamview client software on your own laptop, and then remote login to your robot
-  by the corresponding IP address.
+- Show visualization locally on the VM in the third terminal.
+
+  .. code:: bash
+
+    roslaunch turtlebot_rviz_launchers view_navigation.launch
+
+- You can see a couple of interesting things in rviz. 
+
+  - The occupancy grid map has been augmented by global costmap.
+  - The obstacles around robot are augmented by local costmap.
+  - You can also visualize global and local paths planned by the robot.
+
+- Now put the robot on the ground. In rviz, you can set the ``2D Pose Estimate`` (somewhere under menubar).
+  Make sure the arrow you put on the map is the actual position of the robot.
+  Then you can see the visualized robot in rviz "jumped" to the initial pose you picked.
+
+- Lastly, the most interesting part comes. You can then click ``2D Nav Goal`` and put
+  another arrow somewhere on the ground. 
+  You will see the robot move from its currenct position to the goal position autonomously.
+
+- Have fun!
+
+
+
+
+
+
 

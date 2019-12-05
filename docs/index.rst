@@ -21,6 +21,7 @@ Welcome to UCR EE144 Intro to Robotics!
     lab7
     lab8
     lab9
+    lab10
     capstone
     linux
     reference
@@ -48,3 +49,4 @@ News
 - 11/19/2019: `Lab8 <lab8.html>`_ is up.
 - 11/22/2019: `Capstone Project <capstone.html>`_ has been released. 
 - 11/26/2019: `Lab9 <lab9.html>`_ is up.
+- 12/03/2019: `Lab10 <lab10.html>`_ is up.

@@ -456,15 +456,10 @@ if you are interested in simulating sensors in Gazebo.
   Typically only the manufacture can modify the model description files in Gazebo.
 
 - In the past, what I did is to convert the depth image data into a fake lidar with limited field of view. 
-  If you would like to follow this plan, you can add the following code snippets to your ``gazebo.launch`` file, 
+  If you would like to follow this plan, you can add the following code snippet to your ``gazebo.launch`` file, 
   after "velocity muxer".
 
   .. code:: xml
-
-    <!-- Publish robot state -->
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-      <param name="publish_frequency" type="double" value="30.0" />
-    </node>
 
     <!-- Fake laser -->
     <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"/>
