@@ -10,6 +10,7 @@ Welcome to UCR EE144 Introduction to Robotics!
     :maxdepth: 2
     :hidden:
 
+    logistics
     lab0
 
 
@@ -17,5 +18,6 @@ News
 ====
 
 - 09/28/2020: Welcome!
+- 09/28/2020: Please read `logistics <logistics.html>`_.
 - 09/28/2020: Please sign up `Piazza <https://piazza.com/ucr/fall2020/eeme144>`_.
 - 09/28/2020: `Lab0 <lab0.html>`_ is up.
