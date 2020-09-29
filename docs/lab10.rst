@@ -33,7 +33,7 @@ Mapping
   .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
-    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+    roslaunch ee144f20 turtlebot_bringup_sensors.launch
 
 - The second one: run ``slam_gmapping`` node to build up the map. 
   This algorithm will match and update the map from newcoming laser data.
@@ -54,7 +54,7 @@ Mapping
 
   .. code-block:: bash
 
-    roslaunch ee144f19 rviz.launch
+    roslaunch ee144f20 rviz.launch
 
 - You need to add two visualization modules in rviz. One is the map, the other is the robot. 
   Just click ``Add`` and find ``Map`` and ``RobotModel``. 
@@ -66,7 +66,7 @@ Mapping
   .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
-    roscd ee144f19
+    roscd ee144f20
     mkdir map
     cd map
     rosrun map_server map_saver -f wch109
@@ -86,13 +86,13 @@ Navigation Stack Setup
   <http://wiki.ros.org/navigation/Tutorials/RobotSetup>`_.
   All the following steps should be on the robot.
 
-- Open a new terminal, remote login to the robot, and go to your ``ee144f19`` package. 
+- Open a new terminal, remote login to the robot, and go to your ``ee144f20`` package. 
   We need to set up some parameters for navigation stack.
 
   .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
-    roscd ee144f19
+    roscd ee144f20
     mkdir config
     cd config
     touch base_local_planner_params.yaml
@@ -164,14 +164,14 @@ Navigation Stack
   .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
-    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+    roslaunch ee144f20 turtlebot_bringup_sensors.launch
 
 - Run navigation stack on the second terminal.
 
   .. code-block:: bash
 
     ssh -X ee144-nuc01@10.40.2.21
-    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+    roslaunch ee144f20 turtlebot_bringup_sensors.launch
 
 - Show visualization locally on the VM in the third terminal.
 

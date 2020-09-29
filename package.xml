@@ -2,12 +2,12 @@
 <package format="2">
   <name>ee144</name>
   <version>0.0.0</version>
-  <description>The ee144 package</description>
+  <description>This package hosts lab materials for EE144 Introduction to Robotics class at UC Riverside.</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="hteng@todo.todo">hteng</maintainer>
+  <maintainer email="hteng007@ucr.edu">Hanzhe Teng</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

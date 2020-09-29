@@ -60,12 +60,12 @@ Sample Code
 A sample code is given as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
 
-- Open a new terminal and go to your ``ee144f19`` package. 
+- Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f19/scripts
+    roscd ee144f20/scripts
     touch closed_loop_square_p_ctrl.py
     gedit closed_loop_square_p_ctrl.py
 

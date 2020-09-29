@@ -100,12 +100,12 @@ Note that the provided code can only drive the robot move straight forward.
 Please add the turning part in order to complete the square trajectory.
 You can modify any part of the provided code in your final submission.
 
-- Open a new terminal and go to your ``ee144f19`` package. 
+- Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f19
+    roscd ee144f20
     mkdir scripts
     cd scripts
     touch open_loop.py
@@ -152,7 +152,7 @@ You can modify any part of the provided code in your final submission.
 
   .. code-block:: bash
 
-    roslaunch ee144f19 gazebo.launch
+    roslaunch ee144f20 gazebo.launch
 
 
 Sample Code Explanations

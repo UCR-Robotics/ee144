@@ -67,9 +67,9 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
   .. code-block:: bash
       
     cd ~/catkin_ws/src
-    catkin_create_pkg ee144f19 std_msgs rospy
+    catkin_create_pkg ee144f20 std_msgs rospy
 
-- Have a look at your new package ``ee144f19`` and see what happens.
+- Have a look at your new package ``ee144f20`` and see what happens.
 
 - After creating a new package, we have to build it.
   This is to tell ROS that "Hey, we have a new package here. Please register me into your system."
@@ -87,13 +87,13 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
   .. code-block:: bash
       
     cd
-    roscd ee144f19
+    roscd ee144f20
 
     cd ~/catkin_ws
-    roscd ee144f19
+    roscd ee144f20
       
     cd ~/Documents
-    roscd ee144f19
+    roscd ee144f20
 
 - Congratulations. You have completed basic/core steps in ROS. 
   Take some time to think how the above steps work.
@@ -102,11 +102,11 @@ From now on, we assume that you have Ubuntu 16.04 and ROS Kinetic installed alre
 Set up Gazebo
 -------------
 
-- First go to your ``ee144f19`` package.
+- First go to your ``ee144f20`` package.
 
   .. code-block:: bash
       
-    roscd ee144f19
+    roscd ee144f20
 
 - Make a new folder and create a launch file.
 
@@ -141,7 +141,7 @@ Run Turtlebot in Gazebo
 
   .. code-block:: bash
       
-    roslaunch ee144f19 gazebo.launch
+    roslaunch ee144f20 gazebo.launch
 
 - Open a new terminal, launch our teleop node.
 

@@ -47,12 +47,12 @@ Submission
 Starter Code
 ------------
 
-- Open a new terminal and go to your ``ee144f19`` package. 
+- Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f19/scripts
+    roscd ee144f20/scripts
     touch waypoint_navigation.py
     gedit waypoint_navigation.py
 

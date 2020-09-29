@@ -21,12 +21,12 @@ Submission is not required, since this lab is designed just for your information
 Mocap Setup
 -----------
 
-- Open a new terminal and go to your ``ee144f19`` package. 
+- Open a new terminal and go to your ``ee144f20`` package. 
   We need to add two more files.
 
   .. code-block:: bash
 
-    roscd ee144f19/launch
+    roscd ee144f20/launch
     touch robots.yaml
     gedit robots.yaml
 
@@ -52,8 +52,8 @@ Mocap Setup
 
   .. code-block:: bash
 
-    roscd ee144f19/..
-    scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
+    roscd ee144f20/..
+    scp -r ee144f20 ee144-nuc01@10.40.2.21:~/catkin_ws/src
 
 - Now remote login to your robot. Download and install the mocap ROS package.
 
@@ -70,7 +70,7 @@ Mocap Setup
 
   .. code-block:: bash
 
-    roslaunch ee144f19 mocap.launch
+    roslaunch ee144f20 mocap.launch
 
 .. note::
   

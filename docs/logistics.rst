@@ -6,7 +6,7 @@ Welcome
 
 - Teaching Assistant: Hanzhe Teng
 - Email: hteng007@ucr.edu
-- Office Hour: Fri 11am-12pm at WCH 109
+- Office Hour: TBD
 
 Please **feel free** to contact me if you have any questions/concerns. There is no stupid question.
 
@@ -83,8 +83,8 @@ Academic Integrity
 ------------------
 
 Discussions are encouraged between teams/individuals for the purpose of 
-having better understanding of lab materials. However, each of you (or your team)
-has to work on your scripts independently after discussions. 
+having a better understanding of lab materials. However, each of you (or your team)
+should work on your code independently after discussions. 
 No copying of any form is allowed between each other. 
 
 .. warning::

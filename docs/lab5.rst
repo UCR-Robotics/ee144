@@ -196,7 +196,7 @@ Example
 
   .. code-block:: bash
 
-    roscd ee144f19/scripts
+    roscd ee144f20/scripts
     cp closed_loop_square_p_ctrl.py lab5_closed_loop.py 
     gedit lab5_closed_loop.py
 

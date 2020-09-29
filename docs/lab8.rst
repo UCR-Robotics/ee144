@@ -240,7 +240,7 @@ Launch Robot and Sensors
 
   .. code-block:: bash
 
-    roscd ee144f19/launch
+    roscd ee144f20/launch
     touch rviz.launch
     gedit rviz.launch
 
@@ -254,7 +254,7 @@ Launch Robot and Sensors
 
   .. code-block:: bash
 
-    roscd ee144f19/launch
+    roscd ee144f20/launch
     touch turtlebot_bringup_sensors.launch
     gedit turtlebot_bringup_sensors.launch
 
@@ -263,12 +263,12 @@ Launch Robot and Sensors
   .. literalinclude:: ../launch/turtlebot_bringup_sensors.launch
     :language: xml
 
-- Copy your ``ee144f19`` package to your robot.
+- Copy your ``ee144f20`` package to your robot.
 
   .. code-block:: bash
 
-    roscd ee144f19/..
-    scp -r ee144f19 ee144-nuc01@10.40.2.21:~/catkin_ws/src
+    roscd ee144f20/..
+    scp -r ee144f20 ee144-nuc01@10.40.2.21:~/catkin_ws/src
 
 - Remote login to your robot with ``-X`` flag and compile the package you just copied.
 
@@ -283,7 +283,7 @@ Launch Robot and Sensors
 
   .. code-block:: bash
 
-    roslaunch ee144f19 turtlebot_bringup_sensors.launch
+    roslaunch ee144f20 turtlebot_bringup_sensors.launch
 
 .. note::
   
@@ -302,7 +302,7 @@ Launch Robot and Sensors
 
   .. code-block:: bash
 
-    roslaunch ee144f19 rviz.launch
+    roslaunch ee144f20 rviz.launch
 
 - You can also open a new terminal on your local computer to 
   teleop your robot and take it around. 
@@ -350,13 +350,13 @@ Visualization in RViz
 
 - You can also add a robot model to rviz, to show where your robot is.  
 
-- After your customization, you can save your rviz config file to ``ee144f19/rviz``
+- After your customization, you can save your rviz config file to ``ee144f20/rviz``
   folder. Maximize the RViz window, then you can see ``file`` on the manubar.
-  Select ``Save Config As`` and save it to ``ee144f19/rviz`` with the name ``nav.rviz`` .
+  Select ``Save Config As`` and save it to ``ee144f20/rviz`` with the name ``nav.rviz`` .
   
 - Then you can change the rviz launch file to use this configuration every time.
   Specifically, you can comment out the first line and uncomment the second line
-  in the rviz launch file. The launch file is ``ee144f19/launch/rviz.launch``
+  in the rviz launch file. The launch file is ``ee144f20/launch/rviz.launch``
 
   .. code-block:: xml
 
@@ -364,7 +364,7 @@ Visualization in RViz
 
       <!--node name="rviz" pkg="rviz" type="rviz"/-->
 
-      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f19)/rviz/nav.rviz" />
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f20)/rviz/nav.rviz" />
 
     </launch>
 
