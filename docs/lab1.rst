@@ -22,10 +22,10 @@ Submission
 
 #. Due time: 11:59pm at Oct 17, Saturday (in two weeks)
 
-#. Files to submit:
+#. Files to submit: (please use exactly the same filename; case sensitive)
 
-   - lab1_report_firstname.pdf (please use the provided Word template and export to pdf)
-   - lab1_demo.mp4 (submit this **only if** you are not able to demo to me on time during labs)
+   - lab1_report.pdf (please use the provided Word template and export to pdf)
+   - (optional) lab1_demo.mp4 (submit **only if** you are not able to demo on time during labs)
 
 #. Grading rubric:
 
