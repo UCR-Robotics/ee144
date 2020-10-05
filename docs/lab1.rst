@@ -147,7 +147,7 @@ Run Turtlebot in Gazebo
 
   .. code-block:: bash
       
-    echo "export SVGA_VGPU10=0" >> ~/.profile
+    echo "export SVGA_VGPU10=0" >> ~/.bashrc
 
   If the issue persists, please shutdown your VM, go to VM settings and allocate more resources
   (Processor Cores, Memory, Graphics Memory). If the issue still persists, please disable 
