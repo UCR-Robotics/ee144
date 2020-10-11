@@ -4,42 +4,60 @@ Lab 2: Open Loop Control
 Overview
 --------
 
-In this lab, we are going to write a script to make TurtleBot follow a square trajectory.
-You are supposed to use an "open-loop" control approach. 
-The side length of the square is set to be 4m. 
-Specifically, the robot starts from its origin, moves forward 4 meters, then turns 90 degrees,
-moves forward 4 meters, turns again, and so on, until goes back to its origin. 
-(It's up to you to make a left turn or right turn. Hint: one of them is easier.)
+In this lab, we are going to learn how to write a Python script to control the robot.
+You will be exposed to basic ROS concepts, including ROS node, ROS topic and ROS publisher.
+Tutorials and supplementary reading materials will be provided.
+
+Specifically, the task is to make the robot move in a square shape using open-loop control 
+(i.e. sending commands only; no feedback). 
+The waypoints to visit are [4, 0], [4, 4], [0, 4] and [0, 0]. 
+In other words, the robot should move forward 4 meters, turn left 90 degrees, 
+move forward again 4 meters, and so on, until go back to the origin. 
+Note that the robot is supposed to stop at the origin after completing this square movement,
+and the Python script should exit gracefully. 
+
+Preview: next week we will learn how to use close-loop control to track a trajectory.
 
 Submission
 ----------
 
-#. Submission type: individual submission via iLearn
+#. Submission: individual submission via Gradescope
 
-#. Demo: not required
+#. Demo: not required (will use autograder; see below)
 
-#. Due time: at the beginning of next lab session
+#. Due time: 11:59pm at Oct 17, Saturday (in one week)
 
-#. Files to submit: **(please do not zip, just upload two files)**
+#. Files to submit: (please use exactly the same filename; case sensitive)
 
-   - A lab report in pdf format
-   - open_loop.py (with proper comments)
+   - lab2_report.pdf
+   - open_loop.py
 
 #. Grading rubric:
 
    + \+ 50%  Clearly describe your approach and explain your code in lab report.
-   + \+ 40%  Your script can drive the robot move along the square trajectory, 
-     go back to the origin, **and stop**.
-   + \+ 10%  When stop at the origin, the error between the robot and the origin is less than 1.0 meter. 
-   + \+ 10%  Bonus points will be given if you can plot the trajectory of your robot with matplotlib.
-   + \- 10%  Any missing part in the code or the report where you didn't show a good understanding.
+   + \+ 50%  The robot can visit all four vertices of the square trajectory (error < 0.5m). 
+     Partial credits will be given according to the number of vertices visited.
+   + \- 10%  Penalty for Python script running timeout.
    + \- 15%  Penalty applies for each late day. 
 
-Preview: We will learn how to implement close-loop control next time.
+Autograder
+----------
+
+All code submissions will be graded automatically by an autograder uploaded to Gradescope.
+The grading results will be available in a couple of minutes after submission.
+The autograder works in the following way. 
+Given the Gazebo simulation environment, the submitted Python script will be run for once 
+and the robot trajectory will be saved into csv files. 
+Then scores will be given by evaluating the square trajectory.
+
+- Your script is expected to finish in less than 100 seconds.
+- The current timeout setting is 500 seconds; 
+  if exceeding, the script will be terminated and timeout penalty will be applied to your grades.
+- Therefore, **it is important that your Python script can terminate in finite time.** Do not use infinite "while" loop.
 
 
-Intro to Turtlebot
-------------------
+Introduction to Turtlebot
+-------------------------
 
 The Turtlebot 2 robot with the Kobuki base is a modular robot, 
 on which additional sensors can be placed. 
@@ -98,7 +116,8 @@ A sample code is given as the starting point for your implementation.
 Please read carefully the provided code, and understand its functionality. 
 Note that the provided code can only drive the robot move straight forward.
 Please add the turning part in order to complete the square trajectory.
-You can modify any part of the provided code in your final submission.
+You only need to make changes under ``run`` function. 
+(Honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
 - Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
@@ -245,11 +264,8 @@ Sample Code Explanations
         rate.sleep()
 
 
-More ROS Tutorials
-------------------
-
-Please read the following pages to have a better understanding of ROS. 
-They are helpful for your coding and future labs.
+Supplementary Reading Materials
+-------------------------------
 
 ROS Nodes
 ~~~~~~~~~
