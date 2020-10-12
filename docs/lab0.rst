@@ -43,7 +43,7 @@ and Virtual Machine (VM).
    is a website (or company) that offers Git-based version control service.
    It's good to learn Git in the sense that you can better manage your code.
    With Git, you can see all your change history, and have backups of each version.
-   Many ROS packages that we are going to use in this course, are hosted on GitHub.
+   Many ROS packages that we are going to use in this course are hosted on GitHub.
    However, it's not strictly required in this class. 
    Going through chapter 1-5 of `this tutorial <http://swcarpentry.github.io/git-novice/>`_ 
    might be helpful.
@@ -78,7 +78,7 @@ Virtual Machine
 
 - If you have a Mac laptop, please go to `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
   webpage, register under "Get a Free Personal Use License" tab and download **VMware Fusion Player**
-  using free personal license.
+  using a free personal license.
 
 
 Install Linux

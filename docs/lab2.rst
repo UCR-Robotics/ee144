@@ -5,14 +5,14 @@ Overview
 --------
 
 In this lab, we are going to learn how to write a Python script to control the robot.
-You will be exposed to basic ROS concepts, including ROS node, ROS topic and ROS publisher.
+You will be exposed to basic ROS concepts, including ROS Node, ROS Topic and ROS Publisher.
 Tutorials and supplementary reading materials will be provided.
 
 Specifically, the task is to make the robot move in a square shape using open-loop control 
 (i.e. sending commands only; no feedback). 
 The waypoints to visit are [4, 0], [4, 4], [0, 4] and [0, 0]. 
 In other words, the robot should move forward 4 meters, turn left 90 degrees, 
-move forward again 4 meters, and so on, until go back to the origin. 
+move forward again 4 meters, and so on, until going back to the origin. 
 Note that the robot is supposed to stop at the origin after completing this square movement,
 and the Python script should exit gracefully. 
 
@@ -34,7 +34,7 @@ Submission
 
 #. Grading rubric:
 
-   + \+ 50%  Clearly describe your approach and explain your code in lab report.
+   + \+ 50%  Clearly describe your approach and explain your code in the lab report.
    + \+ 40%  The robot can visit all four vertices of the square trajectory (error < 0.5m). 
      Partial credits will be given according to the number of vertices visited.
    + \+ 10%  The script can complete the task on time and exit gracefully.
@@ -61,9 +61,9 @@ Testing parameters are as follows.
 #. The time limit for the submitted script is set to 5 mins.
 
    - If running properly, the task in this lab can be done in about 1 min, based on my testing.
-   - If running timeout, the script will be terminated and 10% penalty will apply.
+   - If running timeout, the script will be terminated and a 10% penalty will apply.
    - Therefore, it is important that your script can exit gracefully after task completion.
-     (Just avoid using infinite loop and/or remember to add break condition.)
+     (Just avoid using infinite loops and/or remember to add a break condition.)
 
 #. The global time limit on Gradescope server is set to 10 mins. 
 
@@ -138,7 +138,7 @@ Programming Guide
 
 #. When a new robot is spawned, the forward heading direction is the positive x axis; 
    the leftward direction is the positive y axis; and by right-hand rule, z axis upward. 
-   This is also definied in `REP 103 <https://www.ros.org/reps/rep-0103.html>`_. 
+   This is also specified in `REP 103 <https://www.ros.org/reps/rep-0103.html>`_. 
 
 #. Python is an indent-sensitive programming language, as opposed to C/C++.
 
@@ -148,26 +148,33 @@ Programming Guide
      where ``Tab`` key can be automatically converted into 2 or 4 ``space``s.
 
 #. The recommended IDE in Linux is `VS Code <https://code.visualstudio.com>`_.
-   Just go to the official website, download `.deb` file and install it. 
+   Just go to the official website, download ``.deb`` file and install it. 
 
    - After installation, you can go to Extensions and search for ROS. 
      Adding this extension can help you highlight the code and bring more convenience. 
 
 #. In Gazebo, you can use ``Ctrl + R`` to set the robot back to the origin without the need to relaunch.
 
+#. In this lab, you need to finely tune the parameters for open-loop control. 
+   
+   - Please note that parameters may vary from platform to platform. In other words,
+     the parameters work in your VM may not necessarily work in the cloud server running autograder.
+   - In Gazebo, you can take the visualization as feedback (the grid size of the ground is 1 meter) 
+     to tune the parameters. 
+   - On Gradescope autograder, you can take the evaluation results (visited waypoints) as feedback 
+     to make minor adjustments to the parameters you have already tuned in the VM.
+
 
 Sample Code
 -----------
 
-A sample code is given as the starting point for your implementation. 
-Please read carefully the provided code, and understand its functionality. 
-Note that the provided code can only make the robot move forward for a certain distance.
-Please add the turning part in order to complete the square trajectory.
-You only need to make changes under ``run`` function. 
+A sample code is provided to make the robot move forward for a certain distance.
+Please read carefully the provided code, and understand its functionality.
+You need to make changes under ``run`` function to complete the square trajectory.
 (Hint: honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
 - Open a new terminal and go to your ``ee144f20`` package. 
-  We will start from a new python script.
+  We will start from a new Python script.
 
   .. code-block:: bash
 
@@ -183,7 +190,7 @@ You only need to make changes under ``run`` function.
     :language: python
 
 - Back to the terminal, you can run it in two ways. 
-  One is to feed this script as input to the python program in Linux,
+  One is to feed this script as input to the Python program in Linux,
   as shown below.
 
   .. code-block:: bash
@@ -192,14 +199,14 @@ You only need to make changes under ``run`` function.
 
 - The other way is to run it as a regular executable in Linux. In this case,
   you need to first grant the execution permission to this Python script.
-  This step only need to be run once.
+  This step only needs to be run once.
 
   .. code-block:: bash
 
     chmod +x open_loop.py
 
-- Now you can see that this file turns to be in green color when you ``ls`` the current directory.
-  You may try creating a new empty file and see its color. It should be in white.
+- Now you can see that this file is in green color when you ``ls`` the current directory in the terminal.
+  This is how Linux terminal distinguishes executable (in green or highlight) and non-executable (in white).
 
   .. code-block:: bash
 
@@ -221,24 +228,10 @@ You only need to make changes under ``run`` function.
     roslaunch ee144f20 gazebo.launch
 
 
-Sample Code Explanations
-------------------------
+Sample Code Explained
+---------------------
 
-- We will break the above sample code into parts and give explanations. 
-
-- First of all, we need to talk a bit about the *class* concept in Python.
-  It is recommended that you write the code using class
-  In short, *class* is a set or category of things having some property or 
-  attribute in common and differentiated from others by kind, type, or quality. 
-  *Object* is one of instances of the class, 
-  which can perform the functionalities defined in the class. 
-  *Self* represents the instance of the class. 
-  By using the *self* keyword we can access the attributes and methods of the class in python.
-  ``__init__`` is a reserved method in python classes. 
-  It is known as a constructor in object oriented concepts. 
-  This method called when an object is created from the class 
-  and it allow the class to initialize the attributes of a class.
-  For more details, please refer to `this link <https://docs.python.org/2/tutorial/classes.html>`_.
+- Now, let's break the code down.
 
 - The first line makes sure your script is executed as a Python script in Linux.
   You need this line if you want to run it as a regular executable (i.e. run by ``./filename.py``) in Linux.
@@ -248,67 +241,143 @@ Sample Code Explanations
     #!/usr/bin/env python
 
 - You need to import rospy in order to use ROS in Python.
-  This is the Python library that contains common resources in ROS.
+  This is the Python library that contains common operations and resources in ROS.
 
   .. code-block:: python
 
     import rospy
 
-- This line imports a ``Twist`` class that help us expresses velocity.
+- This line imports a ``Twist`` *class* that can carry linear and angular velocity information. 
+  Later on we will need to create an *instance* of this class, 
+  assign the velocity value, and publish it out to the robot.
 
   .. code-block:: python
 
     from geometry_msgs.msg import Twist
 
-- One of the first calls you will likely execute in a rospy program is 
-  the call to ``rospy.init_node()``, which initializes the ROS node for the process. 
-  You can only have one node in a rospy process, 
-  so you can only call ``rospy.init_node()`` once. 
-  As part of the ``init_node()`` call, 
-  you will pass in the default name of your node. 
-  When you run your code, this is the name that your node will appear as online 
-  unless it’s overridden by remapping or other arguments. 
-  In this case, your node will take on the name ``turtlebot_move``.
+- We import a high-precision value of pi (in radian) from math library. Print it out and see its value :)
+  This is for your convenience to add the turning part of the code.
+
+  .. code-block:: python
+
+    from math import pi
+
+- We use *class* to better organize resources (variables and functions) in Python scripts.
+  With *class*, we can easily update the value of a variable in one function and have access to it
+  from another member function. 
+
+- In the following code structure, we first define a *class* named ``Turtlebot``, and then create
+  an *instance* (*object*) called ``whatever`` in the Python main function.
+  The Python program will start running from the line right after ``if __name__ == '__main__':``.
+  However, to create a new instance, the program needs to run ``__init__`` function for once 
+  (this is a function that every *class* must have for the initialization process).
+  We then call ``run`` function under ``__init__`` function. 
+  As such, each component is connected into the running pipeline. 
+  
+- The keyword ``self`` is a pointer used internally to refer to resources, and the keyword
+  ``pass`` is just a placeholder that actually does nothing.
+
+  .. code-block:: python
+    
+    class Turtlebot():
+        def __init__(self):
+            self.run()
+
+        def run(self):
+            pass
+
+    if __name__ == '__main__':
+        whatever = Turtlebot()
+
+- The ``try-except`` block is used to handle exceptions. In this case, it will provide logging information
+  when the user terminates the program using ``Ctrl + C``. 
+  For the time being, we do not need to know more details on this.
+  
+  .. code-block:: python
+    
+    if __name__ == '__main__':
+        try:
+            whatever = Turtlebot()
+        except rospy.ROSInterruptException:
+            rospy.loginfo("Action terminated.")
+
+- In ROS, we have a ROS Master (or ``roscore``) running as a central server to manage global resources
+  and connect all ROS Nodes.
+  Each program will need to talk to this central server first before talking to other program 
+  (this process is, in other words, to register itself as a ROS Node). Therefore,
+  in each and every Python script running ROS, the first thing to do is to initialize itself as a ROS Node. 
+  The argument ``turtlebot_move`` is the name we would like to assign to this ROS Node. 
 
   .. code-block:: python
 
     rospy.init_node("turtlebot_move")
 
-- ``rospy.loginfo(str)`` performs triple-duty: 
-  the messages get printed to screen, 
-  it gets written to the node’s log file, 
-  and it gets written to ``rosout``. 
-  ``rosout`` is a handy for debugging: 
-  you can pull up messages using rqt console instead of 
-  having to find the console window with your node’s output.
+- What follows is a common logging function used in ROS. In addition to printing the message
+  to screen (as what ``print`` function does in Python), it can also save the log in ROS 
+  central server for further debugging purpose.
 
   .. code-block:: python
 
-    rospy.loginfo("Press CTRL + C to stop turtlebot")
+    rospy.loginfo("Press Ctrl + C to terminate")
 
-- You can create a handle to publish messages to a topic 
-  using the ``rospy.Publisher`` class. 
-  The required arguments to create a ``rospy.Publisher`` are 
-  the topic name ``cmd_vel_mux/input/navi``, 
-  the message class ``Twist``, 
-  and the queue size ``10``.
+- ROS Topic is a way that ROS Node communicates with each other for continuous data transmission. 
+  (In this case, we keep sending velocity commands.)
+  For one-time short communication, we also have ROS Service, which will not be covered in this course.
+  
+- On the robot side, there is a ROS Subscriber waiting for velocity commands.
+  What we need to do in this script is to create a ROS Publisher to send commands.
+  The required arguments are the topic name ``cmd_vel_mux/input/navi``, 
+  the message type ``Twist``, and the queue size ``10``.
 
   .. code-block:: python
 
     self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
 
-- TurtleBot will stop if we don’t keep telling it to move. 
-  ``rospy`` provides a ``rospy.Rate`` class which allows your loops 
-  to run at the rate that you specify. 
-  In the below example, the ``Rate`` instance will attempt to keep the loop at 10Hz. 
-  With its argument of 10, we should expect to go through the loop 10 times per second.
+- The following question is how frequently we should send velocity commands.
+  Note that the robot will stop if no velocity command is received after a while,
+  and the robot may "panic" if thousands of commands are received in a second.
+  Therefore, we can pick a moderate rate at 10Hz (i.e. 10 commands per second).
+
+- We use the ``Rate`` class to help us manage the timing. 
+  By using the ``rate.sleep()`` function together with ``while`` or ``for`` loop,
+  we can approximately keep the loop running at 10Hz rate. 
+  The ``rate.sleep()`` function can calculate how much time elapsed **since last time 
+  it was called**. If this time elapsed is less than 1/rate (in this case 0.1s),
+  it will block the program till the time has reached 1/rate. 
+  If the time has already exceeded 1/rate, it will simply let it go. 
 
   .. code-block:: python
 
-    rate = rospy.Rate(10)
-    while not rospy.is_shutdown():
+    self.rate = rospy.Rate(10)
+    for i in range(50):
         self.vel_pub.publish(vel)
-        rate.sleep()
+        self.rate.sleep()
+
+- To prepare a ROS Message that contains velocity data, 
+  we first create an *instance* (called ``vel``) of the ``Twist`` class 
+  (which is the message we are about to send), 
+  and then assign linear and angular velocity to its corresponding variable.
+  Note that you need to use ``.`` to have access to the member variables of a *class* data structure.
+  See `ROS Wiki documentation <http://docs.ros.org/melodic/api/geometry_msgs/html/msg/Twist.html>`_ 
+  for more information about the message definition. 
+
+  .. code-block:: python
+
+        vel = Twist()
+        vel.linear.x = 0.5
+        vel.angular.z = 0
+        self.vel_pub.publish(vel)
+
+- Lastly, if you use ``while`` loop, it is highly recommended to add a condition
+  to check if the ROS server is still alive. 
+  This can help terminate the Python script whenever you press ``Ctrl + C`` in the terminal. 
+  On the contrary, dead loop like ``while True: xxx`` will not respond to your shutdown commands
+  (unless you add proper ``break`` condition in the loop).
+  
+  .. code-block:: python
+
+    while not rospy.is_shutdown():
+        pass
 
 
 Reading Materials
@@ -319,7 +388,7 @@ ROS Nodes
 
 - `Understanding ROS Nodes <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_
 
-- `Initialization and Shotdown <http://wiki.ros.org/rospy/Overview/Initialization%20and%20Shutdown>`_
+- `Initialization and Shutdown <http://wiki.ros.org/rospy/Overview/Initialization%20and%20Shutdown>`_
 
 ROS Topics and Messages
 ~~~~~~~~~~~~~~~~~~~~~~~

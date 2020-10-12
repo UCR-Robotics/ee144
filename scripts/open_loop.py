@@ -7,7 +7,7 @@ from math import pi
 class Turtlebot():
     def __init__(self):
         rospy.init_node("turtlebot_move")
-        rospy.loginfo("Press CTRL + C to terminate")
+        rospy.loginfo("Press Ctrl + C to terminate")
         self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
         self.rate = rospy.Rate(10)
         self.run()

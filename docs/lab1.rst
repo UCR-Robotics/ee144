@@ -160,8 +160,8 @@ Run Turtlebot in Gazebo
     roslaunch turtlebot_teleop keyboard_teleop.launch
 
 - Keep the teleop terminal open (selected) and you should be able to control the robot using keyboard now. 
-  The teleop program in this terminal takes in whatever keys you enterned and 
-  converts them into velocity commands to send to the robot. Now spend some time to play with it! 
+  The teleop program in this terminal takes in whatever keys you entered and 
+  converts them into velocity commands to send to the robot. Now spend some time playing with it! 
   (Don't send the keyboard teleop commands to the Gazebo window, it won't work; send commands to the terminal)
 
 - You can also put some obstacles (objects) in Gazebo simulation environment,
@@ -222,7 +222,7 @@ Play with robot arm in Gazebo
 
 - Once a goal pose is set, in the bottom left panel, go to "Planning" tab and try buttons "Plan", "Execute", or "Plan and Execute". 
   Cool! The software can figure out a path for the arm to follow and reach the exact goal pose you just set.
-  Speed some time to play with it!
+  Spend some time playing with it!
 
 - You can also take a look at Gazebo to see the current status of the robot arm. 
   RViz provides a tool for better interaction, but only Gazebo shows the real physical status.
