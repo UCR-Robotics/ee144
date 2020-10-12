@@ -16,7 +16,7 @@ move forward again 4 meters, and so on, until go back to the origin.
 Note that the robot is supposed to stop at the origin after completing this square movement,
 and the Python script should exit gracefully. 
 
-Preview: next week we will learn how to use close-loop control to track a trajectory.
+Preview: next week we will learn how to use closed-loop control to track a trajectory.
 
 Submission
 ----------
@@ -35,54 +35,74 @@ Submission
 #. Grading rubric:
 
    + \+ 50%  Clearly describe your approach and explain your code in lab report.
-   + \+ 50%  The robot can visit all four vertices of the square trajectory (error < 0.5m). 
+   + \+ 40%  The robot can visit all four vertices of the square trajectory (error < 0.5m). 
      Partial credits will be given according to the number of vertices visited.
-   + \- 10%  Penalty for Python script running timeout.
+   + \+ 10%  The script can complete the task on time and exit gracefully.
    + \- 15%  Penalty applies for each late day. 
 
 Autograder
 ----------
 
 All code submissions will be graded automatically by an autograder uploaded to Gradescope.
+Your scripts will be tested on a Ubuntu cloud server using a similar ROS + Gazebo environment.
 The grading results will be available in a couple of minutes after submission.
-The autograder works in the following way. 
-Given the Gazebo simulation environment, the submitted Python script will be run for once 
+
+The autograder works in the following way (two steps). 
+(1) Under Gazebo simulation environment, the submitted Python script will be run for once 
 and the robot trajectory will be saved into csv files. 
-Then scores will be given by evaluating the square trajectory.
+(2) The scores will be given by evaluating the saved trajectory and uploaded back to Gradescope.
 
-- Your script is expected to finish in less than 100 seconds.
-- The current timeout setting is 500 seconds; 
-  if exceeding, the script will be terminated and timeout penalty will be applied to your grades.
-- Therefore, **it is important that your Python script can terminate in finite time.** Do not use infinite "while" loop.
+Testing parameters are as follows. 
 
+#. The tolerance for distance error is set to 0.5m (considering this is open-loop control).
+
+   - For example, passing point [3.6, 3.8] is approximately equivalent to passing point [4.0, 4.0].
+
+#. The time limit for the submitted script is set to 5 mins.
+
+   - If running properly, the task in this lab can be done in about 1 min, based on my testing.
+   - If running timeout, the script will be terminated and 10% penalty will apply.
+   - Therefore, it is important that your script can exit gracefully after task completion.
+     (Just avoid using infinite loop and/or remember to add break condition.)
+
+#. The global time limit on Gradescope server is set to 10 mins. 
+
+   - If running timeout, the entire grading process will be terminated and you will have no grading results. 
+   - This can happen if you have dead loop in the script (e.g., ``while True: xxx``)
+     and the autograder is not able to terminate the script. 
+     (Scripts like this cannot be terminated by ``Ctrl + C`` in terminals, if you test it yourself.)
 
 Introduction to Turtlebot
 -------------------------
 
-The Turtlebot 2 robot with the Kobuki base is a modular robot, 
-on which additional sensors can be placed. 
-The robot uses differential drive for locomotion, 
-i.e., it has two powered wheels, located symmetrically about its center. 
-By commanding the velocity of each of these wheels individually, 
-we can obtain the desired linear ``v`` and rotational ``ω`` 
-velocities for the robot.
+The Turtlebot 2 robot is a differential wheeled robot built on top of the Kobuki mobile base. 
+We have customized it to include more sensors (one Lidar, two cameras, and one manipulator).
+See the image (left) below for Turtlebot family. 
 
-.. image:: pics/frame.PNG
-  :width: 60%
-  :align: center
+Though multiple layers of plates/sensors are placed on top of the robot, 
+the kinematics of the robot can be simplified according to the property 
+of its mobile base, which uses differential drive for locomotion.
+The differential mobile base has two powered wheels, located symmetrically about its center. 
+
+As users, we can send high-level commands (linear velocity ``v`` and angular velocity ``ω``) 
+to the robot. The mobile base will first transform the ``v`` and ``w`` commands with respect to the 
+robot center into the desired rotational speed of each wheel, and then control the rotational
+speed by a feedback control of the current of the motor that drives the wheel. 
+
+.. image:: pics/turtlebot_family.png
+  :width: 53%
+.. image:: pics/frame.png
+  :width: 45%
 
 To describe the position and orientation of the robot, 
 we attach a robot coordinate frame :math:`R` to it. 
 The origin of this coordinate frame is centered between its powered wheels. 
 The X axis of this frame is pointing forward (along the direction of the linear velocity ``v``),
-the Y axis is pointing to the left, and
-the Z axis is pointing up.
+the Y axis is pointing to the left, and the Z axis is pointing up.
 
-To track the position and orientation of the robot, 
-we generally define a world reference frame :math:`W`, 
-in the same plane in which the robot moves. 
-With this frame assignment, 
-the robot’s position is constrained to the X − Y plane of frame :math:`W`. 
+To track the position and orientation of the robot, we generally define a world 
+reference frame :math:`W`, in the same plane where the robot moves. 
+With this frame assignment, the robot’s position is constrained to the X − Y plane of frame :math:`W`. 
 Moreover, any rotation between the robot and the world frames can be expressed 
 as a rotation about Z axis. 
 Therefore, the position of the robot with respect to the world reference frame will have the form:
@@ -108,16 +128,43 @@ with respect to :math:`W` will be of the from:
   0 & 0 & 1     
   \end{bmatrix}
 
+Programming Guide
+-----------------
+
+#. We follow ROS conventions to use `SI units <https://en.wikipedia.org/wiki/International_System_of_Units>`_.
+   (i.e. length in meter, time in second, angle in radian). 
+   See ROS Wiki article `REP 103 Standard Units of Measure and Coordinate Conventions 
+   <https://www.ros.org/reps/rep-0103.html>`_ for more information. 
+
+#. When a new robot is spawned, the forward heading direction is the positive x axis; 
+   the leftward direction is the positive y axis; and by right-hand rule, z axis upward. 
+   This is also definied in `REP 103 <https://www.ros.org/reps/rep-0103.html>`_. 
+
+#. Python is an indent-sensitive programming language, as opposed to C/C++.
+
+   - You can use either ``space`` or ``Tab`` for indent, but please do not mix them in one file.
+     Otherwise you will see lingering syntax errors. (IMO, ``space`` is recommended.)
+   - A better way to organize indent is to use an Integrated Development Environment (IDE) for programming,
+     where ``Tab`` key can be automatically converted into 2 or 4 ``space``s.
+
+#. The recommended IDE in Linux is `VS Code <https://code.visualstudio.com>`_.
+   Just go to the official website, download `.deb` file and install it. 
+
+   - After installation, you can go to Extensions and search for ROS. 
+     Adding this extension can help you highlight the code and bring more convenience. 
+
+#. In Gazebo, you can use ``Ctrl + R`` to set the robot back to the origin without the need to relaunch.
+
 
 Sample Code
-------------
+-----------
 
 A sample code is given as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
-Note that the provided code can only drive the robot move straight forward.
+Note that the provided code can only make the robot move forward for a certain distance.
 Please add the turning part in order to complete the square trajectory.
 You only need to make changes under ``run`` function. 
-(Honestly, this lab can be done in 10 lines of code if you know what you are doing.)
+(Hint: honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
 - Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
@@ -194,7 +241,7 @@ Sample Code Explanations
   For more details, please refer to `this link <https://docs.python.org/2/tutorial/classes.html>`_.
 
 - The first line makes sure your script is executed as a Python script in Linux.
-  You need this line if you want to run it as a regular executable in Linux.
+  You need this line if you want to run it as a regular executable (i.e. run by ``./filename.py``) in Linux.
   
   .. code-block:: python
 
@@ -264,25 +311,30 @@ Sample Code Explanations
         rate.sleep()
 
 
-Supplementary Reading Materials
--------------------------------
+Reading Materials
+-----------------
 
 ROS Nodes
 ~~~~~~~~~
 
-- `Understanding ROS Nodes <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_.
+- `Understanding ROS Nodes <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_
 
-- `Initialization and Shotdown <http://wiki.ros.org/rospy/Overview/Initialization%20and%20Shutdown>`_.
-
+- `Initialization and Shotdown <http://wiki.ros.org/rospy/Overview/Initialization%20and%20Shutdown>`_
 
 ROS Topics and Messages
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-- `Messages <http://wiki.ros.org/Messages>`_.
+- `Messages <http://wiki.ros.org/Messages>`_
 
-- `Understanding ROS Topics <http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics>`_.
+- `Understanding ROS Topics <http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics>`_
 
-- `Publishers and Subscribers <http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers>`_.
+- `Publishers and Subscribers <http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers>`_
 
+ROS Conventions
+~~~~~~~~~~~~~~~
 
+- `REP 103 Standard Units of Measure and Coordinate Conventions 
+  <https://www.ros.org/reps/rep-0103.html>`_
+
+- `REP 105 Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`_
 
