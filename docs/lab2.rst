@@ -35,7 +35,7 @@ Submission
 #. Grading rubric:
 
    + \+ 50%  Clearly describe your approach and explain your code in the lab report.
-   + \+ 40%  The robot can visit all four vertices of the square trajectory (error < 0.5m). 
+   + \+ 40%  The robot can visit all four vertices of the square trajectory (error < 1.0m). 
      Partial credits will be given according to the number of vertices visited.
    + \+ 10%  The script can complete the task on time and exit gracefully.
    + \- 15%  Penalty applies for each late day. 
@@ -47,16 +47,17 @@ All code submissions will be graded automatically by an autograder uploaded to G
 Your scripts will be tested on a Ubuntu cloud server using a similar ROS + Gazebo environment.
 The grading results will be available in a couple of minutes after submission.
 
-The autograder works in the following way (two steps). 
+The autograder works in the following way (no action on your side needed; just to explain). 
 (1) Under Gazebo simulation environment, the submitted Python script will be run for once 
 and the robot trajectory will be saved into csv files. 
 (2) The scores will be given by evaluating the saved trajectory and uploaded back to Gradescope.
 
+
 Testing parameters are as follows. 
 
-#. The tolerance for distance error is set to 0.5m (considering this is open-loop control).
+#. The tolerance for distance error is set to 1.0m (considering this is open-loop control).
 
-   - For example, passing point [3.6, 3.8] is approximately equivalent to passing point [4.0, 4.0].
+   - For example, passing point [3.6, 3.4] is approximately equivalent to passing point [4.0, 4.0].
 
 #. The time limit for the submitted script is set to 5 mins.
 
