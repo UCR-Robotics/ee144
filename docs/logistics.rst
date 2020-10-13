@@ -11,7 +11,7 @@ please see syllabus for course overview and lecture/homework related logistics.
 - Email: hteng007@ucr.edu
 - Office Hour: TBD
 
-Please **feel free** to contact me if you have any question.
+Please **feel free** to contact me if you have any questions.
 
 
 Lab Organization
@@ -19,7 +19,7 @@ Lab Organization
 
 - Lab tutorials and assignments will be posted on the website before each lab starts.
   During lab sessions, you can work on these materials at your own pace, 
-  and let me know if you have any question. 
+  and let me know if you have any questions. 
   
 - It is encouraged to go over lab materials before coming to the lab, such that you can 
   wisely/efficiently use the time during lab sessions and ask important questions to help you 
@@ -48,7 +48,7 @@ Submission and Grading
 - In some labs, it is required to submit your code via iLearn or Gradescope. 
   Please organize your code clearly and explain it by adding proper comments.
   Please also submit a lab report to document your approach. 
-  A templete lab report will be provided.
+  A template lab report will be provided.
 
 - In some other labs, it is required to demo to me. 
   During the demo, some questions may be asked to test your understanding
@@ -57,13 +57,13 @@ Submission and Grading
 
 - Attendance is required for all labs. However, 
   you may leave early if you have completed all lab materials.
-  Please sign in and sign out when you enter/leave lab room.
+  Please sign in and sign out when you enter/leave the lab room.
   (There is a sign-in form near the door.) 
   This lab rule is enforced by the department.
 
 - Lab assignments are typically due at 11:59pm one week after assigned, unless otherwise specified.
   Grading will be completed ASAP after submission. 
-  You will get a detailed feedback indicating where you lost points and why.
+  You will get detailed feedback indicating where you lost points and why.
 
 
 Communications
@@ -72,7 +72,7 @@ Communications
 Please consider reaching out to me in the following preferred order, regarding technical issues.
 
 1. **Office Hour**. Please wisely use the time at office hour, during which
-   I can give detailed explainations.
+   I can give detailed explanations.
    You can also email me to schedule an appointment, if you cannot make it to office hour.
 
 2. **Piazza**. It is said that Piazza makes office hour 24hr/7days for students.
@@ -82,7 +82,7 @@ Please consider reaching out to me in the following preferred order, regarding t
 
    + We can use multimedia materials to interact on Piazza, rather than plain text in emails.
 
-   + You may get good answers/helps from your classmates as well, which is encouraged.
+   + You may get good answers/help from your classmates as well, which is encouraged.
    
    + You can ask private questions on Piazza if necessary, which are visible to instructors only.
 
