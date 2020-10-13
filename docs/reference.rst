@@ -2,79 +2,6 @@ Reference Materials
 ===================
 
 
-Tutorials
----------
-
-- `Python syntax lookup <https://www.w3schools.com/python/>`_
-
-- `ROS Tutorials main website <http://wiki.ros.org/ROS/Tutorials>`_
-
-- `rospy tutorials main website <http://wiki.ros.org/rospy_tutorials>`_
-
-- `How do I save terminal output to a file?
-  <https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file>`_
-
-- `What is a bashrc file and what does it do? 
-  <https://askubuntu.com/questions/540683/what-is-a-bashrc-file-and-what-does-it-do>`_
-
-- `What does source do? <https://superuser.com/questions/46139/what-does-source-do>`_
-
-- `Apt command guide <https://itsfoss.com/apt-command-guide/>`_
-
-
-ROS Conventions
----------------
-
-- `REP 103 Standard Units of Measure and Coordinate Conventions 
-  <https://www.ros.org/reps/rep-0103.html>`_ (please read, the most important one)
-
-- `REP 105 Coordinate Frames for Mobile Platforms <https://www.ros.org/reps/rep-0105.html>`_
-
-- `REP 144 ROS Package Naming <https://www.ros.org/reps/rep-0144.html>`_
-
-
-ROS Reading Guideline
----------------------
-
-Here I listed (in sequence) the most important tutorials that you need to go through.
-
-#. `Installing and Configuring Your ROS Environment 
-   <http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment>`_
-
-#. `Creating a ROS Package 
-   <http://wiki.ros.org/ROS/Tutorials/CreatingPackage>`_
-
-#. `Understanding ROS Nodes 
-   <http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes>`_
-
-#. `Understanding ROS Topics 
-   <http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics>`_
-
-#. `Writing a Simple Publisher and Subscriber (Python) 
-   <http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29>`_
-
-Some important concepts.
-
-- `ROS Core <http://wiki.ros.org/roscore>`_ and `ROS Master <http://wiki.ros.org/Master>`_
-
-- `ROS Message <http://wiki.ros.org/action/fullsearch/Messages>`_
-
-- `ROS Launch <http://wiki.ros.org/roslaunch>`_ and 
-  `Command Line Tools <http://wiki.ros.org/roslaunch/Commandline%20Tools>`_
-
-- `Graph Resource Names <http://wiki.ros.org/Names>`_
-
-Command line tools for debugging.
-
-- `Command line tools main page <http://wiki.ros.org/ROS/CommandLineTools>`_
-
-- `rosnode <http://wiki.ros.org/rosnode>`_
-
-- `rostopic <http://wiki.ros.org/rostopic>`_
-
-- `rqt_graph <http://wiki.ros.org/rqt_graph>`_
-
-
 Navigation Stack
 ----------------
 
@@ -88,6 +15,16 @@ Navigation Stack
   <http://wiki.ros.org/navigation/Tutorials/Using%20rviz%20with%20the%20Navigation%20Stack>`_
 
 - `Navigation Tuning Guide <http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide>`_
+
+
+VS Code IDE
+-----------
+
+- The recommended IDE in Linux is `VS Code <https://code.visualstudio.com>`_.
+  Just go to the official website, download the ``.deb`` file and install it. 
+
+- After installation, you can go to Extensions and search for ROS. 
+  Adding this extension can help you highlight the code and bring more convenience. 
 
 
 Atom Editor
@@ -120,27 +57,27 @@ Tab key detection, and so on.
     atom
 
 - You can right click the Atom icon on taskbar and choose "Lock to Launcher",
-  such that you can run it by just click the icon on taskbar next time.
+  such that you can run it by just clicking the icon on taskbar next time.
 
-- You can customize some settings in Atom. Go to the menubar of Atom.
-  Open settings by click on "edit" first, and then "preferences".
+- You can customize some settings in Atom. Go to the menu bar of Atom.
+  Open settings by clicking on "edit" first, and then "preferences".
   Go to Editor, then you can change font size and tab length 
   (how many spaces you want to have when you press a Tab key).
   This is really useful especially when working with Python,
   since you have to indent each line of the block by the same whitespace,
   in order to indicate a block of code in Python.
 
-- To use Atom for your project, just go to the nenubar, select "File",
+- To use Atom for your project, just go to the menu bar, select "File",
   then select "Open Folder" or "Add Project Folder", and then open your ROS workspace or ROS package.
   With this, you can have a tree directory on the left side, and do not need
-  to switch back and forth in terminal or file manager.
+  to switch back and forth in the terminal or file manager.
 
 
 USB WiFi Adapter
 ----------------
 
 In order to have bi-directional communications between your laptop and the robot, 
-we use a USB WiFi apapter binding your VM to a pysical MAC address, 
+we use a USB WiFi adapter binding your VM to a physical MAC address, 
 rather than sharing the network of your host computer.
 
 - Open a new terminal, download the driver and install it by the following commands.
@@ -167,7 +104,7 @@ rather than sharing the network of your host computer.
 .. note::
 
   Sometimes the system upgrade may disable the linux driver.
-  The solution would be that just install the driver again.
+  The solution would be to just install the driver again.
 
 
 Teamviewer Remote Login
@@ -179,10 +116,10 @@ Teamviewer Remote Login
   Once setup, you can remote login to your robot with GUI, from any other computer and 
   and operating system. It looks just like you are working on that computer locally.
 
-- To set up teamviewer on the onboard computer on robot, first connect it to a monitor.
+- To set up teamviewer on the onboard computer on a robot, first connect it to a monitor.
   This is necessary for installation and change settings in teamviewer later on.
 
-- Open a new terminal, download host-only version of teamviewer and install it.
+- Open a new terminal, download the host-only version of teamviewer and install it.
 
   .. code-block:: bash
 
@@ -200,7 +137,7 @@ Teamviewer Remote Login
     The following packages have unmet dependencies:
       qt56-teamviewer but it is not installable
 
-  This is not really the missing of dependencies. 
+  This is not really the absence of dependencies. 
   The actual reason is that you do not have proper graphics-related service/program/library enabled.
   The linux system will not launch some graphical programs if it knows that no monitor is connected.
   The solution could be using a dummy HDMI plug or connecting to a real monitor.
@@ -214,7 +151,7 @@ Teamviewer Remote Login
     teamviewer
 
 - Go to ``Extras``, and then ``Options``, change ``Incoming LAN connections`` to be ``accept exclusively``.
-  With this, only the connection request from LAN is valid, which can help keep it safe from outside world.
+  With this, only the connection request from LAN is valid, which can help keep it safe from the outside world.
 
 - Go to ``Security`` and set ``Personal password`` the same as your login password.
 

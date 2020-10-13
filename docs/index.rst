@@ -15,6 +15,7 @@ Welcome to UCR EEME144 Introduction to Robotics!
     lab1
     lab2
     linux
+    ros
 
 
 News
@@ -26,4 +27,5 @@ News
 - 09/28/2020: `Lab0 <lab0.html>`_ is up.
 - 10/04/2020: `Lab1 <lab1.html>`_ is up.
 - 10/11/2020: `Lab2 <lab2.html>`_ is up.
-- 10/12/2020: `Linux Tutorial <linux.html>`_ has been posted.
+- 10/12/2020: `Linux Tutorials <linux.html>`_ have been posted.
+- 10/12/2020: `ROS Reading Materials <ros.html>`_ have been posted.

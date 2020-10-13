@@ -174,3 +174,17 @@ This is an advanced concept that might be out of the scope of this course. List 
 
     env | grep ROS
 
+
+Reading Materials
+-----------------
+
+- `What is a bashrc file and what does it do? 
+  <https://askubuntu.com/questions/540683/what-is-a-bashrc-file-and-what-does-it-do>`_
+
+- `What does source do? <https://superuser.com/questions/46139/what-does-source-do>`_
+
+- `How do I save terminal output to a file?
+  <https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file>`_
+
+- `Apt command guide <https://itsfoss.com/apt-command-guide/>`_
+
