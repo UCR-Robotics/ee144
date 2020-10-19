@@ -15,10 +15,6 @@ Same as in Lab 2, the waypoints are [4, 0], [4, 4], [0, 4], [0, 0], and the sequ
 After task completion, the robot should stop at the origin and the Python script should exit gracefully. 
 Please plot the trajectory (using another provided Python script) and discuss your results in the lab report. 
 
-Bonus points will be given for the completion of an additional task of tracking a circular trajectory.
-The circular trajectory should be centered at point [0, 2] and have a radius of 2m; counter-clockwise sequence. 
-You will need to write a function to generate continuous waypoints to track.
-
 Preview: We will play with manipulators in Gazebo next time. 
 (Specifically, to solve a Forward Kinematics problem.)
 
@@ -36,7 +32,6 @@ Submission
 
    - lab3_report.pdf
    - closed_loop.py
-   - closed_loop_circle.py (optional; bonus points)
 
 #. Grading rubric:
 
@@ -45,8 +40,6 @@ Submission
    + \+ 40%  Implement PD controller; visit four vertices of the square trajectory with error < 0.1m. 
      Partial credits will be given according to the number of vertices visited.
    + \+ 10%  The script can complete the task on time and exit gracefully.
-   + \+ 10%  Bonus points for tracking a circular trajectory;
-     plot the trajectory and report results.
    + \- 15%  Penalty applies for each late day. 
 
 
@@ -64,9 +57,6 @@ Testing parameters are as follows.
    - For example, passing point [3.96, 3.94] is approximately equivalent to passing point [4, 4].
 
 #. The required waypoints for square trajectory are [4, 0], [4, 4], [0, 4] and [0, 0]; sequence matters.
-
-#. The circular trajectory should be centered at point [0, 2] and have a radius of 2m. 
-   10 waypoints are evenly selected on this trajectory, in a counter-clockwise sequence.
 
 #. The time limit for the submitted script is set to 5 mins.
 
