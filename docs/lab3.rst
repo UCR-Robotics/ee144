@@ -9,7 +9,7 @@ A ROS Subscriber is included in the script to receive real-time odometry feedbac
 With the odom/pose updates, the robot can adjust its moving direction accordingly and check if 
 the desired waypoint has been reached.
 
-Specifically, the task is to implement a PD controller (a variant of PID controller that removes "I" component)
+Specifically, the task is to implement a PD controller (a variant/subset of PID controller)
 to track the square shape trajectory. 
 Same as in Lab 2, the waypoints are [4, 0], [4, 4], [0, 4], [0, 0], and the sequence does matter.
 After task completion, the robot should stop at the origin and the Python script should exit gracefully. 
@@ -17,7 +17,7 @@ Please plot the trajectory (using another provided Python script) and discuss yo
 
 Bonus points will be given for the completion of an additional task of tracking a circular trajectory.
 The circular trajectory should be centered at point [0, 2] and have a radius of 2m; counter-clockwise sequence. 
-(Hint: You will need to write a function to generate continuous waypoints to track.)
+You will need to write a function to generate continuous waypoints to track.
 
 Preview: We will play with manipulators in Gazebo next time. 
 (Specifically, to solve a Forward Kinematics problem.)
@@ -46,7 +46,7 @@ Submission
      Partial credits will be given according to the number of vertices visited.
    + \+ 10%  The script can complete the task on time and exit gracefully.
    + \+ 10%  Bonus points for tracking a circular trajectory;
-     plot the trajectory and report the results.
+     plot the trajectory and report results.
    + \- 15%  Penalty applies for each late day. 
 
 
@@ -76,7 +76,7 @@ Testing parameters are as follows.
 .. note::
 
   It is required to use closed-loop control (i.e. PD controller) to track the trajectory. 
-  Finely tuned open-loop control script may also pass the autograder testing, but is not allowed.
+  Finely tuned open-loop control script may also pass the autograder tests, but is not allowed.
   All scripts will be double checked when grading manually. 
   Penalty will apply if such script is found.
 
@@ -84,34 +84,98 @@ Testing parameters are as follows.
 PID Control
 -----------
 
+Consider the following feedback control diagram. 
 
-An example of feedback control algorithm is the following.
+.. image:: pics/feedback_block.png
+  :width: 80%
+  :align: center
 
-#. Initialization: set the robot’s desired orientation as :math:`\phi^* = 0`.
-#. Define :math:`P_0` to be the current position of the robot.
-#. Keep moving forward, while maintaining the robot’s orientation as close to :math:`\phi^*` as possible, 
-   until we reach a location that is at a distance of your side length to :math:`P_0`.
-#. Set :math:`\phi^* = \phi^* + \pi / 2`, then properly adjust :math:`\phi^*` if necessary.
-#. Rotate in place, until the robot’s orientation equals :math:`\phi^*`
-   (within some small tolerance threshold), then repeat from Step 2.
-#. Terminate if go back to the origin.
+- The plant is the system we would like to control. 
+  In our case, the control input ``u`` is the velocity command we send to the robot,
+  and the control output ``y`` is the current state (2D pose: x, y, theta) of the robot.
 
-A discrete PD controller implementation in Python is provided (partially). 
+- The controller is what we need to design. 
+  It takes the tracking error ``e``, which is the difference between the desired output ``r`` 
+  and the actual output ``y``,
+  and computes the control input ``u`` according to the following equation. 
+  (The control input to the plant is the output of the controller.)
+
+.. math::
+  
+  \begin{equation*}
+  u(t)=K_{p} e(t)+K_{i} \int e(t) d t+K_{d} \frac{d e}{d t}
+  \end{equation*}
+
+- For discrete systems, we can replace integral with summation and replace derivative with subtraction. 
+  In programming, for integral term, one more variable is needed to sum up all history value;
+  for derivative term, one more variable is needed to track the value at the last moment.
+  
+- ``Kp``, ``Ki``, and ``Kd`` are the coefficients/parameters we need to tune. 
+  You may start with value 1; tune the parameters and see what happens.
+
+- In math, it has rigorous analysis to show the stability and convergence of the system,
+  which can be used to calculate the optimal parameters ``Kp``, ``Ki`` and ``Kd``. 
+  (This should be covered in EE132 Automatic Control class, which is the prerequisite of this class.)
+  See this 
+  `PID Controller Design <http://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID>`_ 
+  tutorial for more information. 
+
+Due to the negative effect from integral component, we drop this term in the controller design.
+In this lab, we will only focus on PD controller. 
+
+A discrete PD controller implementation in Python is provided (partially though) for your information. 
+You may or may not use it in your own implementation.
 To make it work, you need to understand the PD control algorithm 
 and fill in the ``update`` function.
-You may or may not use it in your own implementation. 
 
   .. literalinclude:: ../scripts/controller.py
     :language: python
 
 
+Programming Tips
+----------------
+
+- In general, PID controller is applied to track a certain target value (called setpoint),
+  and make sure the system can converge to this target value. 
+  For example, to control the temperature in a boiler system. 
+  (Note that this is a scalar, set to a certain value.)
+  
+- In our case, we have three variables (x, y, theta) to describe the 2D pose of the robot.
+  Only one of them can be set as the desired value to track in a PID controller. 
+  In other words, a set of PID parameters (Kp, Ki and Kd) is needed for each variable.
+  You can track either one variable (theta recommended) or multiple variables in your implementation.
+
+- We recommend adding an upper bound checking for the control input (both linear and angular velocity)
+  computed by the controller, before sending to the robot.
+  This can make the movement smooth and physically feasible. 
+  (e.g., the robot will go crazy or get damaged if a 10m/s linear velocity is given.)
+
+- One important question to ask in this lab is: How to express the orientation in 2D plane? 
+  You may think of [-pi, pi] or [0, 2pi]. Both correct. 
+  However, the key is to properly handle the abrupt change of the angle when the robot passes the boundary. 
+  This is one of the challenges you need to figure out. 
+  If you don't take good care of the angle representation, 
+  you can reach the first two waypoints of the square, but not the third one. 
+
+The following is an example of the feedback control algorithm and its application to waypoint navigation problem.
+
+#. Suppose the robot’s current orientation is :math:`\phi`, the desired orientation is :math:`\phi^*`,
+   the current position on X-Y plane is :math:`(x, y)`, and the desired position on X-Y plane is :math:`(x^*, y^*)`. 
+#. Calculate the moving direction from the difference between :math:`(x, y)` and :math:`(x^*, y^*)`;
+   set it as the desired orientation :math:`\phi^*`. 
+#. Initialize a PID controller with the setpoint :math:`\phi^*` and a set of parameters.
+   Adjust the angle according to the angular velocity computed by the PID controller. 
+#. Once :math:`\phi \rightarrow \phi^*`, start moving forward at a constant speed, and checking 
+   the remaining distance toward desired position :math:`(x^*, y^*)`.
+#. Once :math:`(x, y) \rightarrow (x^*, y^*)`, stop, turn in place, and move toward the next waypoint. 
+
 Sample Code
-------------
+-----------
 
 A sample code is provided as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
 
-- Open a new terminal and go to your ``ee144f20`` package. 
+- Open a new terminal and go to the ``ee144f20`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
@@ -144,7 +208,7 @@ Sample Code Explained
 
 - Odometry works in the way that it counts how many rounds the wheel rotates. 
   Therefore, if you lift and place a robot from one place to another, it will still "think" 
-  that it was at the original place.
+  that it is at the original place.
 
 - In Gazebo simulator, using command ``Ctrl + R`` to reset the robot is similar to 
   lifting the robot and placing it to the origin, where the odometry will still report 
@@ -153,7 +217,7 @@ Sample Code Explained
 
   .. code-block:: python
 
-    self.reset_pub = rospy.Publisher('mobile_base/commands/reset_odometry', Empty)
+    self.reset_pub = rospy.Publisher("mobile_base/commands/reset_odometry", Empty, queue_size=10)
     for i in range(10):
         self.reset_pub.publish(Empty())
         self.rate.sleep()
@@ -162,7 +226,7 @@ Sample Code Explained
   ROS Subscriber is the one on the other side to receive and process the messages.
   The required arguments are the topic name ``odom``, 
   the message type ``Odometry``, and a pointer to the callback function.
-  The callback function will be executed (asynchronously; in another thread) whenever a new message is received.
+  The callback function will be executed whenever a new message is received (asynchronously; in another thread).
   We leverage the shared variables in Turtlebot class to store the latest pose of the robot.
   Note that the ``msg`` argument in the callback function is of the type ``Odometry``. 
   The definition is specified in 
@@ -177,7 +241,7 @@ Sample Code Explained
 
 - In the ``try-except`` structure, ``finally`` is the keyword to indicate that the following
   code block will be executed regardless if the try block raises an error or not. 
-  In this case, we want to save the trajectory even when the robot stops at halfway.
+  In this case, we want to save the trajectory even when the robot stops halfway.
 
   .. code-block:: python
 

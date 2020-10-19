@@ -13,11 +13,11 @@ class Turtlebot():
     def __init__(self):
         rospy.init_node("turtlebot_move")
         rospy.loginfo("Press Ctrl + C to terminate")
-        self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist)
+        self.vel_pub = rospy.Publisher("cmd_vel_mux/input/navi", Twist, queue_size=10)
         self.rate = rospy.Rate(10)
 
         # reset odometry to zero
-        self.reset_pub = rospy.Publisher('mobile_base/commands/reset_odometry', Empty)
+        self.reset_pub = rospy.Publisher("mobile_base/commands/reset_odometry", Empty, queue_size=10)
         for i in range(10):
             self.reset_pub.publish(Empty())
             self.rate.sleep()
