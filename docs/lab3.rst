@@ -26,7 +26,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Oct 24, Saturday (in one week)
+#. Due time: 11:59pm, Oct 26, Monday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -82,41 +82,58 @@ Consider the following feedback control diagram.
 
 - The plant is the system we would like to control. 
   In our case, the control input ``u`` is the velocity command we send to the robot,
-  and the control output ``y`` is the current state (2D pose: x, y, theta) of the robot.
+  the control output ``y`` is the current state (2D pose: x, y, theta) of the robot,
+  and the reference ``r`` is the desired state we would like the robot to reach. 
 
 - The controller is what we need to design. 
-  It takes the tracking error ``e``, which is the difference between the desired output ``r`` 
+  It takes in the tracking error ``e``, which is the difference between the desired reference ``r`` 
   and the actual output ``y``,
-  and computes the control input ``u`` according to the following equation. 
+  and **computes the control input** ``u`` **according to the following equation**. 
   (The control input to the plant is the output of the controller.)
 
 .. math::
   
   \begin{equation*}
-  u(t)=K_{p} e(t)+K_{i} \int e(t) d t+K_{d} \frac{d e}{d t}
+  u(t) = k_p e(t) + k_i \int e(t)dt + k_d \frac{de(t)}{dt}
   \end{equation*}
 
-- For discrete systems, we can replace integral with summation and replace derivative with subtraction. 
-  In programming, for integral term, one more variable is needed to sum up all history value;
-  for derivative term, one more variable is needed to track the value at the last moment.
-  
-- ``Kp``, ``Ki``, and ``Kd`` are the coefficients/parameters we need to tune. 
-  You may start with value 1; tune the parameters and see what happens.
+- This equation reveals the name of the controller: Proportional–Integral–Derivative (PID) controller,
+  because it has three terms: proportional term, integral term and derivative term.
+  In each term, we have a coefficient ``k`` multiplies the (integral/derivative of the) error.
+  The ``Kp``, ``Ki``, and ``Kd`` are the coefficients/parameters we need to tune. 
 
 - In math, it has rigorous analysis to show the stability and convergence of the system,
   which can be used to calculate the optimal parameters ``Kp``, ``Ki`` and ``Kd``. 
-  (This should be covered in EE132 Automatic Control class, which is the prerequisite of this class.)
-  See this 
+  (This should be covered in EE132 Automatic Control course. See this 
   `PID Controller Design <http://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID>`_ 
-  tutorial for more information. 
+  tutorial for more information.) 
+  However, in this lab manually tuned non-optimal parameters are sufficient to complete the task.
+  You may start with some value close to 1 for ``Kp`` and a smaller value for ``Kd``.
 
-Due to the negative effect from integral component, we drop this term in the controller design.
-In this lab, we will only focus on PD controller. 
+- As for the integral and the derivative of the error, in discrete systems,
+  we can replace integral with summation and replace derivative with subtraction. 
 
-A discrete PD controller implementation in Python is provided (partially though) for your information. 
-You may or may not use it in your own implementation.
-To make it work, you need to understand the PD control algorithm 
-and fill in the ``update`` function.
+.. math::
+  
+  \begin{equation*}
+  u(t) = k_p e(t) + k_i \sum e(t) + k_d \frac{e(t) - e(t-\Delta t)}{\Delta t}
+  \end{equation*}
+
+- Due to the negative effect from integral component, we will drop this term and only focus on PD controller. 
+  Also, the time inverval :math:`\Delta t` can be merged into parameter ``Kd``. 
+  (If we run at 10Hz, the time inverval will be 0.1 second.) 
+  Therefore, we have the following equation ready, **which is what you need to implement in this lab**.
+
+.. math::
+  
+  \begin{equation*}
+  u(t) = k_p e(t) + k_d (e(t) - e(t-\Delta t))
+  \end{equation*}
+
+- A discrete PD controller implementation in Python is provided for your information. 
+  (You may or may not use it in your own implementation.)
+  To make it work, you need to understand the PD control algorithm 
+  and complete the three lines of code under the ``update`` function.
 
   .. literalinclude:: ../scripts/controller.py
     :language: python
@@ -125,39 +142,39 @@ and fill in the ``update`` function.
 Programming Tips
 ----------------
 
-- In general, PID controller is applied to track a certain target value (called setpoint),
+- Note that the orientation of the robot (theta) ranges from ``-pi`` to ``pi`` on 2D plane.
+  When the robot turns in CCW direction and passes the direction of negative x axis,
+  the value of theta will jump from ``pi`` to ``-pi``. This needs to be handled properly, 
+  otherwise the robot will keep turning in place and cannot move forward.
+  It is recommended that you bring up a robot, turn in place using keyboard teleoperation,
+  and see how the value changes for theta. 
+  (You can see it from ROS logging messages if using the provided ``closed_loop.py`` file).
+
+- In general, PID controller is used to track a certain target value (called **setpoint**),
   and make sure the system can converge to this target value. 
   For example, to control the temperature in a boiler system. 
-  (Note that this is a scalar, set to a certain value.)
+  (Note that the setpoint is a scalar, set to a certain target value.)
   
 - In our case, we have three variables (x, y, theta) to describe the 2D pose of the robot.
-  Only one of them can be set as the desired value to track in a PID controller. 
-  In other words, a set of PID parameters (Kp, Ki and Kd) is needed for each variable.
-  You can track either one variable (theta recommended) or multiple variables in your implementation.
+  At one time only one of them can be set as the desired value to track in a PID controller. 
+  If you are willing to track x, y, and theta at the same time, you will need three PID controllers.
+  (To comlpete the task in this lab, out of three controllers, the one to track theta is required,
+  and the other two for x and y are optional. See below an example algorithm.)
 
-- We recommend adding an upper bound checking for the control input (both linear and angular velocity)
-  computed by the controller, before sending to the robot.
-  This can make the movement smooth and physically feasible. 
-  (e.g., the robot will go crazy or get damaged if a 10m/s linear velocity is given.)
+- The following is an example of how to apply feedback control algorithm to waypoint navigation problem.
+  You may follow this algorithm to start your implementation.
 
-- One important question to ask in this lab is: How to express the orientation in 2D plane? 
-  You may think of [-pi, pi] or [0, 2pi]. Both correct. 
-  However, the key is to properly handle the abrupt change of the angle when the robot passes the boundary. 
-  This is one of the challenges you need to figure out. 
-  If you don't take good care of the angle representation, 
-  you can reach the first two waypoints of the square, but not the third one. 
-
-The following is an example of the feedback control algorithm and its application to waypoint navigation problem.
-
-#. Suppose the robot’s current orientation is :math:`\phi`, the desired orientation is :math:`\phi^*`,
+#. Suppose the robot’s current orientation is :math:`\theta`, the desired orientation is :math:`\theta^*`,
    the current position on X-Y plane is :math:`(x, y)`, and the desired position on X-Y plane is :math:`(x^*, y^*)`. 
 #. Calculate the moving direction from the difference between :math:`(x, y)` and :math:`(x^*, y^*)`;
-   set it as the desired orientation :math:`\phi^*`. 
-#. Initialize a PID controller with the setpoint :math:`\phi^*` and a set of parameters.
+   set it as the desired orientation :math:`\theta^*`. 
+#. Initialize a PID controller with the setpoint :math:`\theta^*` and a set of parameters (Kp, Ki and Kd).
    Adjust the angle according to the angular velocity computed by the PID controller. 
-#. Once :math:`\phi \rightarrow \phi^*`, start moving forward at a constant speed, and checking 
-   the remaining distance toward desired position :math:`(x^*, y^*)`.
-#. Once :math:`(x, y) \rightarrow (x^*, y^*)`, stop, turn in place, and move toward the next waypoint. 
+#. Once :math:`\theta \rightarrow \theta^*`, start moving forward at a constant speed 
+   (or using a linear velocity generated by another PID controller), and keep adjusting the angle and
+   checking the remaining distance toward desired position :math:`(x^*, y^*)`.
+#. Once :math:`(x, y) \rightarrow (x^*, y^*)`, stop and repeat the process for the next waypoint. 
+
 
 Sample Code
 -----------
