@@ -7,12 +7,13 @@ Overview
 In this lab, we will switch gears and work on the manipulator. 
 
 Specifically, we will write a script to solve the Forward Kinematics problem.
-Given joint angles, the task is to compute the position of the end effector.
-You can use Power of Exponential, D-H Parameters or other approaches you like. 
-We will provide a couple of test cases for you in autograder. 
+Given joint angles and the dimension of the manipulator, 
+the task is to compute the position of the end effector.
+You can use Product of Exponentials, D-H Parameters or other approaches you like. 
+We will provide a couple of test cases for you on autograder. 
 The script you submitted should be able to pass all test cases.
 
-Preview: We will team up and work on Inverse Kinematics problem next time.
+Preview: We will team up and work on Inverse Kinematics next time.
 
 
 Submission
@@ -22,7 +23,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Oct 31, Saturday (in one week)
+#. Due time: 11:59pm, Nov 2, Monday
 
 #. Files to submit: (please submit exactly the same file)
 
@@ -36,16 +37,74 @@ Submission
    + \- 15%  Penalty applies for each late day. 
 
 
+Autograder
+----------
+
+All code submissions will be graded automatically by an autograder uploaded to Gradescope.
+Your scripts will be tested on a Ubuntu cloud server using a similar ROS environment.
+The grading results will be available in a couple of minutes after submission.
+
+Testing parameters are as follows. 
+
+#. The tolerance for distance error is set to 0.002m (Manhattan distance on x, y, z axes).
+
+   - The autograder will take the maximum of the error in x, y, z axes respectively,
+     and check if the maximum error is less than 0.002m. 
+   - For example, if the computed position is [0.020, 0.013, 0.298], and the 
+     ground truth is [0.021, 0.012, 0.297], it should pass the test.
+
+#. Three test cases are visible to you; two test cases are hidden. 
+   You can see this information on autograder. 
+   
+   - The hidden test cases are to test some "corner cases" and 
+     make sure there is no hard-coded computation in the submitted script.
+
+#. The time limit is not set in this lab, as the script should be able to get it done in seconds.
+
+
+Programming Tips
+----------------
+
+#. We provide two scripts ``forward_kinematics.py`` and ``test_forward_kinematics.py`` for you,
+   but only the first one is what you need to complete and submit. 
+   The second one is for your testing.
+
+#. To simplify computation, we will regard ``joint4`` as the end effector. 
+   In other words, you need to return the position of ``joint4`` instead of the actual end effector.
+   The specification of the manipulator is attached in the end of the webpage, 
+   where you can find which one is ``joint4``.
+
+#. Options for Forward Kinematics
+
+   - Product of Exponentials in space frame.
+   - Product of Exponentials in body frame.
+   - Formulate Denavit-Hartenberg parameters between each frame and multiple all transformation matrices.
+   - Directly (brute force) compute the transformation matrices between each joint and link.
+   - You can either compute everything using program, or pre-compute some matrices by hand.
+
+#. Please pay attention to the data type used in your computation.
+
+   - If two matrices ``A`` and ``B`` are of the type ``np.array``, 
+     then ``A * B`` will **not** perform matrix multiplication, but element-wise multiplication.
+
+   - If two matrices ``A`` and ``B`` are of the type ``np.array``, 
+     then ``np.dot(A, B)`` **will** perform matrix multiplication.
+
+   - If two matrices ``A`` and ``B`` are of the type ``np.matrix``, 
+     then ``A * B`` **will** perform matrix multiplication.
+
+
 ReactorX 150 Manipulator
 ------------------------
 
 - Get familiar with the robot model by launching it in Rviz and playing with the joint state publisher. 
+  (You should have all software packages installed in Lab 1.)
 
   .. code-block:: bash
 
     roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
 
-- To test the script, launch it without joint state publisher and run the script in another terminal. 
+- To test the script, launch it without the joint state publisher and run the script in another terminal. 
 
   .. code-block:: bash
 
@@ -63,8 +122,8 @@ ReactorX 150 Manipulator
     rosrun tf tf_echo /rx150/base_link /rx150/wrist_link
 
 
-Starter Code
-------------
+Sample Code
+-----------
 
 - Open a new terminal and go to your ``ee144f20`` package. 
   We will start from a new python script.
@@ -75,14 +134,13 @@ Starter Code
     touch forward_kinematics.py
     gedit forward_kinematics.py
 
-- Please copy and paste the following code. 
+- Please copy and paste the following code, 
+  and complete the ``forward_kinematics`` function in this file.
 
   .. literalinclude:: ../scripts/forward_kinematics.py
     :language: python
 
-- Please complete the ``forward_kinematics`` function in this file.
-
-- We also provide a testing script.  
+- We provide another script for testing.  
 
   .. code-block:: bash
 
@@ -90,18 +148,17 @@ Starter Code
     touch test_forward_kinematics.py
     gedit test_forward_kinematics.py
 
-- Please copy and paste the following code, then save and close it.
+- Please copy and paste the following code.
+  You can change the ``test_case`` variable to other values for testing.
 
   .. literalinclude:: ../scripts/test_forward_kinematics.py
     :language: python
-
-- You can change the ``test_case`` variable to other values to test your function.
 
 
 Specification
 -------------
 
 The dimension of the ReactorX 150 manipulator is the following.
-We will take joint4 as the end effector point (instead of the actual gripper). 
+We will take ``joint4`` as the end effector point (instead of the actual gripper). 
 
 .. image:: pics/rx150.png
