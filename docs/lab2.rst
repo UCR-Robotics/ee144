@@ -16,7 +16,7 @@ move forward again 4 meters, and so on, until going back to the origin.
 Note that the robot is supposed to stop at the origin after completing this square movement,
 and the Python script should exit gracefully. 
 
-Preview: next week we will learn how to use closed-loop control to track a trajectory.
+Preview: Next week we will learn how to use closed-loop control to track a trajectory.
 
 Submission
 ----------
@@ -25,7 +25,7 @@ Submission
 
 #. Demo: not required (will use autograder; see below)
 
-#. Due time: 11:59pm at Oct 17, Saturday (in one week)
+#. Due time: 11:59pm, Oct 17, Saturday (in one week)
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -129,8 +129,8 @@ with respect to :math:`W` will be of the from:
   0 & 0 & 1     
   \end{bmatrix}
 
-Programming Guide
------------------
+Programming Tips
+----------------
 
 #. We follow ROS conventions to use `SI units <https://en.wikipedia.org/wiki/International_System_of_Units>`_.
    (i.e. length in meter, time in second, angle in radian). 

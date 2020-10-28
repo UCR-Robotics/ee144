@@ -1,5 +1,6 @@
 import numpy as np
 from math import pi, cos, sin
+import modern_robotics as mr
 
 def forward_kinematics(joints):
     # input: joint angles [joint1, joint2, joint3]

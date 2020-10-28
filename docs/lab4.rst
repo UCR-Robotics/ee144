@@ -54,10 +54,8 @@ Testing parameters are as follows.
      ground truth is [0.021, 0.012, 0.297], it should pass the test.
 
 #. Three test cases are visible to you; two test cases are hidden. 
-   You can see this information on autograder. 
-   
-   - The hidden test cases are to test some "corner cases" and 
-     make sure there is no hard-coded computation in the submitted script.
+   The hidden ones are designed to test some "corner cases" and 
+   to make sure there is no hard-coded computation in the submitted script.
 
 #. The time limit is not set in this lab, as the script should be able to get it done in seconds.
 
@@ -76,10 +74,10 @@ Programming Tips
 
 #. Options for Forward Kinematics
 
+   - Directly write down the transformation matrices between joints and links.
    - Product of Exponentials in space frame.
    - Product of Exponentials in body frame.
-   - Formulate Denavit-Hartenberg parameters between each frame and multiple all transformation matrices.
-   - Directly (brute force) compute the transformation matrices between each joint and link.
+   - Formulate Denavit-Hartenberg parameters between each frame and multiply all transformation matrices.
    - You can either compute everything using program, or pre-compute some matrices by hand.
 
 #. Please pay attention to the data type used in your computation.
@@ -92,6 +90,13 @@ Programming Tips
 
    - If two matrices ``A`` and ``B`` are of the type ``np.matrix``, 
      then ``A * B`` **will** perform matrix multiplication.
+
+#. Functions available in ``numpy`` and ``modern_robotics`` library.
+
+   - ``np.cross(A, B)`` the cross product of two vectors
+   - ``np.concatenate([A, B])`` the concatenation of two vectors
+   - ``mr.VecTose3(S)`` converts a 6x1 twist vector S to a 4x4 matrix in se(3) 
+   - ``mr.MatrixExp6(M)`` the matrix exponential of a 4x4 matrix in se(3)
 
 
 ReactorX 150 Manipulator

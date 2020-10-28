@@ -10,7 +10,7 @@ launch a Turtlebot robot and play with it, launch a robot arm and play with it.
 While following the step-by-step tutorials, please take your time to think about 
 what you are doing and what happens in each step, with the help of Google if necessary.
 
-Preview: next week we are going to learn how to write Python scripts to control the Turtlebot robot.
+Preview: Next week we are going to learn how to write Python scripts to control the Turtlebot robot.
 
 
 Submission
@@ -20,7 +20,7 @@ Submission
 
 #. Demo: required (one for Turtlebot and one for robot arm)
 
-#. Due time: 11:59pm at Oct 17, Saturday (in two weeks)
+#. Due time: 11:59pm, Oct 17, Saturday (in two weeks)
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -166,6 +166,14 @@ Run Turtlebot in Gazebo
 
 - You can also put some obstacles (objects) in Gazebo simulation environment,
   and drive the robot to collide with obstacles. See what happens :)
+
+.. note::
+
+  To terminate the programs running in the terminal, please use ``Ctrl + C`` and wait for a moment
+  (it does take about 10s for Gazebo to shut down). 
+  If the terminal is closed without terminating the programs properly 
+  (meaning that the programs are still running in the back-end),
+  you will see a Gazebo crash error in the next run.
 
 
 Set up robot arm in Gazebo
