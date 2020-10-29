@@ -10,6 +10,7 @@ from forward_kinematics import forward_kinematics
 class Manipulator():
     def __init__(self):
         rospy.init_node('manipulator')
+        rospy.loginfo("Press Ctrl + C to terminate")
         self.rate = rospy.Rate(10)
         self.joint_pub = rospy.Publisher('/rx150/joint_states', JointState, queue_size=10)
         
@@ -26,7 +27,7 @@ class Manipulator():
         print(test_case)
         print(position)
         
-        for i in range(20):
+        while not rospy.is_shutdown():
             joint_msg.header.stamp = rospy.Time.now()
             joint_msg.position[0:3] = test_case
             self.joint_pub.publish(joint_msg)
