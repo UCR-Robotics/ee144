@@ -1,232 +1,163 @@
-Lab 5: Go! TurtleBot!
-=======================
+Lab 5: Inverse Kinematics
+=========================
 
 Overview
 --------
 
-In this lab, we will (finally) work on real TurtleBot robots.
-Please work in groups of two and share one robot. 
-The goal of this lab is to help you get familiar with this TurtleBot robot,
-and apply your closed-loop control sctipts on the robot.
-The demo will be driving the robot to move along the edges of a 
-2m L x 0.5m W rectangle and return to the origin, 
-using closed-loop control (as we did in Lab 3).
-Please note that you may need to make some changes to your code,
-as the code working in simulation does not necessary work on real robot very well.
+In this lab, we will continue working on the manipulator and solve the Inverse Kinematics problem. 
+
+Specifically, the task is to solve for a set of feasible joint angles,
+given the position of the end effector. 
+You can use either the analytical approach (by trigonometry) or the numerical approach. 
+We will provide a couple of test cases for you on autograder. 
+The script you submitted should be able to pass all test cases.
+
+Preview: We will shift back to mobile robots and tracking control next time.
+
 
 Submission
 ----------
 
-#. Submission: group submission (from one of you) via iLearn, due by the end of the day of next lab
+#. Submission: group submission via Gradescope
 
-#. Demo: required, due by the end of next lab
+#. Demo: not required
 
-#. Files to submit: **(please do not zip, just upload all files)**
+#. Due time: 11:59pm, Nov 9, Monday
 
-   - lab5_report_01.pdf (replace 01 with your team number, **use number 01-18**)
-   - lab5_closed_loop.py
-  
+#. Files to submit:
+
+   - lab5_report.pdf
+   - inverse_kinematics.py
+
 #. Grading rubric:
 
-   - \+ 50%  Clearly describe your approach and explain your code in lab report.
-   - \+ 30%  Be able to make the robot move.
-   - \+ 20%  Apply closed-loop control on the robot and demo to TA.
-   - \- 15%  Penalty applies for each late day. 
-
-Preview: We will work on waypoint navigation (motion planning) next time.
+   + \+ 50%  Clearly describe your approach and explain your code in the lab report.
+   + \+ 50%  Implement inverse kinematics and pass test cases.
+   + \- 15%  Penalty applies for each late day. 
 
 
-Lab Rules
----------
-
-#. Safety is always the top priority.
-
-   - No food or beverage allowed in the lab.
-   - Report any suspicious cables, wires, etc.
-
-#. Organize your station before you leave.
-
-   - **Cut off all power supply (both robot base and NUC)**.
-   - Organize wires, cables, etc.
-
-#. Do not leave your personal information on the robot.
-
-   - Create your own folder when you work, and delete code when you leave.
-   - The robot is shared by two lab sections.
-
-#. Do NOT make any changes to the wiring on the robot.
-
-#. Please find your station according to your team number. 
-
-   - In Tuesday lab, your station/robot number is your team number.
-   - In Thursday lab, your station/robot number is your team number minus 10.
-
-#. Please save the battery (recharging takes time), 
-   and charge the robot if you do not have it running.
-
-
-Network Setup
--------------
-
-- If you are using native Linux OS or dual boot with Linux OS, 
-  you can skip this section. 
-  (As long as you can connect to the robot with your network card,
-  then you don't need the USB WiFi Adapter.)
-
-- Open your Ubuntu VM, `follow the instructions here <reference.html#usb-wifi-adapter>`_
-  and install Linux driver for USB WiFi Adapter.
-
-- Shutdown your VM. 
-  Go to the settings of your VM, in ``Network Adapter`` section, 
-  uncheck ``Connect at power on``, 
-  and select ``NAT`` as the network connection.
-
-- Go to the ``USB Controller`` section of the settings, 
-  select ``USB 3.0`` as the USB compatibility.
-
-- Plug in (USB 3.0 port if applicable) the USB WiFi adapter on your host computer,
-  then pass (this USB device) into your VM. 
-  (You can find options on the menubar to pass removable devices into VM.)
-
-
-Remote login
-------------
-
-- Connect to ``roboticslab`` WiFi network. 
-  Please ask TA for credentials.
-  Check if your Internet connection is good.
-
-- The IP address of your Ubuntu VM is dynamically allocated, 
-  while the IP address of your robot (NUC computer) is static.
-
-- Connect power bank to the NUC onboard computer on your robot, 
-  then turn on the robot and NUC computer.
-
-- To remote login to the NUC computer on your robot, 
-  open a new terminal and run
-
-  .. code-block:: bash
-
-    ssh username@NUC_IP
-
-- Replace the above ``username`` and ``NUC_IP`` with the actual one.
-  For example, the IP address of robot 01 is ``10.40.2.21``, 
-  and the IP address of robot 02 is ``10.40.2.22``, and so on.
-  The username on NUC computer is ``ee144-nuc01`` for robot 01, and so on.
-
-- For example, for robot 01 we can use
-
-  .. code-block:: bash
-
-    ssh ee144-nuc01@10.40.2.21
-
-- Please ask TA for the password of this account.
-
-- You can see the new username and hostname on your terminal if you succeed.
-  It should be like ``ee144-nuc01@ee144-nuc01``.
-
-- If you want to use graphic tools later on, then use
-
-  .. code-block:: bash
-
-    ssh -X username@NUC_IP   (must be capitalized X)
-
-- To disconnect, just run
-
-  .. code-block:: bash
-
-    exit
-
-- To shutdown your remote computer, run
-
-  .. code-block:: bash
-
-    sudo shutdown now
-
-
-Copy Files
+Autograder
 ----------
 
-- Command ``scp`` (secure copy) can help you copy files between two computers.
-  
-- To copy files from your VM to robot, open a terminal in your VM and run
+All code submissions will be graded automatically by an autograder uploaded to Gradescope.
+Your scripts will be tested on a Ubuntu cloud server using a similar ROS environment.
+The grading results will be available in a couple of minutes after submission.
 
-  .. code-block:: bash
+Testing parameters are as follows. 
 
-    scp /path/to/file/name.py username@NUC_IP:/path/to/destination
+#. The tolerance for distance error is set to 0.002m (Manhattan distance on x, y, z axes).
 
-- To copy files from robot to your VM, just switch the above two arguments
+   - The autograder will take the maximum of the error in x, y, z axes respectively,
+     and check if the maximum error is less than 0.002m. 
+   - For example, if the computed position is [0.020, 0.013, 0.298], and the 
+     ground truth is [0.021, 0.012, 0.297], it should pass the test.
 
-  .. code-block:: bash
+#. The autograder works in the way that it sends joint angles to the manipulator and 
+   reads the results after the manipulator actually moves according to these angles. 
+   It will compare the ground truth position with the position after 
+   moving according to the computed angles.
 
-    scp username@NUC_IP:/path/to/file/name.py /path/to/destination 
-
-- Another option is using FileZilla. For Windows and MacOS laptops, you can 
-  `download FileZilla here <https://filezilla-project.org/download.php?show_all=1>`_.
-
-- For linux laptop, run the following command to install.
-
-  .. code-block:: bash
-    
-    sudo apt install filezilla
+#. The time limit is not set in this lab, as the script should be able to get it done in seconds.
 
 
-Bringup TurtleBot
------------------
+Programming Tips
+----------------
 
-- Turn on the robot and NUC computer, make sure the wiring on robot is good.
-  Open a new terminal in your VM, **remote login into your robot**, and run
+#. We provide two scripts ``inverse_kinematics.py`` and ``test_inverse_kinematics.py`` for you,
+   but only the first one is what you need to complete and submit. 
+   The second one is for your testing.
 
-  .. code-block:: bash
-    
-    roslaunch turtlebot_bringup minimal.launch --screen
+#. To simplify computation, we will regard ``joint4`` as the end effector. 
+   In other words, you are given the position of ``joint4`` instead of the actual end effector.
+   The specification of the manipulator is attached in the end of the webpage, 
+   where you can find which one is ``joint4``.
 
-- You should hear some sound here if you succeed.
+#. Options for Inverse Kinematics
 
-- Copy your code to robot and try to make it run in a rectangle. 
-  **Then demo to TA**.
+   - Analytical approach by trigonometry
+   - Numerical approach by Newton's method
 
-- Note: When you bring up the robot, the odometry will be reset (initialized to origin).
+#. Two math tools that might be helpful. Please see lecture slides for more information.
 
+   - Two-argument arctangent :math:`\theta = arctan(y, x) \in (-\pi, \pi]` (we use ``atan2`` in programming)
 
-Example
--------
+   - Law of cosines :math:`\gamma = arccos(\frac{a^2 + b^2 - c^2}{2ab}) \in (0, \pi)`
 
-- For example, open a new terminal in your VM and go to your ROS package.
+Sample Code
+-----------
+
+- Open a new terminal and go to your ``ee144f20`` package. 
+  We will start from a new python script.
 
   .. code-block:: bash
 
     roscd ee144f20/scripts
-    cp closed_loop_square_p_ctrl.py lab5_closed_loop.py 
-    gedit lab5_closed_loop.py
+    touch inverse_kinematics.py
+    gedit inverse_kinematics.py
 
-- Then make some changes (dimension of square, etc.) 
-  and make sure this script works in Gazebo simulation.
+- Please copy and paste the following code, 
+  and complete the ``inverse_kinematics`` function in this file.
 
-- Open a new terminal, and remote login to your robot and create a new folder.
+  .. literalinclude:: ../scripts/inverse_kinematics.py
+    :language: python
 
-  .. code-block:: bash
-    
-    ssh -X ee144-nuc01@10.40.2.21
-    [enter password]
-
-    mkdir team01
-
-- Go back to previous terminal, copy this script to your robot.
+- We provide another script for testing.  
 
   .. code-block:: bash
-    
-    scp ./lab5_closed_loop.py ee144-nuc01@10.40.2.21:~/team01/
 
-- You can use the terminal running remote login session to open file manager
-  or gedit editor (works only if you login with ``-X`` option)
+    roscd ee144f20/scripts
+    touch test_inverse_kinematics.py
+    gedit test_inverse_kinematics.py
+
+- Please copy and paste the following code.
+  You can change the ``test_case`` variable to other values for testing.
+
+  .. literalinclude:: ../scripts/test_inverse_kinematics.py
+    :language: python
+
+
+ReactorX 150 Manipulator
+------------------------
+
+- Get familiar with the robot model by launching it in Rviz and playing with the joint state publisher. 
 
   .. code-block:: bash
-    
-    nautilus .
 
-    gedit filename.py
+    roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
 
-- If you want to have multiple terminals running remote login session,
-  then you need to open multiple terminals in your VM and remote login respectively.
+- To test the script, launch it without the joint state publisher and run the script in another terminal. 
+
+  .. code-block:: bash
+
+    roslaunch interbotix_descriptions description.launch robot_name:=rx150
+
+  .. code-block:: bash
+
+    roscd ee144f20/scripts
+    python test_inverse_kinematics.py
+
+- You need to check if the joint angles computed by your script can lead the manipulator move to 
+  the required position. 
+  To check the end effect position, run the following command in another terminal.
+
+  .. code-block:: bash
+
+    rosrun tf tf_echo /rx150/base_link /rx150/wrist_link
+
+
+Specification
+-------------
+
+The dimension of the ReactorX 150 manipulator is the following.
+We take ``joint4`` as the end effector point (instead of the actual gripper). 
+
+.. image:: pics/rx150.png
+
+Two more annotated figures to help you understand the trigonometry. 
+The :math:`\theta_1`, :math:`\theta_2` and :math:`\theta_3` marked in the figures
+are the joint angles you need to compute.
+
+.. image:: pics/inv_kin1.png
+
+.. image:: pics/inv_kin2.png
 
