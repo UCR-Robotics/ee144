@@ -1,6 +1,6 @@
 import numpy as np
 from math import pi, cos, sin, atan, atan2, sqrt, acos
-import modern_robotics as mr
+import sympy as sym
 
 def inverse_kinematics(position):
     # input: the position of end effector [x, y, z]

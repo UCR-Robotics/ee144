@@ -8,11 +8,11 @@ In this lab, we will continue working on the manipulator and solve the Inverse K
 
 Specifically, the task is to solve for a set of feasible joint angles,
 given the position of the end effector. 
-You can use either the analytical approach (by trigonometry) or the numerical approach. 
+You can use either the analytical approach (by trigonometry) or the numerical approach (by Newton's method). 
 We will provide a couple of test cases for you on autograder. 
 The script you submitted should be able to pass all test cases.
 
-Preview: We will shift back to mobile robots and tracking control next time.
+Preview: We will shift back to mobile robots and work on motion planning next time.
 
 
 Submission
@@ -22,7 +22,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Nov 9, Monday
+#. Due time: 11:59pm, Nov 16, Monday
 
 #. Files to submit:
 
@@ -72,16 +72,27 @@ Programming Tips
    The specification of the manipulator is attached in the end of the webpage, 
    where you can find which one is ``joint4``.
 
-#. Options for Inverse Kinematics
+#. Options for Inverse Kinematics. Please see lecture slides for more information.
 
    - Analytical approach by trigonometry
    - Numerical approach by Newton's method
 
-#. Two math tools that might be helpful. Please see lecture slides for more information.
+#. Two math tools that might be helpful for the analytical approach. 
 
    - Two-argument arctangent :math:`\theta = arctan(y, x) \in (-\pi, \pi]` (we use ``atan2`` in programming)
-
    - Law of cosines :math:`\gamma = arccos(\frac{a^2 + b^2 - c^2}{2ab}) \in (0, \pi)`
+
+#. Math library and functions that might be helpful for the numerical approach.
+
+   - ``import sympy as sym`` the math library ``sympy`` can help with symbolic mathematics
+   - ``sym.cos`` and ``sym.sin`` the symbolic version operations (distinct from those in ``math`` library)
+   - ``sym.symbols`` create symbolic variables
+   - ``sym.diff`` compute the derivative of a function with respect to a variable
+   - ``sym.lambdify`` transform a symbolic function in sympy into a native Python function 
+     (using lambda expression), such that the Python function can be evaluated at given points later on.
+   - If you do want to proceed with the numerical approach, you need to read the documentation of these functions
+     in order to properly use them in programming. 
+
 
 Sample Code
 -----------
