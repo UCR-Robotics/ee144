@@ -99,34 +99,6 @@ Programming Tips
    - ``mr.MatrixExp6(M)`` the matrix exponential of a 4x4 matrix in se(3)
 
 
-ReactorX 150 Manipulator
-------------------------
-
-- Get familiar with the robot model by launching it in Rviz and playing with the joint state publisher. 
-  (You should have all software packages installed in Lab 1.)
-
-  .. code-block:: bash
-
-    roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
-
-- To test the script, launch it without the joint state publisher and run the script in another terminal. 
-
-  .. code-block:: bash
-
-    roslaunch interbotix_descriptions description.launch robot_name:=rx150
-
-  .. code-block:: bash
-
-    roscd ee144f20/scripts
-    python test_forward_kinematics.py  [see next section]
-
-- To check the actual end effect position, run the following command in another terminal.
-
-  .. code-block:: bash
-
-    rosrun tf tf_echo /rx150/base_link /rx150/wrist_link
-
-
 Sample Code
 -----------
 
@@ -158,6 +130,34 @@ Sample Code
 
   .. literalinclude:: ../scripts/test_forward_kinematics.py
     :language: python
+
+
+ReactorX 150 Manipulator
+------------------------
+
+- Get familiar with the robot model by launching it in Rviz and playing with the joint state publisher. 
+  (You should have all software packages installed in Lab 1.)
+
+  .. code-block:: bash
+
+    roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
+
+- To test the script, launch it without the joint state publisher and run the script in another terminal. 
+
+  .. code-block:: bash
+
+    roslaunch interbotix_descriptions description.launch robot_name:=rx150
+
+  .. code-block:: bash
+
+    roscd ee144f20/scripts
+    python test_forward_kinematics.py
+
+- To check the actual end effect position, run the following command in another terminal.
+
+  .. code-block:: bash
+
+    rosrun tf tf_echo /rx150/base_link /rx150/wrist_link
 
 
 Specification

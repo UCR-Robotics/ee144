@@ -5,7 +5,7 @@ import modern_robotics as mr
 def forward_kinematics(joints):
     # input: joint angles [joint1, joint2, joint3]
     # output: the position of end effector [x, y, z]
-    # add your code here to complete the computation using forward kinematics
+    # add your code here to complete the computation
 
     link1z = 0.065
     link2z = 0.039
