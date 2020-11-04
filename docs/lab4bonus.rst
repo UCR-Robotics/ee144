@@ -15,7 +15,7 @@ Please follow the instructions as listed below.
 - Note that this time you need to return the final transformation matrix T, 
   as opposed to position only in Lab 4.
 
-- There will be 20 test cases (10 for each approach) on autograder. 
+- There will be 5 test cases for each approach on autograder. 
   All scripts will be double checked and the final score may be manually adjusted. 
 
 - It is required to use the PoE and the D-H parameters to solve the problem.
