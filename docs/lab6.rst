@@ -147,7 +147,17 @@ where :math:`x_0, x_T, \dot{x}_0, \dot{x}_T` are initial/terminal position/veloc
   \end{equation}
 
 To solve this equation of the form :math:`x = Ta`, we can simply take the advantage of the inverse matrix
-and have the solution :math:`a = T^{-1}x`.
+and have the solution :math:`a = T^{-1}x`. 
+Once the coefficients are known, the position and the velocity at each moment can be obtained by evaluating 
+the function :math:`x(t)` and :math:`\dot{x}(t)` at :math:`t = 0, 0.1, 0.2, ..., T`. 
+(This is an example of running at 10Hz where the time interval is 0.1s.)
+
+Finally, a PID controller (introduced in Lab 3) can be applied to track the desired position and velocity 
+at each moment. To closely track the trajectory, the parameter ``Kp`` can take a larger value.
+As before, it is possible to only track the orientation by the PID controller and 
+simply set the linear velocity to be the magnitude (i.e. :math:`v = \sqrt{v_x^2 + v_y^2}` ). 
+Note that the orientation ``setpoint`` in this lab is changing all the time as the robot follows the trajectory 
+(as opposed to a fixed setpoint in Lab 3). 
 
 So far we have introduced the basic steps to solve for a polynomial time scaling problem.
 The following are three final remarks regarding the selection of parameters.
@@ -176,7 +186,7 @@ The following are three final remarks regarding the selection of parameters.
 #. Discussion on the numerical stability of polynomial functions
 
    - It is possible to use a continuous timeline for all trajectories 
-     (i.e. :math:`[0, T]` for the first segment, :math:`[T_1, T_2]` for the second, and so on).
+     (i.e. :math:`[0, T_1]` for the first segment, :math:`[T_1, T_2]` for the second, and so on).
      However, this approach is not numerically stable, especially when the order of the polynomial is higher.
 
    - For example, in a 7th order polynomial function, as :math:`T` grows larger, 
@@ -190,7 +200,7 @@ Visualization
 -------------
 
 - You can reuse the visualization python script provided in Lab 3 to plot the trajectory.
-  Remember to adjust the limit on x and y axes and include it in the lab report. 
+  Remember to adjust the limit on x and y axes and include the plot in the lab report. 
 
 - An example of the trajectory is provided as follows.
   It is a bit overshooting. You can do better :)
