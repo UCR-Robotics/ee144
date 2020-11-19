@@ -9,7 +9,7 @@ def visualization():
     ax.set_aspect('equal')
 
     trajectory = np.loadtxt("trajectory.csv", delimiter=',')
-    plt.plot(trajectory[:, 0], trajectory[:, 1], linewidth=3)
+    plt.plot(trajectory[:, 0], trajectory[:, 1], linewidth=2)
 
     plt.xlim(-1, 5)
     plt.ylim(-1, 5)
