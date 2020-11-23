@@ -4,50 +4,70 @@ Lab 7: Motion Planning
 Overview
 --------
 
-In this lab, we will work on the second stage of motion planning, 
-which is the A* graph search algorithm. 
-With this algorithm, you can find an optimal path given a (square) grid map.
-We only consider exact cell decomposition 
-(no multi-resolution grids, no mixed cells, 
-if any part of the grid is occupied, the entire grid is marked as obstacle).
-You can pick Manhattan distance or Euclidean distance as the Heuristic function.
-No diagonal movement is allowed (4-connected graph). 
+In Lab 6, we can generate trajectories when waypoints are given. 
+In this lab, we will implement A* algorithm to search for these waypoints.
 
-#. You need to first decompose your environment into (square) grid map,
-   marked with start point, end point, and obstacles.
-#. Second, transform the grid map into a graph with nodes and weights assigned.
-#. Finally, run A* algorithm to search an optimal path and return with all the waypoints on the path.
+We assume a grid map is given with some grids marked as obstacles.
+The task is to apply A* algorithm to find an optimal path from the start grid to the goal grid
+without colliding with obstacles. 
+You can use Manhattan distance or Euclidean distance as the heuristic function.
+(Other admissible heuristic functions should also work.)
+No diagonal movement is allowed (i.e. use 4-connected graphs). 
 
-Please refer to your lecture slides for more details. 
-An example of pseudocode is provided in the end of this page.
+Please refer to the lecture slides for more details. 
+The pseudocode is provided at the end of this page.
 
-Preview: We will play with sensors and work on ROS navigation stack next time.
+Preview: Next time we will learn how to generate the grid map from a real world environment 
+and apply what we have learned so far on real robots.
 
 
 Submission
 ----------
 
-#. Submission: group submission (from one of you) via iLearn, 
-   due by the end of the day of next lab
+#. Submission: group submission via Gradescope
 
-#. Demo: required, due by the end of next lab
+#. Demo: not required
 
-#. Files to submit: **(please do not zip, just upload all files)**
+#. Due time: 11:59pm, Nov 30, Monday
 
-   - lab7_report_01.pdf (replace 01 with your team number, **use number 01-18**)
+#. Files to submit:
+
+   - lab7_report.pdf
    - motion_planning.py
-  
+
 #. Grading rubric:
 
-   - \+ 50%  Clearly describe your approach and explain your code in lab report.
-   - \+ 30%  Decompose the environment and implement A* algorithm for motion planning.
-   - \+ 20%  Apply A* algorithm on the robot and be able to move from the 
-     start point to the end point without colliding with (given) obstacles.
-   - \- 15%  Penalty applies for each late day. 
+   + \+ 50%  Clearly describe your approach and explain your code in the lab report.
+   + \+ 50%  Implement A* algorithm and pass all test cases.
+   + \- 15%  Penalty applies for each late day. 
 
 
-Code Snippets
--------------
+Autograder
+----------
+
+For each A* path computed, the autograder will check the following conditions. 
+
+#. The returned path should be a Python list, and each element in the list should be a 2-tuple.
+   (Will discuss this data type soon.)
+
+#. The path should not collide with any obstacle. 
+
+#. The path should contain the goal grid but not the start grid.
+
+   - For example, the path from (0, 0) to (2, 2) should be [(1, 0), (1, 1), (2, 1), (2, 2)]
+   - This is a convention in grid-based motion planning, such that when iterating over the list,
+     it can lead the robot to the goal.
+
+#. The path should have 4-connectivity from the first element to the last. 
+
+   - In other words, at each step, from one grid to the next, 
+     the robot can move in only one of the four directions 
+     [1, 0], [-1, 0], [0, 1] or [0, -1]. No diagonal movement is allowed.
+   - The start grid and the first element in the path should also have 4-connectivity.
+
+
+Sample Code
+-----------
 
 - Open a new terminal and go to your ``ee144f20`` package. 
   We will create a new python script.
@@ -58,65 +78,64 @@ Code Snippets
     touch motion_planning.py
     gedit motion_planning.py
 
-- Please copy and paste the code from previous lab, 
-  then you may want to add the following modules.
+- Please copy and paste the following code.
 
-  .. code-block:: python
+  .. literalinclude:: ../scripts/motion_planning.py
+    :language: python
 
-    class Turtlebot():
-        def __init__(self):
-            rospy.init_node("turtlebot_move")
-            # some other code ...
+- To test the algorithm, you can use the following script and change test cases as you want. 
 
+  .. literalinclude:: ../scripts/test_motion_planning.py
+    :language: python
 
-        def get_path_from_A_star(self):
-            start_point = [0, 0]
-            end_point = [5, 1]
-            obstacles = [[2, -1], [2, 0], [2, 1], ...]
-            # you may want to add more boundary grids to obstacles
+- An example of the grid map and the corresponding A* path is shown below.
 
-            open_list = []
-            close_list = []
-            optimal_path = []
-
-            return optimal_path
-
-
-        def run(self):
-            # get waypoints from A star algorithm
-            waypoints = self.get_path_from_A_star()
-            for point in waypoints:
-                self.move_to_point(point)
-            self.stop()
-            rospy.loginfo("Action done.")
-
-
-        # some other functions ...
-
-
-- The environment setup is the following, where the green grid is the start position,
-  the red grid is the end position, and the grey grids are obstacles. 
-  If applying to the testing area in our lab, the grid size should be 0.5m.
-
-  .. image:: pics/map.jpg
-    :width: 60%
-    :align: center
-  
-- The final result should be similar to the following.
-
-  .. image:: pics/result.jpg
-    :width: 60%
-    :align: center
-
-- Remember that you can test your code in Gazebo first and then apply to real robot.
+  .. image:: pics/A_star_before.png
+    :width: 48%
+  .. image:: pics/A_star_after.png
+    :width: 48%
 
 
 A* Pseudocode
 -------------
 
-- You may refer to the pseudocode shown below.
+You may refer to the pseudocode shown below.
 
 .. image:: pics/pseudocode.jpg
   :width: 80%
   :align: center
+
+
+Programming Tips
+----------------
+
+#. Review of some use cases of Python List
+
+   - ``path = list()`` or ``path = []`` creates an empty list.
+   - ``path.append()`` appends a new element to the end of the list.
+   - ``path.pop()`` removes (and returns) the element at the specified position.
+   - ``path.sort()`` sorts the list ascending by default.
+   - ``path.reverse()`` reverses the sorting order of the elements.
+
+#. Tuple data type in Python
+
+   - In Python, [0, 0] is a list with 2 elements, while (0, 0) is a tuple with 2 elements (named 2-tuple).
+   - [[0, 1], [1, 1], [1, 2]] is a list and its elements are also lists,
+     while [(0, 1), (1, 1), (1, 2)] is a list and its elements are tuples.
+   - A path should be a list with multiple elements, and each element is a 2-tuple. 
+
+#. Dictionary data type in Python
+
+   - ``d = dict()`` or ``d = {}`` creates an empty dictionary. 
+   - We have to use tuple in this lab because tuple is 
+     `hashable <https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python>`_,
+     and hence can be used in a dictionary.
+   - The operation ``d[start] = 0`` is invalid if ``start`` is a list 
+     and valid if ``start`` is a tuple.
+
+#. Comparison over List, Tuple and Dictionary
+
+   - ``List`` is ordered and changeable. Allows duplicate members.
+   - ``Tuple`` is ordered and unchangeable. Allows duplicate members.
+   - ``Dictionary`` is unordered, changeable and indexed. No duplicate members.
 

@@ -19,6 +19,7 @@ Welcome to UCR EEME144 Introduction to Robotics!
     lab4bonus
     lab5
     lab6
+    lab7
     linux
     ros
 
@@ -39,3 +40,4 @@ News
 - 11/02/2020: `Lab 5 <lab5.html>`_ is up.
 - 11/03/2020: `Lab 4 Bonus <lab4bonus.html>`_ is up.
 - 11/16/2020: `Lab 6 <lab6.html>`_ is up.
+- 11/16/2020: `Lab 7 <lab7.html>`_ is up.
