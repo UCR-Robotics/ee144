@@ -114,7 +114,7 @@ by the derivative of this polynomial function.
 .. math::
 
   \begin{equation}
-  \dot{x}(t) = a_{1} + 2 a_{2} + 3 a_{3} t^{2}, t \in [0, T]
+  \dot{x}(t) = a_{1} + 2 a_{2} t + 3 a_{3} t^{2}, t \in [0, T]
   \end{equation}
 
 The key is to figure out the coefficients of this function **for each and every trajectory segment**
