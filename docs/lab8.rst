@@ -1,475 +1,169 @@
-Lab 8: Perception
-=================
+Lab 8: Go! Turtlebot!
+=====================
 
 Overview
 --------
 
-In this lab, we will introduce how to do perception on TurtleBot robot with laser scanner and depth camera.
-The robot is equipped with RPLidar A2 and Obbrec Astra Pro camera.
+In this lab, we will put everything together and apply what we have learned so far 
+on real robots. 
+The task is to navigate in a real world environment without colliding with obstacles
+and finally kick the ball to the gate. Basic steps are as follows.
 
-Please take a screenshot for each question below and answer in your lab report.
+#. Decompose the real world environment into a grid map.
+#. Transform the grid map into a graph with nodes and weights assigned.
+#. Run A* algorithm to search for an optimal path and return the list of waypoints.
+#. Generate polynomial trajectories for the robot to follow. 
 
-#. What is the difference (and/or relation) between ``map``, ``odom``, ``base``
-   and ``sensors`` coordinate frames? Please give explaination to each of them.
-#. What is the data format for laser scanner? What are the pros and cons of laser scanner?
-#. What is the data format for depth camera? What are the pros and cons of depth camera?
-
-
-Preview: We will work on ROS navigation stack next time.
+We will not provide starter code in this lab. 
+Please combine the scripts we used in Lab 6 and Lab 7 
+into a single file named ``turtlebot.py`` for submission.
 
 
 Submission
 ----------
 
-#. Submission: group submission (from one of you) via iLearn, 
-   due by the end of the day of next lab
+#. Submission: group submission via Gradescope
 
-#. Demo: required, due by the end of next lab
+#. Demo: required
 
-#. Files to submit: **(please do not zip, just upload all files)**
+#. Due time: 11:59pm, Dec 12, Saturday
 
-   - lab8_report_01.pdf (replace 01 with your team number, **use number 01-18**)
-  
+#. Files to submit:
+
+   - lab8_report.pdf
+   - turtlebot.py
+
 #. Grading rubric:
 
-   - \+ 50%  Clearly describe your approach and explain necessary steps in lab report.
-   - \+ 30%  Go through the instructions and show demo to me.
-   - \+ 20%  Answer the above conceptual questions in lab report.
-   - \- 15%  Penalty applies for each late day. 
+   + \+ 50%  Clearly describe your approach and explain your code in the lab report.
+   + \+ 50%  Demo that the robot is able to move from the start grid to the goal grid 
+     without colliding with obstacles.
+   + \- 15%  Penalty applies for each late day. 
 
 
-Sensors Setup on Robot
-----------------------
+Remote Login
+------------
 
-- Open a new terminal and remote login to your robot with ``-X`` flag.
+- Connect to our engineering network via VPN.
 
-  .. code-block:: bash
-
-    ssh -X ee144-nuc01@10.40.2.21
-
-- We need to create a ROS workspace and install ROS packages.
-  **If the workspace or package already exist, please skip the corresponding steps.**
-  The following steps should be executed on your robot.
-
-- Create a ROS workspace.
-
-  .. code-block:: bash
-
-    mkdir -p ~/catkin_ws/src
-    cd ~/catkin_ws
-    catkin_make
-    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-    source ~/catkin_ws/devel/setup.bash
-
-- Install ROS pacakge and set up USB rules for rplidar.
-
-  .. code-block:: bash
-
-    cd ~/catkin_ws/src
-    git clone https://github.com/UCR-Robotics/rplidar_ros
-    cd ~/catkin_ws
-    catkin_make
-
-  .. code-block:: bash
-
-    rosrun rplidar_ros create_udev_rules.sh
-
-- Then please **replug the USB cable** for rplidar. 
-  If you check USB rules by the following command, 
-  you may see something like kobuki is mapped to ttyUSB0 and rplidar is mapped to ttyUSB1.
-
-  .. code-block:: bash
-
-    ls -l /dev | grep ttyUSB
-
-- Install dependencies for Astra Pro camera.
-
-  .. code-block:: bash
-
-    sudo apt-get update
-    sudo apt install ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-libuvc ros-$ROS_DISTRO-libuvc-camera ros-$ROS_DISTRO-libuvc-ros
-
-.. note::
-
-  Please make sure you have done the above two steps without any error messages.
-  If you experience issues connecting to the keyserver (an example error shown below), 
-
-  .. code-block::
-
-    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY F42ED6FBAB17C654
-
-  you can go to `ROS installation webpage <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_
-  and run step ``1.3 Set up your keys``, and then try the above two steps again.
-
-- Install ROS package and set up USB rules for Astra Pro camera. 
-
-  .. code-block:: bash
-
-    cd ~/catkin_ws/src
-    git clone https://github.com/UCR-Robotics/ros_astra_camera
-    cd ros_astra_camera
-    ./scripts/create_udev_rules
-    cd ~/catkin_ws
-    catkin_make
-
-- Then please **replug the USB cable** for Astra Pro camera.
-
-
-ROS Network Setup on VM
------------------------
-
-- On your VM, first clean up your ``.bashrc`` by deleting 
-  all lines related to ROS_MASTER_URI and ROS_IP.
-
-  .. code-block:: bash
-
-    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
-    sed -i '/ROS_IP/d' ~/.bashrc
-
-- Set up environment variables in your ``.bashrc``.
-  Please replace ``.21`` IP with the actual one on your robot,
-  and replace ``.119`` IP with the actual one on your VM.
-
-  .. code-block:: bash
-
-    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
-    echo "export ROS_IP=10.40.2.119" >> ~/.bashrc
-
-- Make changes take effect immediately by ``source`` the `.bashrc` file.
-  Recall that ``.bashrc`` will be executed only once when you open a new terminal.
-  If we do not ``source`` it now, we are still using old environment variables.
-
-  .. code-block:: bash
-
-    source ~/.bashrc
-
-- You may open ``.bashrc`` file by ``gedit`` and double check this setup.
-
-
-ROS Network Setup on Robot
---------------------------
-
-- Now open a new terminal and remote login to your robot with ``-X`` flag.
-  Recall that ``-X`` flag can grant you access to GUI on remote computer (e.g., gedit).
-
-  .. code-block:: bash
-
-    ssh -X ee144-nuc01@10.40.2.21
-
-- Clean up your ``.bashrc`` by deleting all lines related to ROS_MASTER_URI and ROS_IP.
-
-  .. code-block:: bash
-
-    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
-    sed -i '/ROS_IP/d' ~/.bashrc
-
-- Repeat the same setup steps on your robot. 
-  Note that ROS_MASTER_URI on both machines are the same, but ROS_IP are different.
-  This time ROS_IP should be the IP address of your robot. 
-  (On VM, it was the IP address of your VM.)
-
-  .. code-block:: bash
-
-    echo "export ROS_MASTER_URI=http://10.40.2.21:11311" >> ~/.bashrc
-    echo "export ROS_IP=10.40.2.21" >> ~/.bashrc
-
-- Make changes take effect immediately by ``source`` the `.bashrc` file.
-
-  .. code-block:: bash
-
-    source ~/.bashrc
-
-- You may open ``.bashrc`` file by ``gedit`` and double check this setup.
-
-- With the above steps, we have basically set up an ROS environment
-  directing all ROS nodes (programs) on my local computer to the remote computer 
-  on the robot. With this, we can run most low-level programs on-board (on the robot),
-  and take visualization back to our local computer.
-
-- You may check the environment variables in your terminal by either of 
-  the following commands.
-
-  .. code-block:: bash
-
-    echo $ROS_MASTER_URI
-    echo $ROS_IP
-
-  .. code-block:: bash
-
-    env | grep ROS
-
-.. note::
-
-  If you do not work with robot later on, you need to delete or comment out the last
-  two lines of code about ROS_MASTER_URI and ROS_IP in your ``.bashrc``,
-  in order to run Gazebo or other ROS programs locally.
-  Because keeping these two lines means that you are trying to connect
-  to a ROS master on the robot. 
-  When you work offline/locally, you do not have the connection to robot.
-
-  You can do it by opening ``.bashrc`` in gedit and delete it, or run the following code again. 
-
-  .. code-block:: bash
-
-    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
-    sed -i '/ROS_IP/d' ~/.bashrc
-
-  Then make changes take effect immediately by ``source`` the `.bashrc` file.
-
-  .. code-block:: bash
-
-    source ~/.bashrc
-
-.. note::
-
-  If you just want to set up the environment variables for once and on the current terminal only,
-  you can add this environment variable manually by the following command.
-
-  .. code-block:: bash
-
-    export ROS_MASTER_URI=http://10.40.2.21:11311
-    export ROS_IP=10.40.2.21
-
-
-Launch Robot and Sensors
-------------------------
-
-- Let's add two launch files, one on your local computer and one on the robot.
-
-- On your VM, add a launch file for rviz.
-
-  .. code-block:: bash
-
-    roscd ee144f20/launch
-    touch rviz.launch
-    gedit rviz.launch
-
-- Copy and paste the following code, save and close it.
-
-  .. literalinclude:: ../launch/rviz.launch
-    :language: xml
-
-- Add another launch file for robot sensors. 
-  (We do not need this on VM actually. Will copy to robot later on.)
-
-  .. code-block:: bash
-
-    roscd ee144f20/launch
-    touch turtlebot_bringup_sensors.launch
-    gedit turtlebot_bringup_sensors.launch
-
-- Copy and paste the following code, save and close it.
-
-  .. literalinclude:: ../launch/turtlebot_bringup_sensors.launch
-    :language: xml
-
-- Copy your ``ee144f20`` package to your robot.
-
-  .. code-block:: bash
-
-    roscd ee144f20/..
-    scp -r ee144f20 ee144-nuc01@10.40.2.21:~/catkin_ws/src
-
-- Remote login to your robot with ``-X`` flag and compile the package you just copied.
-
-  .. code-block:: bash
-
-    ssh -X ee144-nuc01@10.40.2.21
-    cd ~/catkin_ws
-    catkin_make
-
-- Finally, launch robot base and sensors on your robot. 
-  (This should be done on your robot, after SSH.)
-
-  .. code-block:: bash
-
-    roslaunch ee144f20 turtlebot_bringup_sensors.launch
-
-.. note::
+- We need to first connect to a Ubuntu server and then connect to robots from this server.
+  The server computer serves as a bridge to help us jump from engineering network to the actual robotics network.
   
-  Sometimes ROS cannot find the copied new package. 
-  If you cannot auto-complete the above command, 
-  you can ask ROS to search new packages again in existing workspace
-  by the following command.
+- Remote login to the Ubuntu server by the following command.
+  We will talk about the password during lab hours.
 
   .. code-block:: bash
 
-    rospack profile
+    ssh -X ee144-remote@ee144-nuc11    (must be capitalized X)
 
-- You can then open a new terminal on your local computer and run ``rviz`` 
-  to see your robot and sensor data displayed.
-  It works now because your local ROS is connected to the remote ROS Master on your robot.
+  .. note::
 
-  .. code-block:: bash
+    You can either run this command from the Ubuntu VM or the host Mac/Windows OS.
+    For Windows users, we recommand using `MobaXterm <https://mobaxterm.mobatek.net/download-home-edition.html>`_.
+    For Mac users, the native terminal should work well. 
 
-    roslaunch ee144f20 rviz.launch
-
-- You can also open a new terminal on your local computer to 
-  teleop your robot and take it around. 
-  It will send commands to the remote computer on your robot.
+- Create a folder to keep the files for your team. (Use your actual team number.)
 
   .. code-block:: bash
 
-    roslaunch turtlebot_teleop keyboard_teleop.launch
+    mkdir team01
 
-.. note::
+- From ``nuc11`` computer, remote login again to one of the two robots.
+
+  .. code-block:: bash
+
+    ssh -X ee144-remote@10.40.2.21
+    ssh -X ee144-remote@10.40.2.23
+
+- Again, create a folder for your team. 
+
+  .. code-block:: bash
+
+    mkdir team01
+
+- To disconnect, just run ``exit`` in the terminal. 
+
+
+Copy Files
+----------
+
+- Command ``scp`` (secure copy) can help you copy files between two computers.
   
-  If you see this error on your terminal, 
+- To copy files from your local computer to the robot, open a terminal and run
 
-  .. code-block::
+  .. code-block:: bash
 
-    Couldn't find an AF_INET address for [ee144-nuc01]
+    scp /path/to/file/name.py username@host_ip:/path/to/destination
 
-  it means that you haven't set up your environment variables properly.
-  Please go back and check your ROS_IP and ROS_MASTER_URI 
-  on both your local computer and the robot.
+- To copy files from robot to your VM, just switch the above two arguments
 
-  The ROS_MASTER_URI on both machines should be the same, all pointing towards your robot.
-  The ROS_IP should be different. It should be the actual IP address of the machine.
+  .. code-block:: bash
+
+    scp username@host_ip:/path/to/file/name.py /path/to/destination 
+
+- Since we need to remote login twice, the files also need to be copied twice,
+  where the server computer can relay the copy for us.
+  An example is provided as follows.
+
+  .. code-block:: bash
+
+    scp turtlebot.py ee144-remote@ee144-nuc11:~/team01/turtlebot.py
+    ssh -X ee144-remote@ee144-nuc11
+    scp ~/team01/turtlebot.py ee144-remote@10.40.2.21:~/team01/turtlebot.py
+
+- Another option is to use FileZilla. For Windows and MacOS laptops, you can 
+  `download FileZilla here <https://filezilla-project.org/download.php?show_all=1>`_.
+
+- For linux laptop, run the following command to install.
+
+  .. code-block:: bash
+    
+    sudo apt install filezilla
 
 
-Visualization in RViz
----------------------
+Bringup TurtleBot
+-----------------
 
-- RViz is a useful tool for visualization built on top of ROS. 
-  Play with it and you can find more interesting things!
+- Once you have successfully login to the actual robot, 
+  the following command can bring up the wheeled base and sensors. 
 
-- Since you don't have the map available right now, you may want to first change
-  the ``Fixed Frame`` in ``Global Option`` to be ``odom``.
+  .. code-block:: bash
+    
+    roslaunch turtlebot_bringup minimal.launch --screen
 
-- You can add laser scan and point cloud data to RViz.
-  For example, select ``Add`` on the bottom left corner of the window. 
-  You can pick data type ``LaserScan`` or ``PointCloud2``.
-  Then on the left side bar, you need to manually choose the topic you want to display
-  for LaserScan or PointCloud2.
+- Then you need to open another terminal and remote login to the robot to run the script.
 
-- Alternatively, you can click ``Add`` and switch to ``By Topic`` tab, 
-  and select ``/camera/depth/points/PointCloud2`` or ``/scan/LaserScan``.
+- To edit the script already copied to the robot, use the following command.
 
-- You can view the real time images of RGB camera by add the topic ``/camera/rgb/image_raw/Image``.
+  .. code-block:: bash
+    
+    gedit ~/team01/turtlebot.py
 
-- You can also add a robot model to rviz, to show where your robot is.  
+- We highly recommend that you test the scripts locally before sending to the robot,
+  as the debugging experience over remote ssh connections could be cumbersome.
 
-- After your customization, you can save your rviz config file to ``ee144f20/rviz``
-  folder. Maximize the RViz window, then you can see ``file`` on the manubar.
-  Select ``Save Config As`` and save it to ``ee144f20/rviz`` with the name ``nav.rviz`` .
+
+Field Map
+---------
+
+.. image:: pics/capstone_map.jpg
+  :width: 80%
+  :align: center
+
+- We divide the space into two parts to accommodate two teams at the same time.
+  They are designed to have exactly the same layout. 
   
-- Then you can change the rviz launch file to use this configuration every time.
-  Specifically, you can comment out the first line and uncomment the second line
-  in the rviz launch file. The launch file is ``ee144f20/launch/rviz.launch``
+- The grid size is **0.5m**, which is slightly larger than the size of the robot.
 
-  .. code-block:: xml
+- The grey grids are obstacles and walls that the robot should not collide with.
 
-    <launch>
+- The six green grids on the bottom right corner are starting areas. 
+  For each trial during the demo, one of them will be picked at random.
 
-      <!--node name="rviz" pkg="rviz" type="rviz"/-->
+- On the top side, the red grid is the goal area where the robot should stop, 
+  and the orange grid is the buffer area where the robot should pass through, in order to kick the ball.
 
-      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f20)/rviz/nav.rviz" />
+- On the top side, the narrow gate is marked by dark blue color,
+  and the wide gate is marked by light blue color.
 
-    </launch>
-
-
-.. note:: 
-
-  When multiple ROS nodes from different machines connecting to the same ROS master
-  on one of the machines, you may experience issues with time stamps of the messages sent between each other.
-  In this case, you have to make sure that all the clocks on these machines are synchronized.
-  
-  If not, the behavior would be like, a message sent from machine A to machine B with a time stamp
-  11:00am. However, machine B is five minutes late compared with machine A, i.e. 10:55am when machine A sent the message. 
-  Then the message will display on machine B's RViz 5 minutes later.
-
-
-One Last Thing
---------------
-
-.. note::
-
-  Once you completed this lab, as mentioned before, it is better to delete or comment out the last
-  two lines of code about ROS_MASTER_URI and ROS_IP in your ``.bashrc``.
-
-  You can do it by opening ``.bashrc`` in gedit and delete it or comment it out, 
-  or run the following code again. 
-
-  .. code-block:: bash
-
-    sed -i '/ROS_MASTER_URI/d' ~/.bashrc
-    sed -i '/ROS_IP/d' ~/.bashrc
-
-  Then make changes take effect immediately by ``source`` the ``.bashrc`` file.
-
-  .. code-block:: bash
-
-    source ~/.bashrc
-
-.. note::
-
-  Actually if you remote login the robot with ``-X`` option, you can run ``rviz`` directly in the 
-  remote login terminal. It will also give you the GUI, but the response is extremely slow. 
-  This is the reason why we want to set up ROS_MASTER_URI and ROS_IP. 
-  With this setup, we can transmit only the data (ROS Topic) between machines, rather than the GUI.
-  This can help a lot to reduce the workload given limited bandwidth.
-
-
-Additional Info on Simulation
------------------------------
-
-The following content is not for this lab, but only for your information 
-if you are interested in simulating sensors in Gazebo.
-
-- By default, when you install ROS desktop full, you had Gazebo 7.0.0 installed, 
-  which contains multiple bugs when simulates sensors. 
-  `As indicated in the second answer in this webpage 
-  <https://answers.ros.org/question/259989/ubuntu-1604-xenial-package-for-gazebo-740/>`_, 
-  the solution is just to upgrade Gazebo to the latest version (currently 7.16). 
-  Main steps are the following. 
-
-  .. code-block:: bash
-
-    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-
-    wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-
-    sudo apt update
-
-    sudo apt upgrade
-
-- Please do not use any other upgraded version other than Gazebo 7.X, 
-  because Ubuntu 16 and ROS Kinetic can only support Gazebo 7, but not Gazebo 8 or above.
-
-- When you have Gazebo running, you can check the version in the menubar ``Help`` and then ``About``.
-
-- You can check if the depth camera is working correctly by the following command.
-
-  .. code-block:: bash
-
-    rostopic echo /camera/depth/points
-
-- If you can see bunch of numbers (representing point coulds) printed out on your screen, then you are good.
-
-- In addition, for those of you who are willing to simulate Lidar in Gazebo, 
-  there is no graceful solution at this point (or I haven't figured it out). 
-  The current Turtlebot model used in Gazebo simulator only contains the depth camera 
-  (same one as we used on real robot), but does not have the lidar with it. 
-  On the other hand, it is very hard to modify the URDF file to add our lidar to the current model, 
-  since we do not have any low-level information about the lidar we used on real robot. 
-  Typically only the manufacture can modify the model description files in Gazebo.
-
-- In the past, what I did is to convert the depth image data into a fake lidar with limited field of view. 
-  If you would like to follow this plan, you can add the following code snippet to your ``gazebo.launch`` file, 
-  after "velocity muxer".
-
-  .. code-block:: xml
-
-    <!-- Fake laser -->
-    <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"/>
-    <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan"
-          args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet laserscan_nodelet_manager">
-      <param name="scan_height" value="10"/>
-      <param name="output_frame_id" value="/camera_depth_frame"/>
-      <param name="range_min" value="0.45"/>
-      <remap from="image" to="/camera/depth/image_raw"/>
-      <remap from="scan" to="/scan"/>
-    </node>
-
-
+- The ball is placed on the common edge of the orange and red grid, marked by dark green color. 
