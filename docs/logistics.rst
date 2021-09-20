@@ -41,7 +41,7 @@ Lab Organization
 Submission and Grading
 ----------------------
 
-- For some labs, it is required to submit your code via eLearn or Gradescope or Canvas. 
+- For some labs, it is required to submit your code via iLearn or Gradescope or Canvas. 
   Please organize your code clearly and explain it by adding proper comments.
   Please also submit a lab report to document your approach. 
   A template lab report will be provided.
