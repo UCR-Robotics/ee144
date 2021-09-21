@@ -161,8 +161,10 @@ Main steps are
 Learn from ROS Tutorials
 ---------------------------
 
-Once you have ROS Kinetic installed, you can follow the tutorials
+Once you have ROS Kinetic installed, we provide `the tutorial for ROS`_. You can also follow the tutorials
 on `ROS wiki <http://wiki.ros.org/ROS/Tutorials>`_ and
 `rospy <http://wiki.ros.org/rospy_tutorials>`_ documentation.
+
+.. _the tutorial for ROS: https://ucr-robotics.readthedocs.io/en/latest/intro_ros.html
 
 Have fun!
