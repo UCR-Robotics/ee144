@@ -25,9 +25,9 @@ Lab Organization
   wisely/efficiently use the time during lab sessions and ask important questions to help you 
   finish (or at least figure out how to finish) the lab assignment by the end of the lab.
 
-- Meanwhile, the TA will maintain two lists on the whiteboard, one for demo and the other for help.
+- Meanwhile, the TAs will maintain two lists on the whiteboard, one for demo and the other for help.
   Please put your name on the corresponding list when needed. 
-  The TA will take care of two lists alternately.
+  The TAs will take care of two lists alternately.
   It is good to organize things in this way because
 
   + It is good for TAs to remember your name.
@@ -41,19 +41,19 @@ Lab Organization
 Submission and Grading
 ----------------------
 
-- In some labs, it is required to submit your code via iLearn or Gradescope or Canvas. 
+- For some labs, it is required to submit your code via iLearn or Gradescope or Canvas. 
   Please organize your code clearly and explain it by adding proper comments.
   Please also submit a lab report to document your approach. 
   A template lab report will be provided.
 
-- In some other labs, it is required to demo. 
+- For some other labs, it is required to demo. 
   During the demo, some questions may be asked to test your understanding
   of lab materials. Sample questions may be given in lab assignments.
   Please get prepared, otherwise you may lose points.
 
 - Attendance is required for all labs. However, 
   you may leave early if you have completed all lab materials.
-  Please sign in and sign out when you enter/leave the lab room.
+  **Please sign in and sign out when you enter/leave the lab room.**
   (There is a sign-in form near the door.) 
   This lab rule is enforced by the department.
 
@@ -83,7 +83,8 @@ Please consider reaching out to TAs in the following preferred order, regarding 
    + You can ask private questions on Piazza if necessary, which are visible to instructors only.
 
 3. **Emails**. It is hard to discuss technical questions through emails.
-   However, TAs will try to get back to you ASAP. 
+   However, TAs will try to get back to you ASAP. To facilitate the process, 
+   please have **EE144** in the email subject.
    
    + For course logistics and technical questions, Piazza (private question if necessary) is better than emails. 
 
