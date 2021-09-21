@@ -9,7 +9,7 @@ please see syllabus for course overview and lecture/homework related logistics.
 
 - Teaching Assistant: Amel Dechemi, Lu Shi
 - Email: adech003@ucr.edu, lshi024@ucr.edu
-- Office Hour: 10am - 11am, Tuesday (The office hours are available both in person at WCH109 and via Zoom at Meeting room: 926 6142 1605 with the passcode: 569912)
+- Office Hour: 10am - 11am, Tuesday (The office hours are available both in person at WCH109 and via Zoom)
 
 Please **feel free** to contact TAs if you have any questions.
 
@@ -41,7 +41,7 @@ Lab Organization
 Submission and Grading
 ----------------------
 
-- For some labs, it is required to submit your code via iLearn or Gradescope or Canvas. 
+- For some labs, it is required to submit your code via Canvas or Gradescope. 
   Please organize your code clearly and explain it by adding proper comments.
   Please also submit a lab report to document your approach. 
   A template lab report will be provided.
@@ -71,22 +71,22 @@ Please consider reaching out to TAs in the following preferred order, regarding 
    TAs can give detailed explanations.
    You can also email TAs to schedule an appointment, if you cannot make it to office hour.
 
-2. **Piazza**. It is said that Piazza makes office hour 24hr/7days for students.
-   If you have any questions/concerns offline, please ask on Piazza first.
+2. **Canvas**. If you have any questions/concerns offline, please ask on Canvas (discussion section) first.
 
    + It is good for others who have the same/similar questions. 
 
-   + We can use multimedia materials to interact on Piazza, rather than plain text in emails.
+   + We can use multimedia materials to interact on Canvas, rather than plain text in emails.
 
    + You may get good answers/help from your classmates as well, which is encouraged.
-   
-   + You can ask private questions on Piazza if necessary, which are visible to instructors only.
+
+..
+   + You can ask private questions on Canvas if necessary, which are visible to instructors only.
 
 3. **Emails**. It is hard to discuss technical questions through emails.
    However, TAs will try to get back to you ASAP. To facilitate the process, 
-   please have **EE144** in the email subject.
+   please have **EE144_HW/Lab** in the email subject.
    
-   + For course logistics and technical questions, Piazza (private question if necessary) is better than emails. 
+   + For course logistics and technical questions, Canvas is better than emails. 
 
    + For other queries (e.g., personal affairs), you are very welcome to send TAs an email. 
 
@@ -115,6 +115,15 @@ Lab Safety
 
    - No food or beverage allowed in the lab.
    - Report any suspicious cables, wires, etc.
+   
+#. COVID-related safety requirements
+
+  - Before you actually head to the lab room, please complete the `symptom survey`_ first.
+  - Wear your masks (**MANDATORY**) and keep safe distancing.
+  - Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected. The lab provides all necessary wipes, solutions and disinfectants, so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use, and take all other precautions to prevent the spread of the virus.
+  
+  
+.. _symptom survey: https://ucriverside.az1.qualtrics.com/jfe/form/SV_cOB8gBU6OVulQax 
 
 #. Organize your station before you leave.
 
