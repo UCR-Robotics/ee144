@@ -111,20 +111,17 @@ No copying of any form is allowed between each other.
 Lab Safety
 ----------
 
+#. COVID-related safety requirements.
+
+   - Before you actually head to the lab room, please complete the `symptom survey`_ first.
+   - Wear your masks (**MANDATORY**) and keep safe distancing.
+   - Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected. The lab provides all necessary wipes, solutions and disinfectants, so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use, and take all other precautions to prevent the spread of the virus.
+  
 #. Safety is always the top priority.
 
    - No food or beverage allowed in the lab.
-   - Report any suspicious cables, wires, etc.
-   
-#. COVID-related safety requirements
-
-  - Before you actually head to the lab room, please complete the `symptom survey`_ first.
-  - Wear your masks (**MANDATORY**) and keep safe distancing.
-  - Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected. The lab provides all necessary wipes, solutions and disinfectants, so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use, and take all other precautions to prevent the spread of the virus.
+   - Report any suspicious cables, wires, etc.   
   
-  
-.. _symptom survey: https://ucriverside.az1.qualtrics.com/jfe/form/SV_cOB8gBU6OVulQax 
-
 #. Organize your station before you leave.
 
    - **Cut off all power supply (both robot base and NUC)**.
@@ -152,5 +149,5 @@ Lab Safety
     :width: 60%
     :align: center
 
-
+.. _symptom survey: https://ucriverside.az1.qualtrics.com/jfe/form/SV_cOB8gBU6OVulQax
 
