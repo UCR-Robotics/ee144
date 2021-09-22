@@ -71,22 +71,22 @@ Please consider reaching out to TAs in the following preferred order, regarding 
    TAs can give detailed explanations.
    You can also email TAs to schedule an appointment, if you cannot make it to office hour.
 
-2. **Canvas**. If you have any questions/concerns offline, please ask on Canvas (discussion section) first.
+2. **Canvas**. If you have any questions/concerns offline, please ask on Canvas (Piazza section) first.
 
    + It is good for others who have the same/similar questions. 
 
-   + We can use multimedia materials to interact on Canvas, rather than plain text in emails.
+   + We can use multimedia materials to interact on Canvas (Piazza section), rather than plain text in emails.
 
    + You may get good answers/help from your classmates as well, which is encouraged.
 
 ..
-   + You can ask private questions on Canvas if necessary, which are visible to instructors only.
+   + You can ask private questions on Piazza if necessary, which are visible to instructors only.
 
 3. **Emails**. It is hard to discuss technical questions through emails.
    However, TAs will try to get back to you ASAP. To facilitate the process, 
    please have **EE144_HW/Lab** in the email subject.
    
-   + For course logistics and technical questions, Canvas is better than emails. 
+   + For course logistics and technical questions, Piazza is better than emails. 
 
    + For other queries (e.g., personal affairs), you are very welcome to send TAs an email. 
 
