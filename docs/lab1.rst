@@ -20,7 +20,7 @@ Submission
 
 #. Demo: required (one for Turtlebot and one for robot arm)
 
-#. Due time: 11:59pm, Oct 17, Saturday (in two weeks)
+#. Due time: 5:00pm, Oct 8, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -68,9 +68,9 @@ From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kine
   .. code-block:: bash
       
     cd ~/catkin_ws/src
-    catkin_create_pkg ee144f20 std_msgs rospy
+    catkin_create_pkg ee144f21 std_msgs rospy
 
-- Take a look at your new package ``ee144f20`` and see what happens. You should be able to see a ``package.xml`` file
+- Take a look at your new package ``ee144f21`` and see what happens. You should be able to see a ``package.xml`` file
   and a ``CMakeLists.txt`` file. Open them and take a quick look. 
   You may use Google to help you build up a high-level understanding.
 
@@ -89,13 +89,13 @@ From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kine
   .. code-block:: bash
       
     cd
-    roscd ee144f20
+    roscd ee144f21
 
     cd ~/catkin_ws
-    roscd ee144f20
+    roscd ee144f21
       
     cd ~/Documents
-    roscd ee144f20
+    roscd ee144f21
 
 - Congratulations. You have completed the basic ROS tutorials.
   Take some time to think about how the above steps work.
@@ -113,11 +113,11 @@ Set up Turtlebot in Gazebo
     sudo apt-get install ros-kinetic-turtlebot ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-interactions ros-kinetic-turtlebot-simulator
     sudo apt-get install ros-kinetic-kobuki-ftdi ros-kinetic-ar-track-alvar-msgs
 
-- Navigate to your ``ee144f20`` package and create a new folder and a new launch file.
+- Navigate to your ``ee144f21`` package and create a new folder and a new launch file.
 
   .. code-block:: bash
       
-    roscd ee144f20
+    roscd ee144f21
     mkdir launch
     cd launch
     touch gazebo.launch
@@ -138,7 +138,7 @@ Run Turtlebot in Gazebo
 
   .. code-block:: bash
       
-    roslaunch ee144f20 gazebo.launch
+    roslaunch ee144f21 gazebo.launch
 
 .. note::
 

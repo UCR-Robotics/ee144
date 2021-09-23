@@ -3,15 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to UCR EEME144 Introduction to Robotics!
-================================================
+Welcome to UCR EE144/ME144/EE283A
+==============================
+Fundations of Robotics!
+==========================
 
 .. toctree::
     :maxdepth: 2
     :hidden:
 
     logistics
-    lab0    
+    lab0  
+    lab1  
     linux
     ros
 
@@ -19,12 +22,12 @@ Welcome to UCR EEME144 Introduction to Robotics!
 News
 ====
 
-- 09/28/2021: Welcome!
-- 09/28/2021: Please read `logistics <logistics.html>`_.
-- 09/28/2021: `Lab 0 <lab0.html>`_ is up.
+- 09/23/2021: Welcome!
+- 09/23/2021: Please read `logistics <logistics.html>`_.
+- 09/23/2021: `Lab 0 <lab0.html>`_ is up.
+- 09/23/2020: `Lab 1 <lab1.html>`_ is up.
+
 ..
-   - 09/28/2021: Please sign up `Piazza <https://piazza.com/ucr/fall2020/eeme144>`_.
-   - 10/04/2020: `Lab 1 <lab1.html>`_ is up.
    - 10/11/2020: `Lab 2 <lab2.html>`_ is up.
    - 10/12/2020: `Linux Tutorials <linux.html>`_ have been posted.
    - 10/12/2020: `ROS Reading Materials <ros.html>`_ have been posted.

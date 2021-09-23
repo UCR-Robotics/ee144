@@ -134,10 +134,6 @@ Lab Safety
 
 #. Do NOT make any changes to the wiring on the robot.
 
-#. Please find your station according to your team number. 
-
-   - In Tuesday lab, your station/robot number is your team number.
-   - In Thursday lab, your station/robot number is your team number minus 10.
 
 #. Please save the battery (recharging takes time), 
    and charge the robot if you do not have it running.
