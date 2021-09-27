@@ -30,8 +30,8 @@ Submission
 #. Grading rubric:
 
    - \+ 20%  Have the ROS workspace and the ROS package ready.
-   - \+ 30%  Launch a Turtlebot robot in Gazebo and demo to me how you play with it.
-   - \+ 30%  Launch a ReactorX 150 robot arm in Gazebo and demo to me how you play with it.
+   - \+ 30%  Launch a Turtlebot robot in Gazebo and demo to TAs how you play with it.
+   - \+ 30%  Launch a ReactorX 150 robot arm in Gazebo and demo to TAs how you play with it.
    - \+ 20%  Write down what you have learned, your findings and thoughts in lab report.
    - \- 15%  Penalty applies for each late day (up to two days). 
 
@@ -61,7 +61,7 @@ From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kine
   If you are fresh new to Linux, the instructions might be a bit hard to understand at this moment.
   No worries. Please just try it for the time being and you will have a better understanding as we move on.
   You can always ask me any question you want during lab sessions to help you better understand lab materials. 
-  (Remember that there is no stupid question; even for those "too simple to ask" questions, I am always happy to answer.)
+  (Remember that there is no stupid question; even for those "too simple to ask" questions, We are always happy to answer.)
 
 - Next let's create a new ROS package.
 
