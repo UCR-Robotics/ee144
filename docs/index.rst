@@ -14,7 +14,8 @@ Fundations of Robotics!
 
     logistics
     lab0  
-    lab1  
+    lab1
+    lab2
     linux
     ros
 
@@ -26,9 +27,10 @@ News
 - 09/23/2021: Please read `logistics <logistics.html>`_.
 - 09/23/2021: `Lab 0 <lab0.html>`_ is up.
 - 09/23/2021: `Lab 1 <lab1.html>`_ is up.
+- 09/30/2021: `Lab 2 <lab2.html>`_ is up.
 
 ..
-   - 10/11/2020: `Lab 2 <lab2.html>`_ is up.
+   
    - 10/12/2020: `Linux Tutorials <linux.html>`_ have been posted.
    - 10/12/2020: `ROS Reading Materials <ros.html>`_ have been posted.
    - 10/18/2020: `Lab 3 <lab3.html>`_ is up.
