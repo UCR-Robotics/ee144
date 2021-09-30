@@ -25,7 +25,7 @@ Submission
 
 #. Demo: not required (will use autograder; see below)
 
-#. Due time: 11:59pm, Oct 17, Saturday (in one week)
+#. Due time: 17:00pm, Oct 15, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -61,7 +61,7 @@ Testing parameters are as follows.
 
 #. The time limit for the submitted script is set to 5 mins.
 
-   - If running properly, the task in this lab can be done in about 1 min, based on my testing.
+   - If running properly, the task in this lab can be done in about 1 min, based on our testing.
    - If running timeout, the script will be terminated and a 10% penalty will apply.
    - Therefore, it is important that your script can exit gracefully after task completion.
      (Just avoid using infinite loops and/or remember to add a break condition.)
@@ -174,12 +174,12 @@ Please read carefully the provided code, and understand its functionality.
 You need to make changes under ``run`` function to complete the square trajectory.
 (Hint: honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
-- Open a new terminal and go to your ``ee144f20`` package. 
+- Open a new terminal and go to your ``ee144f21`` package. 
   We will start from a new Python script.
 
   .. code-block:: bash
 
-    roscd ee144f20
+    roscd ee144f21
     mkdir scripts
     cd scripts
     touch open_loop.py
@@ -226,7 +226,7 @@ You need to make changes under ``run`` function to complete the square trajector
 
   .. code-block:: bash
 
-    roslaunch ee144f20 gazebo.launch
+    roslaunch ee144f21 gazebo.launch
 
 
 Sample Code Explained
