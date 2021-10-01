@@ -23,7 +23,7 @@ Submission
 
 #. Submission: individual submission via Gradescope
 
-#. Demo: not required (will use autograder; see below)
+#. Demo: required during the lab session (will use autograder; see below)
 
 #. Due time: 17:00pm, Oct 15, Friday
 
