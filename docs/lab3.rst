@@ -24,9 +24,9 @@ Submission
 
 #. Submission: individual submission via Gradescope
 
-#. Demo: not required
+#. Demo: required during the lab session (will use autograder; see below)
 
-#. Due time: 11:59pm, Oct 26, Monday
+#. Due time: 5:00pm, Oct 22, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -182,12 +182,12 @@ Sample Code
 A sample code is provided as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
 
-- Open a new terminal and go to the ``ee144f20`` package. 
+- Open a new terminal and go to the ``ee144f21`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f20/scripts
+    roscd ee144f21/scripts
     touch closed_loop.py
     gedit closed_loop.py
 
