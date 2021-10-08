@@ -18,8 +18,8 @@ Please plot the trajectory (using another provided Python script) and discuss yo
 Preview
 --------
 
-We will play with manipulators in simulation next time. 
-(Specifically, to solve a Forward Kinematics and a Inverse Kinematics problem.)
+We will play with manipulators in the simulation next time. 
+(Specifically, to solve a Forward Kinematics and an Inverse Kinematics problem.)
 **Note that we will start to team up in Lab 4, so please try to form your team ASAP.**
 
 
