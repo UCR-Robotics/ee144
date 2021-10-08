@@ -2,6 +2,6 @@
 
   <node name="rviz" pkg="rviz" type="rviz"/>
 
-  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f20)/rviz/nav.rviz" /-->
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ee144f21)/rviz/nav.rviz" /-->
 
 </launch>
