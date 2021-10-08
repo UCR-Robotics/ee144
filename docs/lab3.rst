@@ -15,7 +15,10 @@ Same as in Lab 2, the waypoints are [4, 0], [4, 4], [0, 4], [0, 0], and the sequ
 After task completion, the robot should stop at the origin and the Python script should exit gracefully. 
 Please plot the trajectory (using another provided Python script) and discuss your results in the lab report. 
 
-Preview: We will play with manipulators in simulation next time. 
+Preview
+--------
+
+We will play with manipulators in simulation next time. 
 (Specifically, to solve a Forward Kinematics and a Inverse Kinematics problem.)
 **Note that we will start to team up in Lab 4, so please try to form your team ASAP.**
 
