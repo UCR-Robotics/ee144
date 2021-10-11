@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to UCR EE144/ME144/EE283A
-==============================
+==================================
 Fundations of Robotics!
 ==========================
 
