@@ -3,11 +3,10 @@ Lab 4: Forward and Inverse Kinematics
 
 Note
 -----
-
-#. In this lab (and all the following labs), we will team up! 
-   So you can work with your teammate on the lab assigenments. 
-   While both of you should contribute and TA will ask questions 
-   during your demo to make sure you know what you did.
+In this lab (and all the following labs), we will team up! 
+So you can work with your teammate on the lab assigenments. 
+While both of you should contribute and TA will ask questions 
+during your demo to make sure you know what you did.
 
 
 Overview
@@ -40,7 +39,7 @@ Submission
 
 #. Demo: Both of the teammates will be asked questions.
 
-#. Due time: 5:00pm, Oct 29, Friday
+#. Due time: 5:00pm, Nov. 5th, Friday (in two weeks)
 
 #. Files to submit: (please submit exactly the same file)
 
