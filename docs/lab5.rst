@@ -13,9 +13,9 @@ Submission
 
 #. Submission: group submission via Gradescope
 
-#. Demo: As indicated in the grading rubric.
+#. Demo: During the lab time.
 
-#. Due time: 17:00pm, Nov 5, Monday
+#. Due time: 17:00 pm, Nov 5, Monday (in one week)
 
 #. Files to submit:
 
@@ -54,7 +54,7 @@ Access to Lab and Lab Safety
 Write a Publisher and test your code
 --------------------------------------------------
 
-- We provide the script for testing your scripts.  
+- We provide the scripts for testing your algorithms.  
 
   .. code-block:: bash
 
