@@ -25,7 +25,7 @@ Submission
 
 #. Demo: required during the lab session (will use autograder; see below)
 
-#. Due time: 17:00pm, Oct 15, Friday
+#. Due time: 5:00pm, Oct 15, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
