@@ -43,9 +43,9 @@ Submission
 
 #. Files to submit: (please submit exactly the same file)
 
-   - lab4_report.pdf (under the assigenment **Forward Kinematics** in Gradscope)
-   - forward_kinematics.py (under the assigenment **Forward Kinematics** in Gradscope)
-   - inverse_kinematics.py (under the assigenment **Inverse Kinematics** in Gradscope)
+   - lab4_report.pdf (under the assignment **Forward Kinematics** in Gradscope)
+   - forward_kinematics.py (under the assignment **Forward Kinematics** in Gradscope)
+   - inverse_kinematics.py (under the assignment **Inverse Kinematics** in Gradscope)
 
 
 #. Grading rubric:
