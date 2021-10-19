@@ -70,11 +70,11 @@ Write a Publisher and test your code
   .. literalinclude:: ../scripts/test_kinematics.py
     :language: python
 
-- Now, launch the arm in Rviz to make sure your code woking properly.
+- Now, launch the arm in Rviz to make sure your code woking properly. 
 
   .. code-block:: bash
 
-    roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
+    roslaunch interbotix_descriptions description.launch robot_name:=rx150
 
 - Open a new terminal and run the following code, you should see your outputs of the Forward Kinematics problem and the Inverse Kinematics problem;
 
