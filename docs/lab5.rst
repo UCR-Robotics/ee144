@@ -23,9 +23,9 @@ Submission
 
 #. Grading rubric:
 
-   + \+ 25%  Succefully define the Publisher to test your scripts. 
-   + \+ 25%  Successfully launch the physical robot and drive it go to `home` state.
-   + \+ 50%  Write down what you have learned, your findings and thoughts in lab report.
+   + \+ 25%  Successfully define the Publisher to test your scripts. 
+   + \+ 25%  Successfully launch the physical robot and drive it to `home` state.
+   + \+ 50%  Write down what you have learned, your findings and thoughts in the lab report.
    + \- 15%  Penalty applies for each late day. 
 
 Access to Lab and Lab Safety
@@ -37,16 +37,16 @@ Access to Lab and Lab Safety
 
 #. PLease sign in and sign out when you enter/leave the lab room. 
    (There is a sign-in sheet near the door to WCH 109.) 
-   The lab rule is enforced by department.
+   The lab rule is enforced by the department.
 
-#. There are 12 ReactorX 150 manipulators in lab. 
+#. There are 12 ReactorX 150 manipulators in the lab. 
    Please find your arm according to your team number in the 
    `Teams List <https://docs.google.com/spreadsheets/d/1hwQnqMl_FWFYWwxIyZH6IvGApBBwRGQbWxnsq_akK08/edit?usp=sharing>`_.
 
 #. Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected.
    The lab provides all necessary wipes, solutions and disinfectants, 
    so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use,
-   wear masks, keep safe distancing and take all other precautions to prevent the spread of the virus.
+   wear masks, keep safe distance and take all other precautions to prevent the spread of the virus.
 
 
 .. _symptom survey: https://ucriverside.az1.qualtrics.com/jfe/form/SV_cOB8gBU6OVulQax 
@@ -74,7 +74,7 @@ Write a Publisher and test your code
 
     roslaunch interbotix_descriptions description.launch robot_name:=rx150 jnt_pub_gui:=true
 
-- Open a new terminal and run the following code, you should see your outputs of the Forward Kinemetics problem and the Inverse Kinemetics problem;
+- Open a new terminal and run the following code, you should see your outputs of the Forward Kinematics problem and the Inverse Kinematics problem;
 
   .. code-block:: bash
 
@@ -116,7 +116,7 @@ Communicate with the Physical Robot
 -----------------------------------
 
 Now you are ready to play with the real robot. 
-(You should have all software packaged installed in Lab 1.)
+(You should have all software packages installed in Lab 1.)
 Here we use Moveit to help us achieve the desired pose of arm or gripper.
 
 #. Launch the driver node of the actual robot and Moveit
@@ -140,15 +140,15 @@ Here we use Moveit to help us achieve the desired pose of arm or gripper.
 
 		$ roslaunch interbotix_moveit_interface moveit_interface.launch robot_name:=rx150 use_python_interface:=true use_actual:=true
     
-	Once you launch the file, you will found one line "============ Press Enter to begin the tutorial by setting up the moveit_commander (press ctrl-d to exit) ...". 
-	You might miss it because everything getting launched at the same time. Just scroll through the text to find it. 
+	Once you launch the file, you will find one line "============ Press Enter to begin the tutorial by setting up the moveit_commander (press ctrl-d to exit) ...". 
+	You might miss it because everything is getting launched at the same time. Just scroll through the text to find it. 
 	Then press "Enter", you will see a new line and press "Enter" then you could see your arm moves both in the RViz and the actual robot. 
 	The rest can be done in the same manner. 
 
 #. When you are done with your work, put the arm back safely for further use.  
    **Please be very careful as the arm will collapse once you run the command. So you should hold the arm manually before it falls down.**
    Firstly, run ``$ rosservice call /rx150/torque_joints_off`` to torque off the motors,
-   Then manually put it back to the safe position as it originally be.
+   Then manually put it back to the safe position as it originally was.
    Finally, shut down (ctrl+C) your launch process and unplug the power cords.
 
 
