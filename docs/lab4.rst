@@ -4,7 +4,7 @@ Lab 4: Forward and Inverse Kinematics
 Note
 -----
 In this lab (and all the following labs), we will team up! 
-So you can work with your teammate on the lab assigenments. 
+So you can work with your teammate on the lab assignments. 
 While both of you should contribute and TA will ask questions 
 during your demo to make sure you know what you did.
 
@@ -43,9 +43,9 @@ Submission
 
 #. Files to submit: (please submit exactly the same file)
 
-   - lab4_report.pdf (under the assignment **Forward Kinematics** in Gradscope)
-   - forward_kinematics.py (under the assignment **Forward Kinematics** in Gradscope)
-   - inverse_kinematics.py (under the assignment **Inverse Kinematics** in Gradscope)
+   - lab4_report.pdf (under the assignment **Forward Kinematics** in Gradescope)
+   - forward_kinematics.py (under the assignment **Forward Kinematics** in Gradescope)
+   - inverse_kinematics.py (under the assignment **Inverse Kinematics** in Gradescope)
 
 
 #. Grading rubric:
