@@ -7,7 +7,7 @@ Overview
 In this lab, we will continue working on the manipulator and play with the physical robot in **WCH109**. 
 Specifically, the task is to successfully (1) define a Publisher to test your algorithms in simulation and (2) communicate with the physical robots.
 
-**Please make sure you have a laptop with you that installed Ubuntu 16.04 per team.**
+**Please make sure you have a laptop that installed Ubuntu 16.04 with you per team.**
 
 
 Submission
