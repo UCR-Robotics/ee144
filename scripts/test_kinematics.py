@@ -34,7 +34,7 @@ class Manipulator():
         
         while not rospy.is_shutdown():
             joint_msg.header.stamp = rospy.Time.now()
-            joint_msg.position[0:3] = test_case
+            joint_msg.position[0:3] = angles
             self.joint_pub.publish(joint_msg)
             self.rate.sleep()
 
