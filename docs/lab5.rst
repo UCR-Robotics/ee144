@@ -130,6 +130,7 @@ Here we use Moveit to help us achieve the desired pose of arm or gripper.
    You should see the light color changes and all the motors in the robot are torqued on..
 
 #. Now you could play with Moveit on your laptop to plan the trajectory. 
+   Don't forget to click ``update`` after you set the ``goal state``.
    PLease set the ``goal state`` as ``home`` for demo.
    **Note: be careful to avoid collisions when you set the goal states and during the planning**.
    **(Run** ``plan`` 
