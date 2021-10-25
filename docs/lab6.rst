@@ -21,7 +21,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Nov 23, Monday
+#. Due time: 11:59pm, Nov 12, Monday
 
 #. Files to submit:
 
@@ -64,7 +64,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f20/scripts
+    roscd ee144f21/scripts
     touch trajectory_generation.py
     gedit trajectory_generation.py
 
