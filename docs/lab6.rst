@@ -21,7 +21,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Nov 12, Monday
+#. Due time: 11:59pm, Nov 12, Frday
 
 #. Files to submit:
 
