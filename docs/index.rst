@@ -19,6 +19,7 @@ Fundations of Robotics!
     lab3
     lab4
     lab5
+    lab6
     linux
     ros
 
@@ -34,8 +35,8 @@ News
 - 10/07/2021: `Lab 3 <lab3.html>`_ is up.
 - 10/14/2020: `Lab 4 <lab4.html>`_ is up.
 - 10/14/2020: `Lab 5 <lab5.html>`_ is up.
+- 11/16/2020: `Lab 6 <lab6.html>`_ is up.
 
 ..
-   - 11/16/2020: `Lab 6 <lab6.html>`_ is up.
    - 11/23/2020: `Lab 7 <lab7.html>`_ is up.
    - 11/30/2020: `Lab 8 <lab8.html>`_ is up.
