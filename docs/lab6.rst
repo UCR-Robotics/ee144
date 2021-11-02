@@ -59,7 +59,7 @@ Testing parameters are as follows.
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f20`` package. 
+- Open a new terminal and go to your ``ee144f21`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
