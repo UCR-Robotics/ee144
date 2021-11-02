@@ -38,6 +38,5 @@ News
 - 11/16/2020: `Lab 6 <lab6.html>`_ is up.
 
 ..
-
    - 11/23/2020: `Lab 7 <lab7.html>`_ is up.
    - 11/30/2020: `Lab 8 <lab8.html>`_ is up.
