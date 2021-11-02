@@ -208,4 +208,3 @@ Visualization
 .. image:: pics/polynomial_trajectory.png
   :width: 70%
   :align: center
-
