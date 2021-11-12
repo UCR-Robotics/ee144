@@ -28,7 +28,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Dec 5, Saturday
+#. Due time: 5:00pm, November 26, Friday
 
 #. Files to submit:
 
@@ -69,12 +69,12 @@ For each A* path computed, the autograder will check the following conditions.
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f20`` package. 
+- Open a new terminal and go to your ``ee144f21`` package. 
   We will create a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f20/scripts
+    roscd ee144f21/scripts
     touch motion_planning.py
     gedit motion_planning.py
 
@@ -138,4 +138,3 @@ Programming Tips
    - ``List`` is ordered and changeable. Allows duplicate members.
    - ``Tuple`` is ordered and unchangeable. Allows duplicate members.
    - ``Dictionary`` is unordered, changeable and indexed. No duplicate members.
-
