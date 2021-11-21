@@ -7,7 +7,8 @@ Overview
 In this lab, we will put everything together and apply what we have learned so far 
 on real robots. 
 The task is to navigate in a real world environment without colliding with obstacles
-and finally kick the ball to the gate. Basic steps are as follows.
+and finally kick the ball. Basic steps are as follows. 
+(The start, goal points and the positions of obstacles will be given.)
 
 #. Run A* algorithm to search for an optimal path and return the list of waypoints.
 #. Use the obtained waypoints to generate polynomial trajectories for the robot to follow. 
@@ -35,7 +36,7 @@ Submission
    
       -  \+30% Obtain the correct waypoints (Please print your final path).
       -  \+30% Obtain an optimal trajectory based on the obstacles positon.
-   -  \+ 40%  Demo that the task on the real robot
+   -  \+ 40%  Demo the task on the real robot
    
       -  \+10% Communicate successfully with the real robot
       -  \+10% Navigate via the correct waypoints.
@@ -59,7 +60,7 @@ Lab Rules
 #. Do not leave your personal information on the robot.
 
    - Create your own folder when you work, and delete code when you leave.
-   - The robot is shared by two lab sections.
+   - The robot is shared by three lab sections.
 
 #. Do NOT make any changes to the wiring on the robot.
 
@@ -126,7 +127,7 @@ Remote Login
   then turn on the robot and NUC computer.
 
 - To remote login to the NUC computer on your robot, 
-  open a new terminal and run
+  open a new terminal in your VM and run
 
   .. code-block:: bash
 
