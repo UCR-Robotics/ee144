@@ -17,7 +17,7 @@ Please reuse the scripts in Lab 6 and Lab 7 and combine them
 into a single file named ``turtlebot.py`` for submission. 
 
 **A successful demo on Gazebo is required before any 
-implementation on the real robot**
+implementation on the real robot.**
 
 
 Submission
