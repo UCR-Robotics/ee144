@@ -31,15 +31,15 @@ Submission
 
 #. Grading rubric:
 
-   - \+ 60%  Demo the task on Gazebo
-      - \+30% Obtain the correct waypoints (Please print your final path).
-      - \+30% Obtain an optimal trajectory based on the obstacles positon.
-   - \+ 40%  Demo that the task on the real robot
-      - \+10% Communicate successfully with the real robot
-      - \+10% Navigate via the correct waypoints.
-      - \+10% Avoid collision with obstacles.
-      - \+5% Reach the goal area.
-      - \+5% Kick the ball.
+   -  \+ 60%  Demo the task on Gazebo
+      -  \+30% Obtain the correct waypoints (Please print your final path).
+      -  \+30% Obtain an optimal trajectory based on the obstacles positon.
+   -  \+ 40%  Demo that the task on the real robot
+      -  \+10% Communicate successfully with the real robot
+      -  \+10% Navigate via the correct waypoints.
+      -  \+10% Avoid collision with obstacles.
+      -  \+5% Reach the goal area.
+      -  \+5% Kick the ball.
 
 Lab Rules
 ---------
