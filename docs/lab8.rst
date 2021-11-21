@@ -9,142 +9,180 @@ on real robots.
 The task is to navigate in a real world environment without colliding with obstacles
 and finally kick the ball to the gate. Basic steps are as follows.
 
-#. Decompose the real world environment into a grid map.
-#. Transform the grid map into a graph with nodes and weights assigned.
 #. Run A* algorithm to search for an optimal path and return the list of waypoints.
-#. Generate polynomial trajectories for the robot to follow. 
+#. Use the obtained waypoints to generate polynomial trajectories for the robot to follow. 
 
 We will not provide starter code in this lab. 
 Please reuse the scripts in Lab 6 and Lab 7 and combine them
-into a single file named ``turtlebot.py`` for submission.
+into a single file named ``turtlebot.py`` for submission. 
+
+**A successful demo on Gazebo is required before any 
+implementation on the real robot**
 
 
 Submission
 ----------
 
-#. Submission: group submission via Gradescope
+#. No Submission Required
 
-#. Demo: **required**
+#. Demo: **required on Gazebo and the real robot**
 
-#. Due time: 11:59pm, Dec 12, Saturday
-
-#. Files to submit:
-
-   - lab8_report.pdf
-   - turtlebot.py
+#. Due time: lab session
 
 #. Grading rubric:
 
-   + \+ 50%  Clearly describe your approach and explain your code in the lab report.
-   + \+ 50%  Demo that the robot is able to move from the start grid to the goal grid 
-     without colliding with obstacles.
-   + \- 15%  Penalty applies for each late day. 
+   - \+ 60%  Demo the task on Gazebo
+      - \+30% Obtain the correct waypoints (Please print your final path).
+      - \+30% Obtain an optimal trajectory based on the obstacles positon.
+   - \+ 40%  Demo that the task on the real robot
+      - \+10% Communicate successfully with the real robot
+      - \+10% Navigate via the correct waypoints.
+      - \+10% Avoid collision with obstacles.
+      - \+5% Reach the goal area.
+      - \+5% Kick the ball.
 
+Lab Rules
+---------
 
-VPN Connection
---------------
+#. Safety is always the top priority.
 
-To make sure you can have access to the remote server, please double check the following items.
+   - No food or beverage allowed in the lab.
+   - Report any suspicious cables, wires, etc.
 
-#. You have an active ENGR account. Recall the account name and password in your mind. 
-   You may try to login `at this page <https://intra.engr.ucr.edu/apps/systems/login.php>`_.
+#. Organize your station before you leave.
 
-#. You can connect to ENGR VPN using ENGR account and 
-   `Cisco AnyConnect <https://systems.engr.ucr.edu/help/vpn>`_.
+   - **Cut off all power supply (both robot base and NUC)**.
+   - Organize wires, cables, etc.
 
-#. You have a terminal to run the remote login command. 
-   You can use the terminals in VM (as in all previous labs), 
-   or directly connect from the host computer (use native terminals in Mac; or
-   install `MobaXterm <https://mobaxterm.mobatek.net/download-home-edition.html>`_ in Windows).
+#. Do not leave your personal information on the robot.
 
-#. Connect to ENGR VPN, open a new terminal and run command ``ping gauss`` to check the connection. 
-   You should see responses if you have successfully connected to ENGR VPN, 
-   otherwise please double check VPN connection.
+   - Create your own folder when you work, and delete code when you leave.
+   - The robot is shared by two lab sections.
 
-#. Run command ``ping ee144-nuc11`` to check the connection to the remote login server. 
-   If you can see responses, you are good and no further action needed. 
-   Otherwise, **please send your ENGR account name to TA**, 
-   who can work with the system manager to grant you access.
+#. Do NOT make any changes to the wiring on the robot.
 
+#. Please save the battery (recharging takes time), 
+   and charge the robot if you do not have it running.
 
+Network Setup
+-------------
+
+- If you are using native Linux OS or dual boot with Linux OS, 
+  you can skip this section. 
+  (As long as you can connect to the robot with your network card,
+  then you don't need the USB WiFi Adapter.)
+  
+-  In order to have bi-directional communications between your laptop and the robot, we use a USB WiFi apapter binding your VM to a pysical MAC address, rather than sharing the network of your host computer. Open your Ubuntu VM, follow the following instructions to install Linux driver for USB WiFi Adapter
+
+   -  Open a new terminal, download the driver and install it by the following commands.
+   
+      .. code-block:: bash
+
+       cd ~/Downloads
+       wget https://github.com/UCR-Robotics/ee144/raw/wifi-adapter-driver/RTL88x2BU_WiFi_linux_v5.3.1.zip
+       unzip RTL88x2BU_WiFi_linux_v5.3.1.zip
+       cd RTL88x2BU_... [press Tab key to complete]
+       chmod +x install.sh
+       sudo ./install.sh
+    
+   -  Restart your computer by one more command.
+   
+      .. code-block:: bash
+
+       sudo reboot
+    
+   -  Plug in your adapter. If you can see the flickering blue light on your adapter, then you are good.
+   
+- Shutdown your VM. 
+  Go to the settings of your VM, in ``Network Adapter`` section, 
+  uncheck ``Connect at power on``, 
+  and select ``NAT`` as the network connection.
+  
+- Go to the ``USB Controller`` section of the settings, 
+  select ``USB 3.0`` as the USB compatibility.
+  
+- Plug in (USB 3.0 port if applicable) the USB WiFi adapter on your host computer,
+  then pass (this USB device) into your VM. 
+  (You can find options on the menubar to pass removable devices into VM.)
+  
+.. note::
+
+  Sometimes the system upgrade may disable the linux driver.
+  The solution would be that just install the driver again.
+  
 Remote Login
 ------------
 
-- We need to first connect to a remote Ubuntu server and then connect to robots from this server.
-  This remote server serves as a bridge to help us jump from engineering network to the actual roboticslab network.
-  
-- After connecting to ENGR VPN, open a new terminal and run the following command to login to the Ubuntu server.
-  We will talk about the password during lab hours.
+- Connect to ``roboticslab`` WiFi network. 
+  Please ask TAs for credentials.
+  Check if your Internet connection is good.
+
+- The IP address of your Ubuntu VM is dynamically allocated, 
+  while the IP address of your robot (NUC computer) is static.
+
+- Connect power bank to the NUC onboard computer on your robot, 
+  then turn on the robot and NUC computer.
+
+- To remote login to the NUC computer on your robot, 
+  open a new terminal and run
 
   .. code-block:: bash
 
-    ssh -X ee144-remote@ee144-nuc11    # -X can enable graphics support; e.g., to open gedit
+    ssh username@NUC_IP
 
-- Create a folder to organize files for your team. You only need to do this once.
+- Replace the above ``username`` and ``NUC_IP`` with the actual one.
+  For example, the IP address of robot 01 is ``10.40.2.21``, 
+  and the IP address of robot 02 is ``10.40.2.22``, and so on.
+  The username on NUC computer is ``ee144-nuc01`` for robot 01, and so on.
 
-  .. code-block:: bash
-
-    mkdir team01   # use your actual team number
-
-- From ``nuc11`` computer, remote login again to one of the three robots. 
-  (We use robot #1, #3 and #6; the corresponding IP addresses are 21, 23 and 26.)
+- For example, for robot 01 we can use
 
   .. code-block:: bash
 
-    ssh -X ee144-remote@10.40.2.21
-    ssh -X ee144-remote@10.40.2.23
-    ssh -X ee144-remote@10.40.2.26
+    ssh ee144-nuc01@10.40.2.21
 
-- Again, create a folder for your team. 
+- Please ask TAs for the password of this account.
+
+- You can see the new username and hostname on your terminal if you succeed.
+  It should be like ``ee144-nuc01@ee144-nuc01``.
+
+- If you want to use graphic tools later on, then use
 
   .. code-block:: bash
 
-    mkdir team01
+    ssh -X username@NUC_IP   (must be capitalized X)
 
-- To disconnect, just run ``exit`` in the terminal. 
+- To disconnect, just run
 
+  .. code-block:: bash
 
+    exit
+
+- To shutdown your remote computer, run
+
+  .. code-block:: bash
+
+    sudo shutdown now
+    
 Copy Files
 ----------
 
 - Command ``scp`` (secure copy) can help you copy files between two computers.
   
-- To copy files from your local computer to the robot, open a terminal and run
+- To copy files from your VM to robot, open a terminal in your VM and run
 
   .. code-block:: bash
 
-    scp path/to/filename.py username@host_ip:/path/to/destination
+    scp /path/to/file/name.py username@NUC_IP:/path/to/destination
 
 - To copy files from robot to your VM, just switch the above two arguments
 
   .. code-block:: bash
 
-    scp username@host_ip:path/to/filename.py /path/to/destination 
-
-- Since we need to remote login twice, the files also need to be copied twice,
-  where the remote server can relay the files to the robots.
-  An example is provided as follows.
-
-  .. code-block:: bash
-
-    scp turtlebot.py ee144-remote@ee144-nuc11:~/team01/turtlebot.py
-    ssh -X ee144-remote@ee144-nuc11
-    scp ~/team01/turtlebot.py ee144-remote@10.40.2.21:~/team01/turtlebot.py
-
-- Another option is to use FileZilla. For Windows and MacOS laptops, you can 
-  `download FileZilla here <https://filezilla-project.org/download.php?show_all=1>`_.
-
-- For linux laptop, run the following command to install.
-
-  .. code-block:: bash
+    scp username@NUC_IP:/path/to/file/name.py /path/to/destination 
     
-    sudo apt install filezilla
-
-- If you are using MobaXterm in Windows, it also supports file transfer. 
-
-
-Bringup TurtleBot
------------------
+Communication with TurtleBot
+----------------------------
 
 - Once you have successfully login to the actual robot, 
   the following command can bring up the Kobuki mobile base. 
@@ -155,7 +193,7 @@ Bringup TurtleBot
 
 - Then you can open another terminal and remote login (again, twice) to the robot to run the script.
 
-- Alternatively, you can use another terminal to run the teleop command for testing. 
+- Alternatively, you can use another terminal to run the teleop command for testing **using the default linear and angular velocity**. 
 
   .. code-block:: bash
     
@@ -168,32 +206,43 @@ Bringup TurtleBot
     
     gedit ~/team01/turtlebot.py
 
-- We highly recommend that you test the scripts locally before sending to the robot,
-  as the debugging experience over remote ssh connections could be cumbersome.
+- Then demo to TAs.
+
+.. note::
+
+  When you bring up the robot, the odometry will be reset (initialized to origin).
+
+About the implementation
+------------------------
+
+- We divide the space into three parts to accommodate three teams at the same time.
+  They are designed to have different layouts. 
+  
+- Each team have unlimited trials during the allocated time slot for the final demo on the real robot.
+
+- For each trial, the robot will start from one of the six starting grids, plan and follow its smooth trajectory, kick the ball, and stop at the goal area.
+
+- The robot should have a reasonable velocity in order to kick the ball and not collides with the wall.
 
 
-Field Map
----------
-
-.. image:: pics/capstone_map.jpg
+.. Field Map
+ ---------
+ .. image:: pics/capstone_map.jpg
   :width: 80%
   :align: center
-
-- We divide the space into two parts to accommodate two teams at the same time.
-  They are designed to have exactly the same layout. 
   
-- **The grid size is 0.5m**, which is slightly larger than the size of the robot.
+ - **The grid size is 0.5m**, which is slightly larger than the size of the robot.
 
-- The grey grids are obstacles and walls that the robot should not collide with.
+ - The grey grids are obstacles and walls that the robot should not collide with.
 
-- The six green grids on the bottom right corner are starting areas. 
+ - The six green grids on the bottom right corner are starting areas. 
   For each trial during the demo, one of them will be picked at random. 
   (You will be informed which grid to start before you run the script.)
 
-- On the top side, the red grid is the goal area where the robot should stop, 
+ - On the top side, the red grid is the goal area where the robot should stop, 
   and the orange grid is the buffer area where the robot should pass through, in order to kick the ball.
 
-- On the top side, the narrow gate is marked by dark blue color,
+ - On the top side, the narrow gate is marked by dark blue color,
   and the wide gate is marked by light blue color.
 
-- The ball is placed on the common edge of the orange and red grid, marked by dark green color. 
+ - The ball is placed on the common edge of the orange and red grid, marked by dark green color. 
