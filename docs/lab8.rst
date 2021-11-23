@@ -258,6 +258,7 @@ of the real world.
     goal = (9, -2)
     obstacles = [(1, 0), (1, -1), (4, -1), (4, -2), (4, -3), (5, -1), (5, -2), (5, -3),(8, 0), (8, 1)]
 
+
 .. image:: pics/grid_map.png
  :width: 70%
  :align: center
