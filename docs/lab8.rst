@@ -135,7 +135,7 @@ Remote Login
 
 - Replace the above ``username`` and ``NUC_IP`` with the actual one.
   For example, the IP address of robot 01 is ``10.40.2.21``, 
-  and the IP address of robot 03 is ``10.40.3.23``, and so on.
+  and the IP address of robot 03 is ``10.40.2.23``, and so on.
   The username on NUC computer is ``ee144-nuc01`` for robot 01, and so on.
 
 - For example, for robot 01 we can use
