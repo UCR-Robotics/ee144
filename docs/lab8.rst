@@ -230,7 +230,12 @@ About the implementation
 
 Field Map
 ---------
-A grid map will be provided for the implentation on the real robot based on the assigned space for each team. The figure below shows an example of the structure of the grid map 
+
+.. image:: pics/grid_map.png
+ :width: 60%
+ :align: left
+ 
+A grid map will be provided for the implentation on the real robot based on the assigned space for each team. The figure shows an example of the structure of the grid map 
 of the real world.
 
 - **The grid size is 0.5m**, which is slightly larger than the size of the robot.
@@ -257,8 +262,3 @@ of the real world.
     start = (0, 0)
     goal = (9, -2)
     obstacles = [(1, 0), (1, -1), (4, -1), (4, -2), (4, -3), (5, -1), (5, -2), (5, -3),(8, 0), (8, 1)]
-
-
-.. image:: pics/grid_map.png
- :width: 60%
- :align: center
