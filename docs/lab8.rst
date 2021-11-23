@@ -222,7 +222,7 @@ Field Map
  :width: 60%
  :align: left
  
-A grid map will be provided for the implementation on the real robot based on the assigned space for each team. The figure shows an example of the structure of the grid map 
+A grid map will be provided for the simulation on Gazebo and the implementation on the real robot based on the assigned space for each team. The figure shows an example of the structure of the grid map 
 of the real world.
 
 - **The grid size is 0.5m**, which is slightly larger than the size of the robot.
