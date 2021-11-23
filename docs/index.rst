@@ -39,4 +39,6 @@ News
 - 10/14/2021: `Lab 5 <lab5.html>`_ is up.
 - 10/31/2021: `Lab 6 <lab6.html>`_ is up.
 - 11/12/2021: `Lab 7 <lab7.html>`_ is up.
-- 11/22/2021: `Lab 8 <lab8.html>`_ is up.  
+
+..
+  - 11/22/2021: `Lab 8 <lab8.html>`_ is up.  
