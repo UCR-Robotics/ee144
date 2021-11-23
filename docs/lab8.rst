@@ -260,5 +260,5 @@ of the real world.
 
 
 .. image:: pics/grid_map.png
- :width: 80%
+ :width: 60%
  :align: center
