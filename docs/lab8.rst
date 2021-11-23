@@ -135,7 +135,7 @@ Remote Login
 
 - Replace the above ``username`` and ``NUC_IP`` with the actual one.
   For example, the IP address of robot 01 is ``10.40.2.21``, 
-  and the IP address of robot 02 is ``10.40.2.22``, and so on.
+  and the IP address of robot 03 is ``10.40.3.23``, and so on.
   The username on NUC computer is ``ee144-nuc01`` for robot 01, and so on.
 
 - For example, for robot 01 we can use
@@ -219,7 +219,7 @@ About the implementation
 ------------------------
 
 - We divide the space into three parts to accommodate three teams at the same time.
-  They are designed to have different layouts. 
+  They are designed to have different layouts.
   
 - Each team have unlimited trials during the allocated time slot for the final demo on the real robot.
 
@@ -228,24 +228,36 @@ About the implementation
 - The robot should have a reasonable velocity in order to kick the ball and not collides with the wall.
 
 
-.. Field Map
- ---------
- .. image:: pics/capstone_map.jpg
-  :width: 80%
-  :align: center
-  
- - **The grid size is 0.5m**, which is slightly larger than the size of the robot.
+Field Map
+---------
+A grid map will be provided for the implentation on the real robot based on the assigned space for each team. The figure below shows an example of the structure of the grid map 
+of the real world.
 
- - The grey grids are obstacles and walls that the robot should not collide with.
+- **The grid size is 0.5m**, which is slightly larger than the size of the robot.
 
- - The six green grids on the bottom right corner are starting areas. 
-  For each trial during the demo, one of them will be picked at random. 
+- The grey grids are obstacles and walls that the robot should not collide with.
+
+- **The starting point is the origin (0,0) of the grid map.**
+  and is represented by the green grid on the bottom right.
+  During the demo, each team will have a different starting point. 
   (You will be informed which grid to start before you run the script.)
 
- - On the top side, the red grid is the goal area where the robot should stop, 
+- On the top side, the red grid is the goal area where the robot should stop, 
   and the orange grid is the buffer area where the robot should pass through, in order to kick the ball.
 
- - On the top side, the narrow gate is marked by dark blue color,
+.. - On the top side, the narrow gate is marked by dark blue color,
   and the wide gate is marked by light blue color.
 
- - The ball is placed on the common edge of the orange and red grid, marked by dark green color. 
+- The ball is placed in the middle of the red grid, marked by dark green color.
+
+- To assess your code, we provide the start, goal and obstacles coordinates for the given grid map:
+
+  .. code-block:: python
+
+    start = (0, 0)
+    goal = (9, -2)
+    obstacles = [(1, 0), (1, -1), (4, -1), (4, -2), (4, -3), (5, -1), (5, -2), (5, -3),(8, 0), (8, 1)]
+
+.. image:: pics/grid_map.png
+ :width: 70%
+ :align: center
