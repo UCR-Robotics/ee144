@@ -14,14 +14,16 @@ Fundations of Robotics!
 
     logistics
     lab0  
-    lab1
-    lab2
-    lab3
-    lab4
-    lab5
-    lab6
-    lab7
-    lab8
+   ..
+   
+       lab1
+       lab2
+       lab3
+       lab4
+       lab5
+       lab6
+       lab7
+       lab8
     linux
     ros
 
@@ -29,16 +31,18 @@ Fundations of Robotics!
 News
 ====
 
-- 09/23/2021: Welcome!
-- 09/23/2021: Please read `logistics <logistics.html>`_.
-- 09/23/2021: `Lab 0 <lab0.html>`_ is up.
-- 09/23/2021: `Lab 1 <lab1.html>`_ is up.
-- 09/30/2021: `Lab 2 <lab2.html>`_ is up.
-- 10/07/2021: `Lab 3 <lab3.html>`_ is up.
-- 10/14/2021: `Lab 4 <lab4.html>`_ is up.
-- 10/14/2021: `Lab 5 <lab5.html>`_ is up.
-- 10/31/2021: `Lab 6 <lab6.html>`_ is up.
-- 11/12/2021: `Lab 7 <lab7.html>`_ is up.
-- 11/22/2021: `Lab 8 <lab8.html>`_ is up.  
+- 09/22/2022: Welcome!
+- 09/22/2022: Please read `logistics <logistics.html>`_.
+- 09/22/2022: `Lab 0 <lab0.html>`_ is up.
+..
+
+   - 09/23/2021: `Lab 1 <lab1.html>`_ is up.
+   - 09/30/2021: `Lab 2 <lab2.html>`_ is up.
+   - 10/07/2021: `Lab 3 <lab3.html>`_ is up.
+   - 10/14/2021: `Lab 4 <lab4.html>`_ is up.
+   - 10/14/2021: `Lab 5 <lab5.html>`_ is up.
+   - 10/31/2021: `Lab 6 <lab6.html>`_ is up.
+   - 11/12/2021: `Lab 7 <lab7.html>`_ is up.
+   - 11/22/2021: `Lab 8 <lab8.html>`_ is up.  
 
 ..
