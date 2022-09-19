@@ -7,8 +7,8 @@ Welcome
 This page introduces logistics for lab section only; 
 please see syllabus for course overview and lecture/homework related logistics.
 
-- Teaching Assistant: Amel Dechemi, Lu Shi
-- Email: adech003@ucr.edu, lshi024@ucr.edu
+- Teaching Assistant: Amel Dechemi, Dimitris Chatziparaschis
+- Email: adech003@ucr.edu, dchat013@ucr.edu
 - Office Hour: 10am - 11am, Tuesday (The office hours are available both in person at WCH109 and via Zoom)
 
 Please **feel free** to contact TAs if you have any questions.
@@ -113,7 +113,7 @@ Lab Safety
 
 #. COVID-related safety requirements.
 
-   - Before you actually head to the lab room, please complete the `symptom survey`_ first.
+   - Before you actually head to the lab room, please complete the `symptom survey`_ first, if necessary.
    - Wear your masks (**MANDATORY**) and keep safe distancing.
    - Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected. The lab provides all necessary wipes, solutions and disinfectants, so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use, and take all other precautions to prevent the spread of the virus.
   
