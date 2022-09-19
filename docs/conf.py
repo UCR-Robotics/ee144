@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'UCR EEME144 Fall 2021'
-copyright = '2021, UCR-Robotics'
+project = 'UCR EE/ME144/EE283A Fall 2022'
+copyright = '2022, UCR-Robotics'
 author = 'UCR-Robotics'
 
 # The full version, including alpha/beta/rc tags
