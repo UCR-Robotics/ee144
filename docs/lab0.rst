@@ -74,7 +74,7 @@ Virtual Machine
 
 - If you have a Windows laptop, please go for
   `VMware Workstation Player <https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html>`_.
-  Note that this version 15.5 should be free, as I see version 16 is not free of charge any more.
+  Note that this version 15.5 or 16 should be free.
 
 - If you have a Mac laptop, please go to `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
   webpage, register under "Get a Free Personal Use License" tab and download **VMware Fusion Player**
@@ -84,10 +84,10 @@ Virtual Machine
 Install Linux
 -------------
 
-Once you have your VMware installed, let's create a new VM and install Ubuntu 16.04.
+Once you have your VMware installed, let's create a new VM and install Ubuntu 18.04.
 
-- Download Ubuntu 16.04 disc image from
-  `official website <http://releases.ubuntu.com/16.04/>`_ (64-bit PC Desktop).
+- Download Ubuntu 18.04 disc image from
+  `official website <http://releases.ubuntu.com/18.04/>`_ (64-bit PC Desktop).
 
 - In VMware, create a new VM.
 
@@ -111,7 +111,7 @@ Install ROS
 
 Once you are familiar with Linux, you can start installing ROS.
 In general, we need to follow ROS
-`installation tutorial <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_.
+`installation tutorial <http://wiki.ros.org/melodic/Installation/Ubuntu>`_.
 Main steps are
 
 - Setup sources.list
@@ -123,8 +123,9 @@ Main steps are
 - Setup your keys
 
   .. code-block:: bash
-
-    sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+     
+    sudo apt install curl # if you haven't already installed curl
+    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
       
 - Update package index
 
@@ -136,13 +137,13 @@ Main steps are
 
   .. code-block:: bash
 
-    sudo apt-get install ros-kinetic-desktop-full
+    sudo apt-get install ros-melodic-desktop-full
 
 - Environment setup
 
   .. code-block:: bash
 
-    echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+    echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
 
 - Install more dependencies
@@ -154,7 +155,8 @@ Main steps are
 - Initialize rosdep
 
   .. code-block:: bash
-
+    
+    sudo apt install python-rosdep # if you haven't already installed rosdep
     sudo rosdep init
     rosdep update
 
