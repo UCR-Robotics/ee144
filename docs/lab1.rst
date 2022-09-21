@@ -67,9 +67,9 @@ From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kine
   .. code-block:: bash
       
     cd ~/catkin_ws/src
-    catkin_create_pkg ee144f21 std_msgs rospy
+    catkin_create_pkg ee144f22 std_msgs rospy
 
-- Take a look at your new package ``ee144f21`` and see what happens. You should be able to see a ``package.xml`` file
+- Take a look at your new package ``ee144f22`` and see what happens. You should be able to see a ``package.xml`` file
   and a ``CMakeLists.txt`` file. Open them and take a quick look. 
   You may use Google to help you build up a high-level understanding.
 
@@ -88,13 +88,13 @@ From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kine
   .. code-block:: bash
       
     cd
-    roscd ee144f21
+    roscd ee144f22
 
     cd ~/catkin_ws
-    roscd ee144f21
+    roscd ee144f22
       
     cd ~/Documents
-    roscd ee144f21
+    roscd ee144f22
 
 - Congratulations. You have completed the basic ROS tutorials.
   Take some time to think about how the above steps work.
@@ -116,7 +116,7 @@ Set up Turtlebot in Gazebo
 
   .. code-block:: bash
       
-    roscd ee144f21
+    roscd ee144f22
     mkdir launch
     cd launch
     touch gazebo.launch
@@ -137,7 +137,7 @@ Run Turtlebot in Gazebo
 
   .. code-block:: bash
       
-    roslaunch ee144f21 gazebo.launch
+    roslaunch ee144f22 gazebo.launch
 
 .. note::
 
