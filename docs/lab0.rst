@@ -84,10 +84,10 @@ Virtual Machine
 Install Linux
 -------------
 
-Once you have your VMware installed, let's create a new VM and install Ubuntu 18.04.
+Once you have your VMware installed, let's create a new VM and install Ubuntu 16.04.
 
-- Download Ubuntu 18.04 disc image from
-  `official website <http://releases.ubuntu.com/18.04/>`_ (64-bit PC Desktop).
+- Download Ubuntu 16.04 disc image from
+  `official website <http://releases.ubuntu.com/16.04/>`_ (64-bit PC Desktop).
 
 - In VMware, create a new VM.
 
@@ -115,10 +115,10 @@ In general, we need to follow ROS
 Main steps are
 
 - Setup sources.list
-
+ 
   .. code-block:: bash
 
-    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+   sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 - Setup your keys
 
@@ -137,13 +137,13 @@ Main steps are
 
   .. code-block:: bash
 
-    sudo apt-get install ros-melodic-desktop-full
+    sudo apt-get install ros-kinetic-desktop-full
 
 - Environment setup
 
   .. code-block:: bash
 
-    echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+    echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
 
 - Install more dependencies
