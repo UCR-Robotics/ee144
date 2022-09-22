@@ -20,7 +20,7 @@ Submission
 
 #. Demo: required (one for Turtlebot and one for robot arm)
 
-#. Due time: 5:00pm, Oct 8, Friday
+#. Due time: 5:00pm, Oct 7, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
