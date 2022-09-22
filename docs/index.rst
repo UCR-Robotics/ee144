@@ -13,7 +13,8 @@ Fundations of Robotics!
     :hidden:
 
     logistics
-    lab0  
+    lab0
+    lab1  
     linux
     ros
 
@@ -23,4 +24,5 @@ News
 
 - 09/22/2022: Welcome!
 - 09/22/2022: Please read `logistics <logistics.html>`_.
-- 09/22/2022: `Lab 0 <lab0.html>`_ is up.  
+- 09/22/2022: `Lab 0 <lab0.html>`_ is up.
+- 09/22/2022: `Lab 1 <lab1.html>`_ is up.
