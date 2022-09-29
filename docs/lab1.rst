@@ -190,7 +190,7 @@ Set up robot arm in Gazebo
   .. code-block:: bash
       
     cd ~/catkin_ws
-    rosdep update
+    rosdep update --include-eol-distros
     rosdep install --from-paths src --ignore-src -r -y
 
 - We need to add one more package that is not currently supported by ``rosdep`` install.
