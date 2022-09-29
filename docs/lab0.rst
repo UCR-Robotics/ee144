@@ -158,7 +158,7 @@ Main steps are
     
     sudo apt install python-rosdep # if you haven't already installed rosdep
     sudo rosdep init
-    rosdep update
+    rosdep update --include-eol-distros
 
 Learn from ROS Tutorials
 ---------------------------
