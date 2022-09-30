@@ -232,6 +232,7 @@ You need to make changes under ``run`` function to complete the square trajector
   Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
   before sending any commands to it.
 
+
   .. code-block:: bash
 
     roslaunch ee144f21 gazebo.launch
