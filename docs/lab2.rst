@@ -194,14 +194,13 @@ You need to make changes under ``run`` function to complete the square trajector
 
   Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
   before sending any commands to it.
+  .. code-block:: bash
+
+    roslaunch ee144f22 gazebo.launch
 
 - Back to the terminal, you can run it in two ways. 
   One is to feed this script as input to the Python program in Linux,
   as shown below.
-  
-  .. code-block:: bash
-
-    roslaunch ee144f22 gazebo.launch
     
   .. code-block:: bash
 
