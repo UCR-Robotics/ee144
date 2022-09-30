@@ -192,7 +192,7 @@ You need to make changes under ``run`` function to complete the square trajector
 
 .. note::
 
-  Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
+  Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo on a terminal
   before sending any commands to it.
   .. code-block:: bash
 
