@@ -21,7 +21,14 @@ class Turtlebot():
         for i in range(50):
             self.vel_pub.publish(vel)
             self.rate.sleep()
-
+        """   
+        vel.linear.x = 0
+        vel.angular.z = 0.05
+        #while not rospy.is_shutdown():  # uncomment to use while loop
+        for i in range(50):
+            self.vel_pub.publish(vel)
+            self.rate.sleep()
+        """
 
 if __name__ == '__main__':
     try:
