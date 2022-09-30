@@ -25,7 +25,7 @@ Submission
 
 #. Demo: required during the lab session (will use autograder; see below)
 
-#. Due time: 5:00pm, Oct 15, Friday
+#. Due time: 5:00pm, Oct 14, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -174,12 +174,12 @@ Please read carefully the provided code, and understand its functionality.
 You need to make changes under ``run`` function to complete the square trajectory.
 (Hint: honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
-- Open a new terminal and go to your ``ee144f21`` package. 
+- Open a new terminal and go to your ``ee144f22`` package. 
   We will start from a new Python script.
 
   .. code-block:: bash
 
-    roscd ee144f21
+    roscd ee144f22
     mkdir scripts
     cd scripts
     touch open_loop.py
@@ -190,10 +190,19 @@ You need to make changes under ``run`` function to complete the square trajector
   .. literalinclude:: ../scripts/open_loop.py
     :language: python
 
+.. note::
+
+  Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
+  before sending any commands to it.
+
 - Back to the terminal, you can run it in two ways. 
   One is to feed this script as input to the Python program in Linux,
   as shown below.
+  
+  .. code-block:: bash
 
+    roslaunch ee144f22 gazebo.launch
+    
   .. code-block:: bash
 
     python open_loop.py
