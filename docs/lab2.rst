@@ -194,6 +194,7 @@ You need to make changes under ``run`` function to complete the square trajector
 
   Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo on a terminal
   before sending any commands to it.
+  
   .. code-block:: bash
 
     roslaunch ee144f22 gazebo.launch
@@ -226,16 +227,6 @@ You need to make changes under ``run`` function to complete the square trajector
   .. code-block:: bash
 
     ./open_loop.py
-
-.. note::
-
-  Recall in Lab 1 that you need to first launch your Turtlebot robot in Gazebo
-  before sending any commands to it.
-
-
-  .. code-block:: bash
-
-    roslaunch ee144f21 gazebo.launch
 
 
 Sample Code Explained
