@@ -39,6 +39,7 @@ class Turtlebot():
 
     def run(self):
         # add your code here to adjust your movement based on 2D pose feedback
+        # Use the Controller
         pass
 
 
@@ -56,6 +57,7 @@ class Turtlebot():
         if self.logging_counter == 100:
             self.logging_counter = 0
             self.trajectory.append([self.pose.x, self.pose.y])  # save trajectory
+            # display (x, y, theta) on the terminal
             rospy.loginfo("odom: x=" + str(self.pose.x) +\
                 ";  y=" + str(self.pose.y) + ";  theta=" + str(yaw))
 
