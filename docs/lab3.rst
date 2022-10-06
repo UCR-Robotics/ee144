@@ -13,7 +13,9 @@ Specifically, the task is to implement a PD controller (a variant/subset of PID 
 to track the square shape trajectory. 
 Same as in Lab 2, the waypoints are [4, 0], [4, 4], [0, 4], [0, 0], and the sequence does matter.
 After task completion, the robot should stop at the origin and the Python script should exit gracefully. 
-Please plot the trajectory (using another provided Python script) and discuss your results in the lab report. 
+Please plot the trajectory (using another provided Python script) and discuss your results in the lab report.
+
+To help you complete the lab, please take a look at the `Classes sestion <https://docs.python.org/3/tutorial/classes.html>`_in Python Docs.
 
 Preview
 --------
@@ -30,7 +32,7 @@ Submission
 
 #. Demo: required during the lab session (will use autograder; see below)
 
-#. Due time: 5:00pm, Oct 22, Friday
+#. Due time: 5:00pm, Oct 21, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 
@@ -64,13 +66,13 @@ Testing parameters are as follows.
 
 #. The time limit for the submitted script is set to 5 mins.
 
-   - If running properly, the task in this lab can be done in about 2 mins, based on my testing.
+   - If running properly, the task in this lab can be done in about 2 mins, based on testing.
    - If running timeout, the script will be terminated and a 10% penalty will apply.
 
 .. note::
 
   It is required to use closed-loop control (i.e. PD controller) to track the trajectory. 
-  Finely tuned open-loop control script may also pass the autograder tests, but is not allowed.
+  Finely tuned open-loop control script may also pass the autograder tests (by adding angular velocity as in Lab 2) but is not allowed.
   All scripts will be double checked when grading manually. 
   Penalty will apply if such script is found.
 
@@ -162,7 +164,7 @@ Programming Tips
 - In our case, we have three variables (x, y, theta) to describe the 2D pose of the robot.
   At one time only one of them can be set as the desired value to track in a PID controller. 
   If you are willing to track x, y, and theta at the same time, you will need three PID controllers.
-  (To comlpete the task in this lab, out of three controllers, the one to track theta is required,
+  (To comlpete the task in this lab, out of three controllers, **the one to track theta is required**,
   and the other two for x and y are optional. See below an example algorithm.)
 
 - The following is an example of how to apply feedback control algorithm to waypoint navigation problem.
@@ -270,5 +272,3 @@ as it will block the autograder until running timeout.
 
 .. literalinclude:: ../scripts/visualization.py
   :language: python
-
-
