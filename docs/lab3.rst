@@ -15,7 +15,7 @@ Same as in Lab 2, the waypoints are [4, 0], [4, 4], [0, 4], [0, 0], and the sequ
 After task completion, the robot should stop at the origin and the Python script should exit gracefully. 
 Please plot the trajectory (using another provided Python script) and discuss your results in the lab report.
 
-To help you complete the lab, please take a look at the `Classes sestion <https://docs.python.org/3/tutorial/classes.html>`_in Python Docs.
+To help you complete the lab, please take a look at the `_Classes sestion <https://docs.python.org/3/tutorial/classes.html>`_ in Python Docs.
 
 Preview
 --------
@@ -188,12 +188,12 @@ Sample Code
 A sample code is provided as the starting point for your implementation. 
 Please read carefully the provided code, and understand its functionality. 
 
-- Open a new terminal and go to the ``ee144f21`` package. 
+- Open a new terminal and go to the ``ee144f22`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     touch closed_loop.py
     gedit closed_loop.py
 
