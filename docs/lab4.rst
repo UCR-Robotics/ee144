@@ -39,7 +39,7 @@ Submission
 
 #. Demo: Both of the teammates will be asked questions.
 
-#. Due time: 5:00pm, Nov. 5th, Friday (in two weeks)
+#. Due time: 5:00pm, Nov. 4th, Friday (in two weeks)
 
 #. Files to submit: (please submit exactly the same file)
 
@@ -155,7 +155,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     touch forward_kinematics.py
     gedit forward_kinematics.py
 
@@ -169,7 +169,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     touch inverse_kinematics.py
     gedit inverse_kinematics.py
 
