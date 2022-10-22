@@ -7,7 +7,7 @@ Overview
 In this lab, we will continue working on the manipulator and play with the physical robot in **WCH109**. 
 Specifically, the task is to successfully (1) define a Publisher to test your algorithms in simulation and (2) communicate with the physical robots.
 
-**Please make sure you have a laptop that installed Ubuntu 16.04 with you per team.**
+**Please make sure you have a laptop that installed Ubuntu with you per team.**
 
 
 Submission
@@ -17,7 +17,7 @@ Submission
 
 #. Demo: During the lab time.
 
-#. Due time: 17:00 pm, Nov 5, Friday (in one week)
+#. Due time: 17:00 pm, Nov 4th, Friday
 
 #. Files to submit:
 
@@ -33,25 +33,14 @@ Submission
 Access to Lab and Lab Safety
 ----------------------------
 
-#. PLease read the **Lab Safety** requirements in `logistics <logistics.html>`_ carefully.
-
-#. Before you head to the lab room, please complete the `symptom survey`_ first.
+#. Please read the **Lab Safety** requirements in `logistics <logistics.html>`_ carefully.
 
 #. PLease sign in and sign out when you enter/leave the lab room. 
    (There is a sign-in sheet near the door to WCH 109.) 
    The lab rule is enforced by the department.
 
 #. There are 12 ReactorX 150 manipulators in the lab. 
-   Please find your arm according to your team number in the 
-   `Teams List <https://docs.google.com/spreadsheets/d/1hwQnqMl_FWFYWwxIyZH6IvGApBBwRGQbWxnsq_akK08/edit?usp=sharing>`_.
-
-#. Note that whenever a lab is used, its work area, instruments and accessories should be completely cleaned, wiped and disinfected.
-   The lab provides all necessary wipes, solutions and disinfectants, 
-   so when you are at the lab please wash/wipe your hands often, disinfect anything you touch and use,
-   wear masks, keep safe distance and take all other precautions to prevent the spread of the virus.
-
-
-.. _symptom survey: https://ucriverside.az1.qualtrics.com/jfe/form/SV_cOB8gBU6OVulQax 
+   Each team will be assigned to one robotic arm, in respect with the team 
 
 Write a Publisher and test your code
 --------------------------------------------------
@@ -80,7 +69,7 @@ Write a Publisher and test your code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     python test_kinematics.py
 
 - Then check and compare with the actual end effect position, run the following command in another terminal.
