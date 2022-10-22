@@ -40,7 +40,7 @@ Access to Lab and Lab Safety
    The lab rule is enforced by the department.
 
 #. There are 12 ReactorX 150 manipulators in the lab. 
-   Each team will be assigned to one robotic arm, in respect with the team 
+   Each team will be assigned to one robotic arm, given the number ID that had on Lab4.
 
 Write a Publisher and test your code
 --------------------------------------------------
