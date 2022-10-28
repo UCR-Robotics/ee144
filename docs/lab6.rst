@@ -21,7 +21,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 5:00pm, Nov 15, Monday
+#. Due time: 5:00pm, Nov 12, Saturday
 
 #. Files to submit:
 
@@ -64,7 +64,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     touch trajectory_generation.py
     gedit trajectory_generation.py
 
@@ -200,7 +200,7 @@ Visualization
 -------------
 
 - You can reuse the visualization python script provided in Lab 3 to plot the trajectory.
-  Remember to adjust the limit on x and y axes and include the plot in the lab report. 
+  Remember to adjust the limit on x and y axes and **include the plot in the lab report**. 
 
 - An example of the trajectory is provided as follows.
   It is a bit overshooting. You can do better :)
