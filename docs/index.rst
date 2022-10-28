@@ -19,9 +19,9 @@ Fundations of Robotics!
     lab3
     lab4
     lab5
+    lab6
     linux
     ros
-
 
 News
 ====
@@ -31,6 +31,7 @@ News
 - 09/22/2022: `Lab 0 <lab0.html>`_ is up.
 - 09/22/2022: `Lab 1 <lab1.html>`_ is up.
 - 09/30/2022: `Lab 2 <lab2.html>`_ is up.
-- 06/10/2022: `Lab 3 <lab3.html>`_ is up.
-- 12/10/2022: `Lab 4 <lab4.html>`_ is up.
-- 22/10/2022: `Lab 5 <lab5.html>`_ is up.
+- 10/06/2022: `Lab 3 <lab3.html>`_ is up.
+- 10/12/2022: `Lab 4 <lab4.html>`_ is up.
+- 10/22/2022: `Lab 5 <lab5.html>`_ is up.
+- 10/28/2022: `Lab 6 <lab6.html>`_ is up.
