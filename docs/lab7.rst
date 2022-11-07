@@ -28,7 +28,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 5:00pm, November 26, Friday
+#. Due time: 5:00pm, November 25, Friday
 
 #. Files to submit:
 
@@ -74,7 +74,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f22/scripts
     touch motion_planning.py
     gedit motion_planning.py
 
