@@ -69,7 +69,7 @@ For each A* path computed, the autograder will check the following conditions.
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f21`` package. 
+- Open a new terminal and go to your ``ee144f22`` package. 
   We will create a new python script.
 
   .. code-block:: bash
