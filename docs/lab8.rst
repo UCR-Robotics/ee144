@@ -35,7 +35,7 @@ Submission
    -  \+ 60%  Demo the task on Gazebo
    
       -  \+30% Obtain the correct waypoints (Please print your final path).
-      -  \+30% Obtain an optimal trajectory based on the obstacles positon.
+      -  \+30% Obtain an optimal trajectory based on the obstacles positons.
    -  \+ 40%  Demo the task on the real robot
    
       -  \+10% Communicate successfully with the real robot
