@@ -4,28 +4,28 @@ Lab 4 Bonus
 Overview
 --------
 This is a bonus programming assignment following the topic of Forward Kinematics in Lab 4.
-The score of this assignment (a maximum of 20 bonus points) will be added in the midterm score. 
+The score of this assignment (100 bonus points) will be added as a 10% bonus. 
 The problem is to derive and code the forward kinematics of the arm shown in Fig 4.18
-in the textbook using the D-H formulation (10 points) and the PoE formula (10 points).  
+in the textbook using the D-H formulation (50 points) and the PoE formula (50 points).  
 
 Please follow the instructions as listed below.
 
 - Please use exactly the same file name and function name for submission.
 
-- Note that this time you need to return the final transformation matrix T, 
+- Note that this time you need to return **the final transformation matrix T**, 
   as opposed to position only in Lab 4.
 
 - There will be 5 test cases for each approach on autograder. 
-  All scripts will be double checked and the final score may be manually adjusted. 
+  All scripts will be double checked. 
 
-- It is required to use the PoE and the D-H parameters to solve the problem.
+- It is required to use the **PoE** and the **D-H parameters** to solve the problem.
   In other words, PoE approach must be used in the ``forward_kinematics_poe.py`` script,
   and D-H approach must be used in the ``forward_kinematics_dh.py`` script.
   Otherwise penalty will apply and points will be deducted.
 
 - Since this is a bonus, and to be fair with everyone, 
   there will be no late submission option available, 
-  and we will not offer the kind of feedback we gave to Lab 4.
+  and we will not offer the kind of feedback we gave for Lab 4.
 
 - No need to submit the lab report, as this is not a regular lab assignment. 
 
@@ -35,7 +35,7 @@ Submission
 
 #. Submission: individual submission via Gradescope
 
-#. Due time: 11:59pm, Nov 9, Monday
+#. Due time: 11:59pm, Dec 7, Wednesday
 
 #. Files to submit:
 
@@ -44,8 +44,8 @@ Submission
 
 #. Grading rubric:
 
-   + \+ 10 pts   Product of Exponentials
-   + \+ 10 pts   D-H Parameters
+   + \+ 50 pts   Product of Exponentials
+   + \+ 50 pts   D-H Parameters
 
 
 Sample Code
