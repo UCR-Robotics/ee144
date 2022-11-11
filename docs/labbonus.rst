@@ -1,4 +1,4 @@
-Lab 4 Bonus
+Lab Bonus
 ===========
 
 Overview
