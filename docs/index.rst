@@ -21,7 +21,7 @@ Fundations of Robotics!
     lab5
     lab6
     lab7
-    lab bonus
+    labbonus
     linux
     ros
 
