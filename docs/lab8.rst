@@ -66,57 +66,11 @@ Lab Rules
 
 #. Please save the battery (recharging takes time), 
    and charge the robot if you do not have it running.
-
-Network Setup
--------------
-
-- If you are using native Linux OS or dual boot with Linux OS, 
-  you can skip this section. 
-  (As long as you can connect to the robot with your network card,
-  then you don't need the USB WiFi Adapter.)
-  
--  In order to have bi-directional communications between your laptop and the robot, we use a USB WiFi apapter binding your VM to a pysical MAC address, rather than sharing the network of your host computer. Open your Ubuntu VM, follow the following instructions to install Linux driver for USB WiFi Adapter
-
-   -  Open a new terminal, download the driver and install it by the following commands.
-   
-      .. code-block:: bash
-
-       cd ~/Downloads
-       wget https://github.com/UCR-Robotics/ee144/raw/wifi-adapter-driver/RTL88x2BU_WiFi_linux_v5.3.1.zip
-       unzip RTL88x2BU_WiFi_linux_v5.3.1.zip
-       cd RTL88x2BU_... [press Tab key to complete]
-       chmod +x install.sh
-       sudo ./install.sh
-    
-   -  Restart your computer by one more command.
-   
-      .. code-block:: bash
-
-       sudo reboot
-    
-   -  Plug in your adapter. If you can see the flickering blue light on your adapter, then you are good.
-   
-- Shutdown your VM. 
-  Go to the settings of your VM, in ``Network Adapter`` section, 
-  uncheck ``Connect at power on``, 
-  and select ``NAT`` as the network connection.
-  
-- Go to the ``USB Controller`` section of the settings, 
-  select ``USB 3.0`` as the USB compatibility.
-  
-- Plug in (USB 3.0 port if applicable) the USB WiFi adapter on your host computer,
-  then pass (this USB device) into your VM. 
-  (You can find options on the menubar to pass removable devices into VM.)
-  
-.. note::
-
-  Sometimes the system upgrade may disable the linux driver.
-  The solution would be that just install the driver again.
   
 Remote Login
 ------------
 
-- Connect to ``roboticslab`` WiFi network. 
+- Connect to ``UCR-SECURE`` WiFi network. 
   Please ask TAs for credentials.
   Check if your Internet connection is good.
 
