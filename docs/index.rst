@@ -12,7 +12,6 @@ Foundations of Robotics!
     :maxdepth: 2
     :hidden:
 
-    linux
     ros
 
 News
