@@ -12,8 +12,6 @@ Foundations of Robotics!
     :maxdepth: 2
     :hidden:
 
-    logistics
-    lab0
     linux
     ros
 
