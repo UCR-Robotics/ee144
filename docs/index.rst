@@ -21,4 +21,3 @@ News
 ====
 
 - 09/22/2023: Welcome!
-- 09/22/2022: Please read `logistics <logistics.html>`_.
