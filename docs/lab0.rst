@@ -76,9 +76,9 @@ Virtual Machine
   `VMware Workstation Player <https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html>`_.
   Note that this version 15.5 or 16 should be free.
 
-- If you have a Mac laptop, please go to `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
+- If you have a Mac computer, please go to `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
   webpage, register under "Get a Free Personal Use License" tab and download **VMware Fusion Player**
-  using a free personal license.
+  using a free personal license. If in case you have a new Mac computer of M1/M2 architecture, please contact with the TAs to provide a VMware file to use.
 
 
 Install Linux
