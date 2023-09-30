@@ -8,8 +8,8 @@ This page introduces logistics for lab section only;
 please see syllabus for course overview and lecture/homework related logistics.
 
 - Teaching Assistant: Dimitris Chatziparaschis, Xiaoao Song
-- Email: dchat013@ucr.edu, xiaoao.song@email.ucr.edu
-- Office Hour: 10am - 11am, Tuesday (The office hours are available both in person at WCH109 and via Zoom)
+- Email: dchat013@ucr.edu, xsong036@ucr.edu
+- Office Hour: 10am - 11am, Thursday (The office hours are available both in person at WCH125 and via Zoom)
 
 Please **feel free** to contact TAs if you have any questions.
 
