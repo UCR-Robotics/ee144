@@ -17,7 +17,7 @@ Submission
 
 #. Demo: During the lab time.
 
-#. Due time: 17:00 pm, Nov 4th, Friday
+#. Due time: 17:00 pm, Nov 17, Friday
 
 #. Files to submit:
 
