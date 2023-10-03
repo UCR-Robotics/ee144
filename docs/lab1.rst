@@ -205,10 +205,12 @@ Set up robot arm in Gazebo
     cd ~/catkin_ws/src
     git clone https://github.com/UCR-Robotics/interbotix_ros_arms.git
 
-  For M1/M2 Mac computers, execute also this command,
+  For M1/M2 Mac computers, execute these commands,
 
   .. code-block:: bash
-      
+    
+    cd ~/catkin_ws/src
+    git clone https://github.com/UCR-Robotics/interbotix_ros_arms.git
     sudo apt-get install ros-noetic-moveit-ros
 
 - We can install the dependencies by the following commands.
