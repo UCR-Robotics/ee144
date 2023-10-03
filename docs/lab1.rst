@@ -136,10 +136,10 @@ Set up Turtlebot in Gazebo
   .. literalinclude:: ../launch/gazebo.launch
     :language: xml
 
-  and if you are a M1/M2 Mac user, please copy this and save,
+  .. and if you are a M1/M2 Mac user, please copy this and save,
 
-  .. literalinclude:: ../launch/gazebo_turtlebot3.launch
-    :language: xml
+  .. .. literalinclude:: ../launch/gazebo_turtlebot3.launch
+  ..   :language: xml
 
 Run Turtlebot in Gazebo
 -----------------------
