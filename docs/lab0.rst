@@ -111,7 +111,7 @@ Install ROS
 
 Once you are familiar with Linux, you can start installing ROS.
 In general, we need to follow ROS
-`installation tutorial <http://wiki.ros.org/melodic/Installation/Ubuntu>`_.
+`installation tutorial <http://wiki.ros.org/kinetic/Installation/Ubuntu>`_.
 Main steps are
 
 - Setup sources.list
