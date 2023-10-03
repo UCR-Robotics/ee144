@@ -118,8 +118,8 @@ Set up Turtlebot in Gazebo
       
     sudo apt-get update
     sudo apt-get upgrade
-    sudo apt-get install ros-noetic-turtlebot3  ros-kinetic-turtlebot-simulations
-    sudo apt-get install ros-kinetic-kobuki-ftdi 
+    sudo apt-get install ros-noetic-turtlebot3  ros-noetic-turtlebot-simulations
+    sudo apt-get install ros-noetic-kobuki-ftdi 
 
 - Navigate to your ``ee144f23`` package and create a new folder and a new launch file.
 
