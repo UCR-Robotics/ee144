@@ -38,7 +38,7 @@ Submission
 ROS Basics
 ----------
 
-From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kinetic (or Ubuntu 20.04 with ROS Noetic if you have a M1/M2 Mac computer).
+From now on, we assume that you have already installed Ubuntu 16.04 and ROS Kinetic.
 
 - Please open a new terminal, and create a new ROS workspace by the following commands (run them line by line).
 
@@ -112,15 +112,6 @@ Set up Turtlebot in Gazebo
     sudo apt-get install ros-kinetic-turtlebot ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-interactions ros-kinetic-turtlebot-simulator
     sudo apt-get install ros-kinetic-kobuki-ftdi ros-kinetic-ar-track-alvar-msgs
 
-  If you have a M1/M2 computer, please do,
-  
-  .. code-block:: bash
-      
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get install ros-noetic-turtlebot3  ros-kinetic-turtlebot-simulations
-    sudo apt-get install ros-kinetic-kobuki-ftdi 
-
 - Navigate to your ``ee144f23`` package and create a new folder and a new launch file.
 
   .. code-block:: bash
@@ -136,10 +127,6 @@ Set up Turtlebot in Gazebo
   .. literalinclude:: ../launch/gazebo.launch
     :language: xml
 
-  .. and if you are a M1/M2 Mac user, please copy this and save,
-
-  .. .. literalinclude:: ../launch/gazebo_turtlebot3.launch
-  ..   :language: xml
 
 Run Turtlebot in Gazebo
 -----------------------
@@ -171,13 +158,6 @@ Run Turtlebot in Gazebo
       
     roslaunch turtlebot_teleop keyboard_teleop.launch
 
-  For M1/M2 Mac users,
-
-  .. code-block:: bash
-    
-    export TURTLEBOT3_MODEL=burger
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-
 - Keep the teleop terminal open (selected) and you should be able to control the robot using keyboard now. 
   The teleop program in this terminal takes in whatever keys you entered and 
   converts them into velocity commands to send to the robot. Now spend some time playing with it! 
@@ -205,12 +185,6 @@ Set up robot arm in Gazebo
     cd ~/catkin_ws/src
     git clone https://github.com/UCR-Robotics/interbotix_ros_arms.git
 
-  For M1/M2 Mac computers, execute also this command,
-
-  .. code-block:: bash
-      
-    sudo apt-get install ros-noetic-moveit-ros
-
 - We can install the dependencies by the following commands.
 
   .. code-block:: bash
@@ -226,13 +200,6 @@ Set up robot arm in Gazebo
   .. code-block:: bash
       
     sudo apt install python-pip
-    sudo pip install modern_robotics
-
-  For M1/M2 Mac computers, please do,
-
-  .. code-block:: bash
-      
-    sudo apt install python3-pip
     sudo pip install modern_robotics
 
 - Lastly, with all dependencies ready, we can build the ROS package by the following commands.
@@ -268,4 +235,3 @@ Play with robot arm in Gazebo
   RViz provides a tool for better interaction, but only Gazebo shows the real physical status.
 
 - Have fun!!
-
