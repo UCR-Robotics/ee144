@@ -150,6 +150,7 @@ Run Turtlebot in Gazebo
 
   .. code-block:: bash
       
+    export TURTLEBOT3_MODEL=burger
     roslaunch ee144f23 gazebo.launch
 
 .. note::
