@@ -27,3 +27,4 @@ News
 - 09/29/2023: Please read `logistics <logistics.html>`_.
 - 09/29/2023: `Lab 0 <lab0.html>`_ is up.
 - 10/01/2023: `Lab 1 <lab1.html>`_ is up.
+- 10/06/2023: `Lab 2 <lab2.html>`_ is up.
