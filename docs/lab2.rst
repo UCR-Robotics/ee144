@@ -21,7 +21,9 @@ Preview: Next week we will learn how to use closed-loop control to track a traje
 Submission
 ----------
 
-#. Submission: individual submission via Gradescope
+#. Submission: individual submission via Gradescope. **If you are using an M1/M2 Mac computer**, please send us the files on our email by having a title "EE144 - Lab1 Files - Your Name" so we can test them and also include a video of the robot behavior.
+
+Capture a panoramic video of the robot demonstrating the followed trajectory inside the Gazebo world. You can use the simplescreenrecorder software, by installing it with,
 
 #. Demo: required during the lab session (will use autograder; see below)
 
@@ -174,18 +176,18 @@ Please read carefully the provided code, and understand its functionality.
 You need to make changes under ``run`` function to complete the square trajectory.
 (Hint: honestly, this lab can be done in 10 lines of code if you know what you are doing.)
 
-- Open a new terminal and go to your ``ee144f22`` package. 
+- Open a new terminal and go to your ``ee144f23`` package. 
   We will start from a new Python script.
 
   .. code-block:: bash
 
-    roscd ee144f22
+    roscd ee144f23
     mkdir scripts
     cd scripts
     touch open_loop.py
     gedit open_loop.py
 
-- Please copy and paste the following code, then save and close it.
+- Please copy and paste the following code, then save and close it. If you are using M1/M2, please replace the first line of the code with python3.
 
   .. literalinclude:: ../scripts/open_loop.py
     :language: python
@@ -197,7 +199,7 @@ You need to make changes under ``run`` function to complete the square trajector
   
   .. code-block:: bash
 
-    roslaunch ee144f22 gazebo.launch
+    roslaunch ee144f23 gazebo.launch
 
 - Back to the terminal, you can run it in two ways. 
   One is to feed this script as input to the Python program in Linux,
