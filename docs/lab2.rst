@@ -21,7 +21,7 @@ Preview: Next week we will learn how to use closed-loop control to track a traje
 Submission
 ----------
 
-#. Submission: individual submission via Gradescope. **If you are using an M1/M2 Mac computer**, please send us the files on our email by having a title "EE144 - Lab1 Files - Your Name" so we can test them and also include a video of the robot behavior.
+#. Submission: individual submission via Gradescope. **Only if you are using an M1/M2 Mac computer**, please send us the files on our email by having a title "EE144 - Lab1 Files - Your Name" so we can test them and also include a video of the robot behavior.
 
 Capture a panoramic video of the robot demonstrating the followed trajectory inside the Gazebo world. You can use the simplescreenrecorder software, by installing it with,
 
