@@ -141,6 +141,20 @@ Set up Turtlebot in Gazebo
   .. literalinclude:: ../launch/gazebo_turtlebot3.launch
     :language: xml
 
+Gazebo Models Installation
+-----------------------
+
+To fix the issues of the Gazebo and the lack of models, do the following,
+
+  .. code-block:: bash
+      
+    git clone https://github.com/osrf/gazebo_models.git
+    mkdir -p ~/.gazebo/models
+    cp -r gazebo_models/* ~/.gazebo/models
+    rm -rf gazebo_models
+
+After the completion of these commands, rerun Gazebo and check for any further issues.
+
 Run Turtlebot in Gazebo
 -----------------------
 
