@@ -189,7 +189,7 @@ You need to make changes under ``run`` function to complete the square trajector
     touch open_loop.py
     gedit open_loop.py
 
-- Please copy and paste the following code, then save and close it. If you are using M1/M2, please replace the first line of the code with python3.
+- Please copy and paste the following code, then save and close it. If you are using M1/M2, please replace the first line of the code with python3 and the ROS Topic with "cmd_vel".
 
   .. literalinclude:: ../scripts/open_loop.py
     :language: python
