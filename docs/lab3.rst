@@ -32,7 +32,7 @@ Submission
 
 #. Demo: required during the lab session (will use autograder; see below)
 
-#. Due time: 5:00pm, Nov 3, Friday
+#. Due time: 23:59pm, Nov 3, Friday
 
 #. Files to submit: (please use exactly the same filename; case sensitive)
 

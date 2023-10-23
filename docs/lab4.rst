@@ -39,7 +39,7 @@ Submission
 
 #. Demo: Both of the teammates will be asked questions.
 
-#. Due time: 5:00pm, Nov 10, Friday
+#. Due time: 23:59pm, Nov 10, Friday
 
 #. Files to submit: (please submit exactly the same file)
 
