@@ -17,6 +17,7 @@ Foundations of Robotics!
     lab1
     lab2
     lab3
+    lab4
     linux
     ros
 
@@ -30,3 +31,4 @@ News
 - 10/01/2023: `Lab 1 <lab1.html>`_ is up.
 - 10/06/2023: `Lab 2 <lab2.html>`_ is up.
 - 10/13/2023: `Lab 3 <lab3.html>`_ is up.
+- 10/22/2023: `Lab 4 <lab4.html>`_ is up.

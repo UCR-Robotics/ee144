@@ -197,7 +197,7 @@ Please read carefully the provided code, and understand its functionality.
     touch closed_loop.py
     gedit closed_loop.py
 
-- Please copy and paste the following code, then save and close it.
+- Please copy and paste the following code, then save and close it. If you are using M1/M2, please replace the ROS Topic with "cmd_vel".
 
   .. literalinclude:: ../scripts/closed_loop.py
     :language: python

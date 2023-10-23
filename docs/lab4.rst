@@ -29,7 +29,7 @@ We will provide a couple of test cases for you on autograder.
 The script you submitted should be able to pass all test cases.
 
 
-Preview: You will team up, test your script and play with the physical robot in **WCH 109** next time.
+Preview: You will **team up**, test your script and play with the physical robot in **WCH 125** next time.
 
 
 Submission
@@ -150,7 +150,7 @@ Programming Tips
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f21`` package. 
+- Open a new terminal and go to your ``ee144f23`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
@@ -165,7 +165,7 @@ Sample Code
   .. literalinclude:: ../scripts/forward_kinematics.py
     :language: python
 
-- Similarly, open a new terminal and go to your ``ee144f21`` package. 
+- Similarly, open a new terminal and go to your ``ee144f23`` package. 
 
   .. code-block:: bash
 
