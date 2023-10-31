@@ -4,7 +4,7 @@ Lab 5: Hi! Robot Arm!
 Overview
 --------
 
-In this lab, we will continue working on the manipulator and play with the physical robot in **WCH109**. 
+In this lab, we will continue working on the manipulator and play with the physical robot in **WCH125**. 
 Specifically, the task is to successfully (1) define a Publisher to test your algorithms in simulation and (2) communicate with the physical robots.
 
 **Please make sure you have a laptop that installed Ubuntu with you per team.**
@@ -17,7 +17,7 @@ Submission
 
 #. Demo: During the lab time.
 
-#. Due time: 17:00 pm, Nov 17, Friday
+#. Due time: 23:59 pm, Nov 17, Friday
 
 #. Files to submit:
 
@@ -36,7 +36,7 @@ Access to Lab and Lab Safety
 #. Please read the **Lab Safety** requirements in `logistics <logistics.html>`_ carefully.
 
 #. PLease sign in and sign out when you enter/leave the lab room. 
-   (There is a sign-in sheet near the door to WCH 109.) 
+   (There is a sign-in sheet near the door to WCH 125.) 
    The lab rule is enforced by the department.
 
 #. There are 12 ReactorX 150 manipulators in the lab. 
