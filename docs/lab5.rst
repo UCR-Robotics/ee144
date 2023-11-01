@@ -49,7 +49,7 @@ Write a Publisher and test your code
 
   .. code-block:: bash
 
-    roscd ee144f21/scripts
+    roscd ee144f23/scripts
     touch test_kinematics.py
     gedit test_kinematics.py
 
@@ -69,7 +69,7 @@ Write a Publisher and test your code
 
   .. code-block:: bash
 
-    roscd ee144f22/scripts
+    roscd ee144f23/scripts
     python test_kinematics.py
 
 - Then check and compare with the actual end effect position, run the following command in another terminal.

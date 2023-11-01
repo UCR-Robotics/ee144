@@ -155,7 +155,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f22/scripts
+    roscd ee144f23/scripts
     touch forward_kinematics.py
     gedit forward_kinematics.py
 
@@ -169,7 +169,7 @@ Sample Code
 
   .. code-block:: bash
 
-    roscd ee144f22/scripts
+    roscd ee144f23/scripts
     touch inverse_kinematics.py
     gedit inverse_kinematics.py
 
