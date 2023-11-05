@@ -21,7 +21,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 5:00pm, Nov 12, Saturday
+#. Due time: 11:59pm, Nov 24, Saturday
 
 #. Files to submit:
 
@@ -59,12 +59,12 @@ Testing parameters are as follows.
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f21`` package. 
+- Open a new terminal and go to your ``ee144f23`` package. 
   We will start from a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f22/scripts
+    roscd ee144f23/scripts
     touch trajectory_generation.py
     gedit trajectory_generation.py
 
