@@ -20,6 +20,7 @@ Foundations of Robotics!
     lab4
     lab5
     lab6
+    lab7
     linux
     ros
 
@@ -36,3 +37,4 @@ News
 - 10/22/2023: `Lab 4 <lab4.html>`_ is up.
 - 10/28/2023: `Lab 5 <lab5.html>`_ is up.
 - 11/04/2023: `Lab 6 <lab6.html>`_ is up.
+- 11/11/2023: `Lab 7 <lab7.html>`_ is up.

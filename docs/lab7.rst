@@ -28,7 +28,7 @@ Submission
 
 #. Demo: not required
 
-#. Due time: 5:00pm, November 25, Friday
+#. Due time: 11:59pm, December 1, Friday
 
 #. Files to submit:
 
@@ -69,12 +69,12 @@ For each A* path computed, the autograder will check the following conditions.
 Sample Code
 -----------
 
-- Open a new terminal and go to your ``ee144f22`` package. 
+- Open a new terminal and go to your ``ee144f23`` package. 
   We will create a new python script.
 
   .. code-block:: bash
 
-    roscd ee144f22/scripts
+    roscd ee144f23/scripts
     touch motion_planning.py
     gedit motion_planning.py
 
