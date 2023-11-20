@@ -35,7 +35,7 @@ Submission
 
 #. Submission: individual submission via Gradescope
 
-#. Due time: 11:59pm, Dec 7, Wednesday
+#. Due time: 11:59pm, Dec 15, Wednesday
 
 #. Files to submit:
 

@@ -17,11 +17,11 @@ Preview: Next time we will learn how to use A* algorithm to search for the waypo
 Submission
 ----------
 
-#. Submission: group submission via Gradescope
+#. Submission: group submission via Gradescope. **Important**: **If any of the two team members have ROS Kinetic installed, it is highly preferable to setup the code on this computer and not on the M1/M2 computer. The main reason for this is that during the final Lab 8, the real turtlebots have ROS Kinetic installed so there will be fewer code modifications if you develop your ROS nodes for ROS Kinetic.** 
 
 #. Demo: not required
 
-#. Due time: 11:59pm, Nov 24, Saturday
+#. Due time: 11:59pm, Nov 27, Monday
 
 #. Files to submit:
 
@@ -68,7 +68,7 @@ Sample Code
     touch trajectory_generation.py
     gedit trajectory_generation.py
 
-- Please copy and paste the following code.
+- Please copy and paste the following code. If both of the team members have an M1/M2 computer, please follow the corresponding approach by replacing the Python version with ''python3'' and the ROS Topic with "cmd_vel".
 
   .. literalinclude:: ../scripts/trajectory_generation.py
     :language: python
