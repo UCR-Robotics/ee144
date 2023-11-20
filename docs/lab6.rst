@@ -17,7 +17,7 @@ Preview: Next time we will learn how to use A* algorithm to search for the waypo
 Submission
 ----------
 
-#. Submission: group submission via Gradescope. **Important**: **If any of the two team members have ROS Kinetic installed, it is highly preferable to setup the code on this computer and not on the M1/M2 computer. The main reason for this is that during the final Lab 8, the real turtlebots have ROS Kinetic installed so there will be fewer code modifications if you develop your ROS nodes for ROS Kinetic.** 
+#. Submission: group submission via Gradescope. **Important**: If any of the two team members have ROS Kinetic installed, it is **highly recommended** to setup the code on this computer and not on the M1/M2 computer. The main reason for this is that during the final Lab 8, the real turtlebots have ROS Kinetic installed so there will be fewer code modifications if you develop your ROS nodes for ROS Kinetic.
 
 #. Demo: not required
 
