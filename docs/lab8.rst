@@ -70,7 +70,7 @@ Lab Rules
 Remote Login
 ------------
 
-- Connect to ``UCR-SECURE`` WiFi network. 
+- Connect to ``TP-Link_E6EC`` WiFi network. 
   Please ask TAs for credentials.
   Check if your Internet connection is good.
 
@@ -138,7 +138,9 @@ Copy Files
   .. code-block:: bash
 
     scp username@NUC_IP:/path/to/file/name.py /path/to/destination 
-    
+
+Please replace the above fields of the above commands, with your files, directories, network address, etc.    
+
 Communication with TurtleBot
 ----------------------------
 
